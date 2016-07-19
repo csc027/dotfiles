@@ -1,0 +1,14 @@
+"3.2 (created: 2011/06/03 11:51:34)
+
+source! "C:\\Documents and Settings\\Constantine Chen\\_vimperatorrc.local"
+
+set titlestring="Mozilla Firefox"
+set gui=none
+set noscrollbars
+set hlsearch
+set focuscontent=true
+
+map d <Nop>
+map D <Nop>
+
+colorscheme solarized_dark

@@ -1,0 +1,20 @@
+nnoremap j gj
+nnoremap k gk
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+set autoindent
+set backspace=2
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set number
+set smartcase
+set tabstop=4
+set visualbell
+set vsvim_useeditordefaults
+set vsvim_useeditorindent

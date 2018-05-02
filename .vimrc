@@ -46,9 +46,6 @@ highlight Pmenu ctermbg=215 gui=bold
 
 set completeopt=longest,menuone
 
-echo $VIMHOME
-echo "test"
-echo $HOME
 let posh = ["ps1", "psm1", "psd1"]
 if index(posh, expand("%:e")) >= 0
 	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt

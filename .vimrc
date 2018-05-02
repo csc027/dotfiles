@@ -37,7 +37,7 @@ syntax on
 filetype plugin indent on
 
 let g:solarized_italic = 0
-let g:lightline = { 'colorscheme' : 'solarized' }
+let g:lightline = { "colorscheme" : "solarized" }
 let g:vimfiler_as_default_explorer = 1
 
 colorscheme solarized
@@ -46,10 +46,18 @@ highlight Pmenu ctermbg=215 gui=bold
 
 set completeopt=longest,menuone
 
+echo $VIMHOME
+echo "test"
+echo $HOME
+let posh = ["ps1", "psm1", "psd1"]
+if index(posh, expand("%:e")) >= 0
+	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
+endif
+
 if has("gui_running")
 	au GUIENTER * simalt ~x
 	set guifont=Lucida\ Console:h10:cANSI
-	set guioptions -=m
-	set guioptions -=T
-	set guioptions -=r
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=r
 endif

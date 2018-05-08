@@ -49,6 +49,18 @@ set completeopt=longest,menuone
 let posh = ["ps1", "psm1", "psd1"]
 if index(posh, expand("%:e")) >= 0
 	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
+
+	map <Leader>i <Esc>iif() {<CR>}<Esc><<
+	map <Leader>e <Esc>ielse {<CR>}<Esc><<
+	map <Leader>ei <Esc>ielseif {<CR>}<Esc><<
+	map <Leader>f <Esc>iforeach() {<CR>}<Esc><<
+	map <Leader>w <Esc>iwhile() {<CR>}<Esc><<
+
+	map <Leader>ai <Esc>aif() {<CR>}<Esc><<
+	map <Leader>ae <Esc>aelse {<CR>}<Esc><<
+	map <Leader>aei <Esc>aelseif {<CR>}<Esc><<
+	map <Leader>af <Esc>aforeach() {<CR>}<Esc><<
+	map <Leader>aw <Esc>awhile() {<CR>}<Esc><<
 endif
 
 if has("gui_running")

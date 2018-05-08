@@ -50,17 +50,17 @@ let posh = ["ps1", "psm1", "psd1"]
 if index(posh, expand("%:e")) >= 0
 	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
 
-	map <Leader>i <Esc>iif() {<CR>}<Esc><<
-	map <Leader>e <Esc>ielse {<CR>}<Esc><<
-	map <Leader>ei <Esc>ielseif {<CR>}<Esc><<
-	map <Leader>f <Esc>iforeach() {<CR>}<Esc><<
-	map <Leader>w <Esc>iwhile() {<CR>}<Esc><<
+	map <Leader>i <Esc>:set paste<Esc>iif() {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>e <Esc>:set paste<Esc>ielse {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>ei <Esc>:set paste<Esc>ielseif {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>f <Esc>:set paste<Esc>iforeach() {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>w <Esc>:set paste<Esc>iwhile() {<CR>}<Esc>:set nopaste<Esc>
 
-	map <Leader>ai <Esc>aif() {<CR>}<Esc><<
-	map <Leader>ae <Esc>aelse {<CR>}<Esc><<
-	map <Leader>aei <Esc>aelseif {<CR>}<Esc><<
-	map <Leader>af <Esc>aforeach() {<CR>}<Esc><<
-	map <Leader>aw <Esc>awhile() {<CR>}<Esc><<
+	map <Leader>ai <Esc>:set paste<Esc>aif() {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>ae <Esc>:set paste<Esc>aelse {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>aei <Esc>:set paste<Esc>aelseif {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>af <Esc>:set paste<Esc>aforeach() {<CR>}<Esc>:set nopaste<Esc>
+	map <Leader>aw <Esc>:set paste<Esc>awhile() {<CR>}<Esc>:set nopaste<Esc>
 endif
 
 if has("gui_running")

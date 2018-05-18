@@ -59,5 +59,10 @@
 			"youtube": "https://www.youtube.com/results?search_query={}",
 			"wiki": "https://en.wikipedia.org/w/index.php?search={}"
 		}
+	},
+	"properties": {
+		"hintchars": "abcdefghijklmnopqrstuvwxyz",
+		"smoothscroll": false,
+		"adjacenttab": true
 	}
 }

@@ -46,6 +46,13 @@ highlight Pmenu ctermbg=215 gui=bold
 
 set completeopt=longest,menuone
 
+" custom commands begin
+
+nmap cs" ciw""<Esc>P
+nmap cs[ ciw[]<Esc>P
+nmap cs{ ciw{}<Esc>P
+nmap cs( ciw()<Esc>P
+
 let posh = ["ps1", "psm1", "psd1"]
 if index(posh, expand("%:e")) >= 0
 	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
@@ -62,6 +69,8 @@ if index(posh, expand("%:e")) >= 0
 	map <Leader>af <Esc>:set paste<Esc>aforeach() {<CR>}<Esc>:set nopaste<Esc>
 	map <Leader>aw <Esc>:set paste<Esc>awhile() {<CR>}<Esc>:set nopaste<Esc>
 endif
+
+" custom commands end
 
 if has("gui_running")
 	au GUIENTER * simalt ~x

@@ -47,11 +47,6 @@ set completeopt=longest,menuone
 
 " custom commands begin
 
-nmap cs" ciw""<Esc>P
-nmap cs[ ciw[]<Esc>P
-nmap cs{ ciw{}<Esc>P
-nmap cs( ciw()<Esc>P
-
 let posh = ["ps1", "psm1", "psd1"]
 if index(posh, expand("%:e")) >= 0
 	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt

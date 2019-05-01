@@ -38,7 +38,6 @@ filetype plugin indent on
 
 let g:solarized_italic = 0
 let g:lightline = { "colorscheme" : "solarized" }
-let g:vimfiler_as_default_explorer = 1
 
 colorscheme solarized
 

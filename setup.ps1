@@ -1,6 +1,10 @@
 $Script_Location = $PsScriptRoot;
 $Script_Directory = Split-Path -Path $Script_Location -Parent | Get-Item;
 
+if(([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+	throw New-Object System.Exception "The setup script requires administrator privileges to run.";
+}
+
 $Symlinks = @(".vimrc", ".vim");
 
 foreach($Symlink in $Symlinks) {
@@ -16,7 +20,7 @@ foreach($Symlink in $Symlinks) {
 		} elseif(Test-Path -Path $Source -PathType Leaf) {
 			cmd /c mklink $Destination $Source;
 		} else {
-			throw New-Object Exception "The source item $Source does not exist.";
+			throw New-Object System.IO.Exception "The source item $Source does not exist.";
 		}
 		Write-Host "done";
 	} else {

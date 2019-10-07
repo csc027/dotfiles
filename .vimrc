@@ -3,10 +3,11 @@ execute pathogen#infect()
 nnoremap j gj
 nnoremap k gk
 
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" split window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 set autoindent
 set backspace=2

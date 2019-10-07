@@ -1,7 +1,14 @@
 execute pathogen#infect()
 
+" wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" completion
+inoremap <C-k> <C-x><C-k>
+inoremap <C-o> <C-x><C-o>
+inoremap <C-f> <C-x><C-f>
+inoremap <C-l> <C-x><C-l>
 
 " split window
 nnoremap <C-h> <C-w>h

@@ -22,6 +22,7 @@ set background=dark
 set foldlevel=2
 set foldmethod=syntax
 set foldnestmax=1
+set hidden
 set history=1000
 set hlsearch
 set ignorecase

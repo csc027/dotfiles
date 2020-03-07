@@ -16,6 +16,12 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" buffer shortcuts
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bl :ls<CR>
+
 set autoindent
 set backspace=2
 set background=dark

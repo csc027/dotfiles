@@ -22,6 +22,9 @@ nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bl :ls<CR>
 
+" toggle relative number
+nnoremap <Leader>rn :set invrelativenumber<CR>
+
 set autoindent
 set backspace=2
 set background=dark

@@ -21,6 +21,7 @@ nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bl :ls<CR>
+nnoremap <Leader>bb :ls<CR>:b
 
 " toggle relative number
 nnoremap <Leader>rn :set invrelativenumber<CR>

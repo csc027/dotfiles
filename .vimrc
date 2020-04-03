@@ -17,14 +17,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffer shortcuts
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bd :bd<CR>
-nnoremap <Leader>bp :bp<CR>
-nnoremap <Leader>bl :ls<CR>
-nnoremap <Leader>bb :ls<CR>:b
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>b :ls<CR>:b
 
 " toggle relative number
-nnoremap <Leader>rn :set invrelativenumber<CR>
+nnoremap <Leader>r :set invrelativenumber<CR>
 
 set autoindent
 set backspace=2

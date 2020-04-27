@@ -43,6 +43,7 @@ set nofoldenable
 set noshowmode
 set number
 set omnifunc=syntaxcomplete#Complete
+set relativenumber
 set scrolloff=1
 set sidescrolloff=5
 set smartcase

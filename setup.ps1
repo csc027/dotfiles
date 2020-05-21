@@ -1,40 +1,64 @@
-$Script_Directory = $PsScriptRoot;
-
 if(-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 	throw New-Object System.Exception "The setup script requires administrator privileges to run.";
 }
 
+# Create profile directory if it is missing
+$ProfileDirectory = Split-Path -Path $PROFILE -Parent;
+if(-not (Test-Path -Path $ProfileDirectory)) {
+	New-Item -ItemType Directory $ProfileDirectory;
+}
+
+# List files to be symbolically linked to other locations
 $Items = @(
 	@{
 		"Source" = ".vimrc";
-		"Destination" = ".vimrc";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
 	},
 	@{
 		"Source" = ".vim";
-		"Destination" = "vimfiles";
+		"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
+	},
+	@{
+		"Source" = "profile.ps1";
+		"Destination" = $PROFILE;
 	}
 ) | ForEach-Object {
 	New-Object -TypeName PsObject -Property $_;
 };
 
+# Create the symbolic links
 foreach($Item in $Items) {
-	$Source = Join-Path -Path $Script_Directory -ChildPath $Item.Source;
-	$Destination = Join-Path -Path $HOME -ChildPath $Item.Destination;
+	$Source = Join-Path -Path $PsScriptRoot -ChildPath $Item.Source;
 
-	Write-Host "Checking if the symlink at '$Destination' exists... " -NoNewLine;
-	if(-not (Test-Path -Path $Destination)) {
-		Write-Host "done.  The symlink does not exist.";
-		Write-Host "Creating a symlink at '$Destination'... " -NoNewLine;
+	Write-Host "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
+	if(-not (Test-Path -Path $Item.Destination)) {
+		Write-Host "done.  The symbolic link does not exist.";
+		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		if(Test-Path -Path $Source -PathType Container) {
-			cmd /c mklink /d $Destination $Source | Out-Null;
+			cmd /c mklink /d $Item.Destination $Source | Out-Null;
 		} elseif(Test-Path -Path $Source -PathType Leaf) {
-			cmd /c mklink $Destination $Source | Out-Null;
+			cmd /c mklink $Item.Destination $Source | Out-Null;
 		} else {
 			throw New-Object System.Exception "The source item $Source does not exist.";
 		}
-		Write-Host "done";
+		Write-Host "done.";
 	} else {
 		Write-Host "done.";
-		Write-Host "The symlink '$Destination' already exists.";
+		Write-Host "The symbolic link '$($Item.Destination)' already exists.";
+	}
+}
+
+# Install modules
+if(Get-Command -Name "Install-Module") {
+	$Modules = @(
+		"posh-git",
+		"PsReadLine"
+	);
+	foreach($Module in $Modules) {
+		if(-not (Get-Module -Name $Module)) {
+			Write-Host "Installing '$Module'... " -NoNewLine;
+			Install-Module -Name $Module -Force;
+			Write-Host "done.";
+		}
 	}
 }

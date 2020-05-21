@@ -21,6 +21,10 @@ $Items = @(
 	@{
 		"Source" = "profile.ps1";
 		"Destination" = $PROFILE;
+	},
+	@{
+		"Source" = "aliases.psm1";
+		"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "aliases.psm1";
 	}
 ) | ForEach-Object {
 	New-Object -TypeName PsObject -Property $_;

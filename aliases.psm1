@@ -11,7 +11,7 @@ function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
 function Invoke-GitMerge { git merge $args }
 function Invoke-GitMv { git mv $args }
 function Invoke-GitPull { git pull $args }
-function Invoke-GitPush { git pull $args }
+function Invoke-GitPush { git push $args }
 function Invoke-GitRebase { git rebase $args }
 function Invoke-GitRemote { git remote $args }
 function Invoke-GitShow { git show $args }

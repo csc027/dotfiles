@@ -32,18 +32,25 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
 	color_prompt=yes
-	else
+else
 	color_prompt=
 fi
 
-if [ -f ~/.git-prompt.sh ]; then
-	source ~/.git-prompt.sh
+
+# check if git is installed
+git --version 2>&1 >/dev/null
+GIT_IS_AVAILABLE=$?
+if [ $GIT_IS_AVAILABLE -eq 0 ]; then
+	parse_git_branch() {
+		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+	}
 fi
 
-if [ -f ~/.git-prompt.sh -a "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\]$(__git_ps1)\[\033[00m\]\$ '
-elif [ -f ~/.git-prompt.sh -a "$color_prompt" != yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1)\$ '
+
+if [ $GIT_IS_AVAILABLE -eq 0 -a "$color_prompt" = yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\] $(parse_git_branch)\[\033[00m\]\$ '
+elif [ $GIT_IS_AVAILABLE -eq 0 -a "$color_prompt" != yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(parse_git_branch)\$ '
 elif [ "$color_prompt" = yes ]; then
 	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else

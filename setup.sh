@@ -1,7 +1,7 @@
 SCRIPT_LOCATION=$(readlink -f $0);
 SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 
-declare -a SYMLINKS=(".vimrc" ".vim" ".dircolors");
+declare -a SYMLINKS=(".vimrc" ".vim" ".dircolors" ".bashrc" ".bash_aliases" ".git-prompt.sh");
 
 for i in ${SYMLINKS[@]}
 do

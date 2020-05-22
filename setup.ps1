@@ -59,10 +59,14 @@ if(Get-Command -Name "Install-Module") {
 		"PsReadLine"
 	);
 	foreach($Module in $Modules) {
+		Write-Host "Checking if module '$Module' is installed... " -NoNewLline;
 		if(-not (Get-Module -Name $Module)) {
+			Write-Host "done."
 			Write-Host "Installing '$Module'... " -NoNewLine;
 			Install-Module -Name $Module -Force;
 			Write-Host "done.";
+		} else {
+			Write-Host "done.  Module is already installed.";
 		}
 	}
 }

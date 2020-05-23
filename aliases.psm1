@@ -14,6 +14,7 @@ function Invoke-GitPull { git pull $args }
 function Invoke-GitPush { git push $args }
 function Invoke-GitRebase { git rebase $args }
 function Invoke-GitRemote { git remote $args }
+function Invoke-GitReset { git reset $args }
 function Invoke-GitShow { git show $args }
 function Invoke-GitStash { git stash $args }
 function Invoke-GitStatus { git status $args }
@@ -36,6 +37,7 @@ $Aliases = @{
 	"gp" = "Invoke-GitPush";
 	"ge" = "Invoke-GitRebase";
 	"go" = "Invoke-GitRemote";
+	"gr" = "Invoke-GitReset";
 	"gw" = "Invoke-GitShow";
 	"gh" = "Invoke-GitStash";
 	"gs" = "Invoke-GitStatus";

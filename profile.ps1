@@ -5,7 +5,7 @@ $SolarizedDefaultFile = switch($HOST.UI.RawUI.BackgroundColor.ToString()) {
 	default { return }
 };
 $SolarizedDefaultPath = Join-Path -Path $ProfileDirectory -ChildPath $SolarizedDefaultFile
-if((Test-Path -Path $SolarizedDefaultPath) -and -not (Get-Item -Path "Env:\WT_SESSION")) {
+if((Test-Path -Path $SolarizedDefaultPath) -and -not (Test-Path -Path "Env:\WT_SESSION")) {
 	. $SolarizedDefaultPath;
 }
 

@@ -1,19 +1,23 @@
 function Invoke-GitAdd { git add $args }
+function Invoke-GitAddChunk { git add -p $args }
+function Invoke-GitAddInteractive { git add --interactive $args }
 function Invoke-GitBranch { git branch $args }
 function Invoke-GitBranchAll { git branch -a $args }
+function Invoke-GitBranchDelete { git branch -d $args }
 function Invoke-GitCheckout { git checkout $args }
 function Invoke-GitCheckoutBranch { git checkout -b $args }
 function Invoke-GitCherryPick { git cherry-pick $args }
 function Invoke-GitCommit { git commit -m $args }
 function Invoke-GitDiff { git diff $args }
+function Invoke-GitDiffCached { git diff --cached $args }
 function Invoke-GitFetch { git fetch $args }
 function Invoke-GitFetchAll { git fetch --all $args }
 function Invoke-GitFetchPrune { git fetch --prune $args }
 function Invoke-GitFetchAllPrune { git fetch --all --prune $args }
 function Invoke-GitGrep { git grep $args }
 function Invoke-GitInit { git init $args }
-function Invoke-GitLog { git log --decorate --graph --color $args }
-function Invoke-GitLogOneline { git log --decorate --oneline --graph --color $args }
+function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
+function Invoke-GitLogLong { git log --decorate --graph --color $args }
 function Invoke-GitMerge { git merge $args }
 function Invoke-GitMv { git mv $args }
 function Invoke-GitPull { git pull $args }
@@ -32,13 +36,17 @@ function Invoke-GitTag { git tag $args }
 
 $Aliases = @{
 	"ga"   = "Invoke-GitAdd";
+	"gap"  = "Invoke-GitAddChunk";
+	"gai"  = "Invoke-GitAddInteractive";
 	"gb"   = "Invoke-GitBranch";
 	"gba"  = "Invoke-GitBranchAll";
+	"gbd"  = "Invoke-GitBranchDelete";
 	"gk"   = "Invoke-GitCheckout";
 	"gkb"  = "Invoke-GitCheckoutBranch";
 	"gq"   = "Invoke-GitCherryPick";
 	"gc"   = "Invoke-GitCommit";
 	"gd"   = "Invoke-GitDiff";
+	"gdc"  = "Invoke-GitDiffCached";
 	"gf"   = "Invoke-GitFetch";
 	"gfa"  = "Invoke-GitFetchAll";
 	"gfp"  = "Invoke-GitFetchPrune";
@@ -46,7 +54,7 @@ $Aliases = @{
 	"gg"   = "Invoke-GitGrep";
 	"gi"   = "Invoke-GitInit";
 	"gl"   = "Invoke-GitLog";
-	"glo"  = "Invoke-GitLogOneline";
+	"gll"  = "Invoke-GitLogLong";
 	"gm"   = "Invoke-GitMerge";
 	"gv"   = "Invoke-GitMv";
 	"gu"   = "Invoke-GitPull";

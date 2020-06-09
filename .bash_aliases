@@ -1,6 +1,5 @@
 alias ga='git add'
 alias gap='git add -p'
-alias gai='git add --interactive'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbd='git branch -d'
@@ -36,7 +35,6 @@ alias gt='git tag'
 
 __git_complete ga _git_add
 __git_complete gap _git_add
-__git_complete gal _git_add
 __git_complete gb _git_branch
 __git_complete gba _git_branch
 __git_complete gbd _git_branch

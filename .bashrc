@@ -70,6 +70,9 @@ if [ -x /usr/bin/dircolors ]; then
 	alias egrep='egrep --color=auto'
 fi
 
+if [ -f ~/git-completion.bash ]; then
+	. ~/git-completion.bash
+fi
 # Alias definitions.
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases

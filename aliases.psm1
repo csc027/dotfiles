@@ -1,6 +1,5 @@
 function Invoke-GitAdd { git add $args }
 function Invoke-GitAddChunk { git add -p $args }
-function Invoke-GitAddInteractive { git add --interactive $args }
 function Invoke-GitBranch { git branch $args }
 function Invoke-GitBranchAll { git branch -a $args }
 function Invoke-GitBranchDelete { git branch -d $args }
@@ -35,41 +34,40 @@ function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
 
 $Aliases = @{
-	"ga"   = "Invoke-GitAdd";
-	"gap"  = "Invoke-GitAddChunk";
-	"gai"  = "Invoke-GitAddInteractive";
-	"gb"   = "Invoke-GitBranch";
-	"gba"  = "Invoke-GitBranchAll";
-	"gbd"  = "Invoke-GitBranchDelete";
-	"gk"   = "Invoke-GitCheckout";
-	"gkb"  = "Invoke-GitCheckoutBranch";
-	"gq"   = "Invoke-GitCherryPick";
-	"gc"   = "Invoke-GitCommit";
-	"gd"   = "Invoke-GitDiff";
-	"gdc"  = "Invoke-GitDiffCached";
-	"gf"   = "Invoke-GitFetch";
-	"gfa"  = "Invoke-GitFetchAll";
-	"gfp"  = "Invoke-GitFetchPrune";
-	"gfap" = "Invoke-GitFetchAllPrune";
-	"gg"   = "Invoke-GitGrep";
-	"gi"   = "Invoke-GitInit";
-	"gl"   = "Invoke-GitLog";
-	"gll"  = "Invoke-GitLogLong";
-	"gm"   = "Invoke-GitMerge";
-	"gv"   = "Invoke-GitMv";
-	"gu"   = "Invoke-GitPull";
-	"gp"   = "Invoke-GitPush";
-	"ge"   = "Invoke-GitRebase";
-	"gei"  = "Invoke-GitRebaseInteractive";
-	"go"   = "Invoke-GitRemote";
-	"gr"   = "Invoke-GitReset";
-	"gw"   = "Invoke-GitShow";
-	"gh"   = "Invoke-GitStash";
-	"gha"  = "Invoke-GitStashApply";
-	"ghl"  = "Invoke-GitStashList";
-	"ghp"  = "Invoke-GitStashPop";
-	"gs"   = "Invoke-GitStatus";
-	"gt"   = "Invoke-GitTag";
+	"ga"   = (Get-Command -Name "Invoke-GitAdd");
+	"gap"  = (Get-Command -Name "Invoke-GitAddChunk");
+	"gb"   = (Get-Command -Name "Invoke-GitBranch");
+	"gba"  = (Get-Command -Name "Invoke-GitBranchAll");
+	"gbd"  = (Get-Command -Name "Invoke-GitBranchDelete");
+	"gk"   = (Get-Command -Name "Invoke-GitCheckout");
+	"gkb"  = (Get-Command -Name "Invoke-GitCheckoutBranch");
+	"gq"   = (Get-Command -Name "Invoke-GitCherryPick");
+	"gc"   = (Get-Command -Name "Invoke-GitCommit");
+	"gd"   = (Get-Command -Name "Invoke-GitDiff");
+	"gdc"  = (Get-Command -Name "Invoke-GitDiffCached");
+	"gf"   = (Get-Command -Name "Invoke-GitFetch");
+	"gfa"  = (Get-Command -Name "Invoke-GitFetchAll");
+	"gfp"  = (Get-Command -Name "Invoke-GitFetchPrune");
+	"gfap" = (Get-Command -Name "Invoke-GitFetchAllPrune");
+	"gg"   = (Get-Command -Name "Invoke-GitGrep");
+	"gi"   = (Get-Command -Name "Invoke-GitInit");
+	"gl"   = (Get-Command -Name "Invoke-GitLog");
+	"gll"  = (Get-Command -Name "Invoke-GitLogLong");
+	"gm"   = (Get-Command -Name "Invoke-GitMerge");
+	"gv"   = (Get-Command -Name "Invoke-GitMv");
+	"gu"   = (Get-Command -Name "Invoke-GitPull");
+	"gp"   = (Get-Command -Name "Invoke-GitPush");
+	"ge"   = (Get-Command -Name "Invoke-GitRebase");
+	"gei"  = (Get-Command -Name "Invoke-GitRebaseInteractive");
+	"go"   = (Get-Command -Name "Invoke-GitRemote");
+	"gr"   = (Get-Command -Name "Invoke-GitReset");
+	"gw"   = (Get-Command -Name "Invoke-GitShow");
+	"gh"   = (Get-Command -Name "Invoke-GitStash");
+	"gha"  = (Get-Command -Name "Invoke-GitStashApply");
+	"ghl"  = (Get-Command -Name "Invoke-GitStashList");
+	"ghp"  = (Get-Command -Name "Invoke-GitStashPop");
+	"gs"   = (Get-Command -Name "Invoke-GitStatus");
+	"gt"   = (Get-Command -Name "Invoke-GitTag");
 };
 
 foreach($Key in $Aliases.Keys) {

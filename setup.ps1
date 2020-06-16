@@ -1,5 +1,39 @@
+param(
+	[Switch] $Force
+)
+
 if(-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 	throw New-Object System.Exception "The setup script requires administrator privileges to run.";
+}
+
+function New-Symlink {
+	[CmdletBinding()]
+	param (
+		[String] $Path,
+		[String] $Value
+	)
+
+	if(Test-Path -Path $Path -PathType Container) {
+		cmd /c mklink /d $Value $Path | Out-Null;
+	} elseif(Test-Path -Path $Path -PathType Leaf) {
+		cmd /c mklink $Value $Path | Out-Null;
+	} else {
+		throw New-Object System.Exception "The source item $Path does not exist.";
+	}
+}
+
+function Rename-Backup {
+	[CmdletBinding()]
+	param (
+		[String] $Path
+	)
+
+	$NewPath = $Path;
+	for($i = 1; Test-Path -Path $NewPath; $i++) {
+		$NewPath = $Path + ".$i.bak"
+	}
+
+	Rename-Item -Path $Path -NewName $NewPath;
 }
 
 # Create profile directory if it is missing
@@ -38,13 +72,15 @@ foreach($Item in $Items) {
 	if(-not (Test-Path -Path $Item.Destination)) {
 		Write-Host "done.  The symbolic link does not exist.";
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		if(Test-Path -Path $Source -PathType Container) {
-			cmd /c mklink /d $Item.Destination $Source | Out-Null;
-		} elseif(Test-Path -Path $Source -PathType Leaf) {
-			cmd /c mklink $Item.Destination $Source | Out-Null;
-		} else {
-			throw New-Object System.Exception "The source item $Source does not exist.";
-		}
+		New-Symlink -Path $Source -Value $Item.Destination;
+		Write-Host "done.";
+	} elseif($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
+		Write-Host "done.  A file/directory exists, but is not a symbolic link.";
+		Write-Host "Backing up existing file/directory... ";
+		Rename-Backup -Path $Item.Destination;
+		Write-Host "done."
+		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
+		New-Symlink -Path $Source -Value $Item.Destination;
 		Write-Host "done.";
 	} else {
 		Write-Host "done.";

@@ -14,6 +14,20 @@ do
 		echo -n "Creating a symlink at '$DESTINATION'... ";
 		ln -s $SOURCE $DESTINATION;
 		echo "done";
+	elif { [ "$1" = "-f" ] || [ "$1" = "--force" ]; } && [ ! -L $DESTINATION ]; then
+		echo "done.  A file exists at '$DESTINATION', but is not a symlink.";
+		echo -n "Renaming file... ";
+		NEW_DESTINATION=$DESTINATION;
+		I=1;
+		while [ -e $NEW_DESTINATION ]; do
+			NEW_DESTINATION="${NEW_DESTINATION}.${I}.bak";
+			((I++));
+		done
+		mv $DESTINATION $NEW_DESTINATION;
+		echo "done";
+		echo -n "Creating a symlink at '$DESTINATION'... ";
+		ln -s $SOURCE $DESTINATION;
+		echo "done";
 	else
 		echo "done.";
 		echo "The symlink '$DESTINATION' already exists.";

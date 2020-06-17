@@ -9,6 +9,7 @@ alias gq='git cherry-pick'
 alias gc='git commit -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gdn='git diff --name-only'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gfp='git fetch --prune'
@@ -16,6 +17,8 @@ alias gfap='git fetch --all --prune'
 alias gg='git grep'
 alias gi='git init'
 alias gl='git log --decorate --oneline --graph --color'
+alias gld='git log --decorate --oneline --graph --color --boundary'
+alias gldl='git log --decorate --graph --color --boundary'
 alias gll='git log --decorate --graph --color'
 alias gm='git merge'
 alias gv='git mv'
@@ -36,7 +39,6 @@ alias gt='git tag'
 if [ -f ~/.git-completion.bash ]; then
 	__git_complete ga _git_add
 	__git_complete gap _git_add
-	__git_complete gal _git_add
 	__git_complete gb _git_branch
 	__git_complete gba _git_branch
 	__git_complete gbd _git_branch
@@ -46,6 +48,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gc _git_commit
 	__git_complete gd _git_diff
 	__git_complete gdc _git_diff
+	__git_complete gdn _git_diff
 	__git_complete gf _git_fetch
 	__git_complete gfa _git_fetch
 	__git_complete gfp _git_fetch
@@ -53,6 +56,8 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gg _git_grep
 	__git_complete gi _git_init
 	__git_complete gl _git_log
+	__git_complete gld _git_log
+	__git_complete gldl _git_log
 	__git_complete gll _git_log
 	__git_complete gm _git_merge
 	__git_complete gv _git_mv

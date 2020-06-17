@@ -9,6 +9,7 @@ function Invoke-GitCherryPick { git cherry-pick $args }
 function Invoke-GitCommit { git commit -m $args }
 function Invoke-GitDiff { git diff $args }
 function Invoke-GitDiffCached { git diff --cached $args }
+function Invoke-GitDiffNameOnly { git diff --name-only $args }
 function Invoke-GitFetch { git fetch $args }
 function Invoke-GitFetchAll { git fetch --all $args }
 function Invoke-GitFetchPrune { git fetch --prune $args }
@@ -16,6 +17,8 @@ function Invoke-GitFetchAllPrune { git fetch --all --prune $args }
 function Invoke-GitGrep { git grep $args }
 function Invoke-GitInit { git init $args }
 function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
+function Invoke-GitLogDiff { git log --decorate --oneline --graph --color --boundary $args }
+function Invoke-GitLogDiffLong { git log --decorate --graph --color --boundary $args }
 function Invoke-GitLogLong { git log --decorate --graph --color $args }
 function Invoke-GitMerge { git merge $args }
 function Invoke-GitMv { git mv $args }
@@ -45,6 +48,7 @@ $Aliases = @{
 	"gc"   = (Get-Command -Name "Invoke-GitCommit");
 	"gd"   = (Get-Command -Name "Invoke-GitDiff");
 	"gdc"  = (Get-Command -Name "Invoke-GitDiffCached");
+	"gdn"  = (Get-Command -Name "Invoke-GitDiffNameOnly");
 	"gf"   = (Get-Command -Name "Invoke-GitFetch");
 	"gfa"  = (Get-Command -Name "Invoke-GitFetchAll");
 	"gfp"  = (Get-Command -Name "Invoke-GitFetchPrune");
@@ -52,6 +56,8 @@ $Aliases = @{
 	"gg"   = (Get-Command -Name "Invoke-GitGrep");
 	"gi"   = (Get-Command -Name "Invoke-GitInit");
 	"gl"   = (Get-Command -Name "Invoke-GitLog");
+	"gld"  = (Get-Command -Name "Invoke-GitLogDiff");
+	"gldl" = (Get-Command -Name "Invoke-GitLogDiffLong");
 	"gll"  = (Get-Command -Name "Invoke-GitLogLong");
 	"gm"   = (Get-Command -Name "Invoke-GitMerge");
 	"gv"   = (Get-Command -Name "Invoke-GitMv");

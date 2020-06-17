@@ -60,7 +60,9 @@ filetype plugin indent on
 
 let g:solarized_italic = 0
 let g:lightline = { "colorscheme" : "solarized" }
-set termguicolors
+if has("termguicolors")
+	set termguicolors
+endif
 
 colorscheme solarized
 

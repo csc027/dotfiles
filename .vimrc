@@ -66,8 +66,6 @@ endif
 
 colorscheme solarized
 
-highlight Pmenu ctermbg=215 gui=bold
-
 set completeopt=longest,menuone
 
 " custom commands begin

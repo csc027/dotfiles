@@ -65,15 +65,6 @@ colorscheme solarized
 
 set completeopt=longest,menuone
 
-" custom commands begin
-
-let posh = ["ps1", "psm1", "psd1"]
-if index(posh, expand("%:e")) >= 0
-	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
-endif
-
-" custom commands end
-
 if has("gui_running")
 	au GUIENTER * simalt ~x
 	set guifont=Lucida\ Console:h10:cANSI

@@ -56,7 +56,6 @@ set visualbell
 syntax on
 filetype plugin indent on
 
-let g:solarized_italic = 0
 let g:lightline = { "colorscheme" : "solarized" }
 if has("termguicolors")
 	set termguicolors

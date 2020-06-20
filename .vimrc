@@ -56,6 +56,11 @@ set visualbell
 syntax on
 filetype plugin indent on
 
+" completion
+if executable("node")
+	packadd! coc.nvim
+endif
+
 let g:lightline = { "colorscheme" : "solarized" }
 if has("termguicolors")
 	set termguicolors

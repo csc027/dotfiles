@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 " wrapped lines
 nnoremap j gj
 nnoremap k gk

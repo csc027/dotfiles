@@ -24,6 +24,14 @@ nnoremap <Leader>b :ls<CR>:b
 " toggle relative number
 nnoremap <Leader>r :set invrelativenumber<CR>
 
+" completion
+function! EnableCoc()
+	if executable("node")
+		packadd coc.nvim
+	endif
+endfunction
+nnoremap <Leader>c :call EnableCoc()<CR>
+
 set autoindent
 set backspace=2
 set background=dark
@@ -55,11 +63,6 @@ set visualbell
 
 syntax on
 filetype plugin indent on
-
-" completion
-if executable("node")
-	packadd! coc.nvim
-endif
 
 let g:lightline = { "colorscheme" : "solarized" }
 if has("termguicolors")

@@ -24,6 +24,14 @@ nnoremap <Leader>b :ls<CR>:b
 " toggle relative number
 nnoremap <Leader>r :set invrelativenumber<CR>
 
+" completion
+function! EnableCoc()
+	if executable("node") && executable("npm")
+		packadd coc.nvim
+	endif
+endfunction
+nnoremap <Leader>c :call EnableCoc()<CR>
+
 set autoindent
 set backspace=2
 set background=dark
@@ -64,15 +72,6 @@ endif
 colorscheme solarized
 
 set completeopt=longest,menuone
-
-" custom commands begin
-
-let posh = ["ps1", "psm1", "psd1"]
-if index(posh, expand("%:e")) >= 0
-	set dictionary+=$HOME/dotfiles/.vim/poshdict.txt
-endif
-
-" custom commands end
 
 if has("gui_running")
 	au GUIENTER * simalt ~x

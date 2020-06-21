@@ -26,7 +26,7 @@ nnoremap <Leader>r :set invrelativenumber<CR>
 
 " completion
 function! EnableCoc()
-	if executable("node")
+	if executable("node") && executable("npm")
 		packadd coc.nvim
 	endif
 endfunction

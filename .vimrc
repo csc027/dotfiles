@@ -1,6 +1,3 @@
-" wrapped lines
-nnoremap j gj
-nnoremap k gk
 " functions
 function! PreviousBufferTab()
 	bprev

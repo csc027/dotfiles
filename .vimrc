@@ -1,6 +1,26 @@
 " wrapped lines
 nnoremap j gj
 nnoremap k gk
+" functions
+function! PreviousBufferTab()
+	bprev
+	if &buftype == 'terminal'
+	bprev
+	endif
+endfunction
+
+function! NextBufferTab()
+	bnext
+	if &buftype == 'terminal'
+	bnext
+	endif
+endfunction
+
+function! EnableCoc()
+	if executable("node") && executable("npm")
+		packadd coc.nvim
+	endif
+endfunction
 
 " completion
 inoremap <C-k> <C-x><C-k>
@@ -15,21 +35,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffer shortcuts
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>d :bd<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>l :ls<CR>
-nnoremap <Leader>b :ls<CR>:b
+nnoremap <Leader>n :call NextBufferTab()<CR>
+nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>p :call PreviousBufferTab()<CR>
+nnoremap <Leader>l :buffers<CR>
+nnoremap <Leader>b :buffers<CR>:b
 
 " toggle relative number
 nnoremap <Leader>r :set invrelativenumber<CR>
 
 " completion
-function! EnableCoc()
-	if executable("node") && executable("npm")
-		packadd coc.nvim
-	endif
-endfunction
 nnoremap <Leader>c :call EnableCoc()<CR>
 
 set autoindent
@@ -74,7 +89,7 @@ colorscheme solarized
 set completeopt=longest,menuone
 
 if has("gui_running")
-	au GUIENTER * simalt ~x
+	autocmd GUIENTER * simalt ~x
 	set guifont=Lucida\ Console:h10:cANSI
 	set guioptions-=m
 	set guioptions-=T

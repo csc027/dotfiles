@@ -76,7 +76,8 @@ set visualbell
 syntax on
 filetype plugin indent on
 
-let g:lightline = { "colorscheme" : "solarized" }
+let g:lightline = { 'colorscheme': 'solarized', 'active': { 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ] } }
+
 if has("termguicolors")
 	set termguicolors
 endif

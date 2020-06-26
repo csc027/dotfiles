@@ -24,6 +24,7 @@ alias gmg='git merge'
 alias gv='git mv'
 alias gu='git pull'
 alias gp='git push'
+alias gpu='git push -u'
 alias ge='git rebase'
 alias gei='git rebase --interactive'
 alias go='git remote -v'
@@ -63,6 +64,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gv _git_mv
 	__git_complete gu _git_pull
 	__git_complete gp _git_push
+	__git_complete gpu _git_push
 	__git_complete ge _git_rebase
 	__git_complete gei _git_rebase
 	__git_complete go _git_remote

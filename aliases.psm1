@@ -24,6 +24,7 @@ function Invoke-GitMerge { git merge $args }
 function Invoke-GitMv { git mv $args }
 function Invoke-GitPull { git pull $args }
 function Invoke-GitPush { git push $args }
+function Invoke-GitPushSetUpstream { git push -u $args }
 function Invoke-GitRebase { git rebase $args }
 function Invoke-GitRebaseInteractive { git rebase --interactive $args }
 function Invoke-GitRemote { git remote -v $args }
@@ -63,6 +64,7 @@ $Aliases = @{
 	"gv"   = (Get-Command -Name "Invoke-GitMv");
 	"gu"   = (Get-Command -Name "Invoke-GitPull");
 	"gp"   = (Get-Command -Name "Invoke-GitPush");
+	"gpu"  = (Get-Command -Name "Invoke-GitPushSetUpstream");
 	"ge"   = (Get-Command -Name "Invoke-GitRebase");
 	"gei"  = (Get-Command -Name "Invoke-GitRebaseInteractive");
 	"go"   = (Get-Command -Name "Invoke-GitRemote");

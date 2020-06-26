@@ -77,8 +77,8 @@ $Aliases = @{
 };
 
 foreach($Key in $Aliases.Keys) {
-	while(Test-Path -Path "Alias:$Key") {
-		Remove-Item -Path "Alias:$Key" -Force;
+	while(Test-Path -Path "Alias:\$Key") {
+		Remove-Item -Path "Alias:\$Key" -Force;
 	}
 	Set-Alias -Name $Key -Value ($Aliases.$Key);
 }

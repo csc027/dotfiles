@@ -9,13 +9,28 @@ if((Test-Path -Path $SolarizedDefaultPath) -and -not (Test-Path -Path "Env:\WT_S
 	. $SolarizedDefaultPath;
 }
 
-$AliasModule = Join-Path -Path $ProfileDirectory -ChildPath "aliases.psm1";
-
 $Modules = @(
-	$AliasModule,
-	"posh-git"
+	@{
+		"Name" = Join-Path -Path $ProfileDirectory -ChildPath "aliases.psm1";
+		"ArgumentList" = @();
+		"Force" = $true
+	}, @{
+		"Name" = "posh-git";
+		"ArgumentList" = @(0, 1, 1);
+		"Force" = $true
+	}
 );
 
 foreach($Module in $Modules) {
-	Import-Module -Name $Module -Force;
+	Import-Module @Module;
+}
+
+if (Get-Module "posh-git") {
+	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
+	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
+}
+
+$MachineScriptPath = Join-Path -Path $ProfileDirectory -ChildPath "machine.ps1";
+if (Test-Path -Path $MachineScriptPath) {
+	& $MachineScriptPath;
 }

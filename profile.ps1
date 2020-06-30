@@ -25,7 +25,7 @@ foreach($Module in $Modules) {
 	Import-Module @Module;
 }
 
-if (Get-Module "posh-git") {
+if (Get-Module -Name "posh-git") {
 	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
 	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 }

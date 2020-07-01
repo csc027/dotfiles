@@ -16,7 +16,7 @@ $Modules = @(
 		"Force" = $true
 	}, @{
 		"Name" = "posh-git";
-		"ArgumentList" = @(0, 1, 1);
+		"ArgumentList" = @(0, 0, 1);
 		"Force" = $true
 	}
 );

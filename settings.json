@@ -6,7 +6,7 @@
 
 	"profiles": {
 		"defaults": {
-			"fontFace": "Cascadia Code",
+			"fontFace": "Cascadia Mono",
 			"fontSize": 10,
 			"cursorShape": "vintage",
 

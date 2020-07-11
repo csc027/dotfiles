@@ -2,14 +2,14 @@
 function! PreviousBufferTab()
 	bprev
 	if &buftype == 'terminal'
-	bprev
+		bprev
 	endif
 endfunction
 
 function! NextBufferTab()
 	bnext
 	if &buftype == 'terminal'
-	bnext
+		bnext
 	endif
 endfunction
 

@@ -10,9 +10,9 @@
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/pack/plugins/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/bundle/vim-solarized"]
-	path = .vim/pack/colors/start/vim-solarized
-	url = https://github.com/ericbn/vim-solarized.git
 [submodule ".vim/pack/complete/opt/coc.nvim"]
 	path = .vim/pack/complete/opt/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
+[submodule ".vim/pack/colors/start/vim-solarized8"]
+	path = .vim/pack/colors/start/vim-solarized8
+	url = https://github.com/lifepillar/vim-solarized8.git

@@ -76,13 +76,15 @@ set visualbell
 syntax on
 filetype plugin indent on
 
+let g:solarized_old_cursor_style = 1
+let g:solarized_italics = 0
 let g:lightline = { 'colorscheme': 'solarized', 'active': { 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ] } }
 
 if has("termguicolors")
 	set termguicolors
 endif
 
-colorscheme solarized
+colorscheme solarized8_flat
 
 set completeopt=longest,menuone
 

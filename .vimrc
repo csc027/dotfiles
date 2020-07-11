@@ -48,7 +48,7 @@ set autoindent
 set backspace=2
 set background=dark
 set foldlevel=2
-set foldmethod=syntax
+set foldmethod=indent
 set foldnestmax=1
 set hidden
 set history=1000
@@ -56,11 +56,13 @@ set hlsearch
 set ignorecase
 set incsearch
 set laststatus=2
+set lazyredraw
 set noerrorbells
 set nofoldenable
 set noshowmode
 set number
 set omnifunc=syntaxcomplete#Complete
+set regexpengine=1
 set relativenumber
 set scrolloff=1
 set sidescrolloff=5
@@ -68,6 +70,7 @@ set smartcase
 set smarttab
 set shiftround
 set shiftwidth=4
+set synmaxcol=300
 set tabstop=4
 set title
 set undolevels=1000

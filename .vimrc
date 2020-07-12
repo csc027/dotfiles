@@ -62,7 +62,6 @@ set nofoldenable
 set noshowmode
 set number
 set omnifunc=syntaxcomplete#Complete
-set regexpengine=1
 set relativenumber
 set scrolloff=1
 set sidescrolloff=5
@@ -79,6 +78,7 @@ set visualbell
 syntax on
 filetype plugin indent on
 
+let g:solarized_extra_groups = 1
 let g:solarized_old_cursor_style = 1
 let g:solarized_italics = 0
 let g:lightline = { 'colorscheme': 'solarized', 'active': { 'left': [ [ 'mode', 'paste' ], [ 'readonly', 'absolutepath', 'modified' ] ] } }

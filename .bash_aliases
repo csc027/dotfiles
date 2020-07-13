@@ -28,6 +28,7 @@ alias gpu='git push -u'
 alias ge='git rebase'
 alias gei='git rebase --interactive'
 alias go='git remote -v'
+alias goa='git remote add'
 alias gr='git reset'
 alias gw='git show'
 alias gh='git stash'
@@ -68,6 +69,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete ge _git_rebase
 	__git_complete gei _git_rebase
 	__git_complete go _git_remote
+	__git_complete goa _git_remote
 	__git_complete gr _git_reset
 	__git_complete gw _git_show
 	__git_complete gh _git_stash

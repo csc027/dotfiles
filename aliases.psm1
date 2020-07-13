@@ -28,6 +28,7 @@ function Invoke-GitPushSetUpstream { git push -u $args }
 function Invoke-GitRebase { git rebase $args }
 function Invoke-GitRebaseInteractive { git rebase --interactive $args }
 function Invoke-GitRemote { git remote -v $args }
+function Invoke-GitRemoteAdd { git remote add $args }
 function Invoke-GitReset { git reset $args }
 function Invoke-GitShow { git show $args }
 function Invoke-GitStash { git stash $args }
@@ -68,6 +69,7 @@ $Aliases = @{
 	"ge"   = (Get-Command -Name "Invoke-GitRebase");
 	"gei"  = (Get-Command -Name "Invoke-GitRebaseInteractive");
 	"go"   = (Get-Command -Name "Invoke-GitRemote");
+	"goa"  = (Get-Command -Name "Invoke-GitRemoteAdd");
 	"gr"   = (Get-Command -Name "Invoke-GitReset");
 	"gw"   = (Get-Command -Name "Invoke-GitShow");
 	"gh"   = (Get-Command -Name "Invoke-GitStash");

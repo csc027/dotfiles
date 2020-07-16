@@ -25,10 +25,10 @@ foreach($Module in $Modules) {
 	Import-Module @Module;
 }
 
-if (Get-Member -InputObject $global:GitPromptSettings -Name "DefaultPromptAbbreviateHomeDirectory") {
+if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
 }
-if (Get-Member -InputObject $global:GitPromptSettings -Name "DefaultPromptAbbreviateGitDirectory") {
+if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 }
 

@@ -13,6 +13,13 @@ function! NextBuffer()
 	endif
 endfunction
 
+function! DeleteBuffer()
+	bdelete
+	if &buftype == 'terminal'
+		bnext
+	endif
+endfunction
+
 function! EnableCoc()
 	if executable("node") && executable("npm")
 		packadd coc.nvim
@@ -33,7 +40,7 @@ nnoremap <C-l> <C-w>l
 
 " buffer shortcuts
 nnoremap <Leader>n :call NextBuffer()<CR>
-nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>d :call DeleteBuffer()<CR>
 nnoremap <Leader>p :call PreviousBuffer()<CR>
 nnoremap <Leader>l :buffers<CR>
 nnoremap <Leader>b :buffers<CR>:b

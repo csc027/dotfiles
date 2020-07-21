@@ -1,22 +1,30 @@
 " functions
+function! BufferAfter(buf)
+	let buf = a:buf
+	let buffers = getbufinfo({ 'buflisted' : 1 })->filter({_, val -> getbufvar(val.bufnr, '&buftype') != 'terminal' })->map({ _, val -> val.bufnr })
+	let after = copy(buffers)->filter({ _, val -> val > buf })
+	return after->get(0, buffers->get(0, buf))
+endfunction
+
+function! BufferBefore(buf)
+	let buf = a:buf
+	let buffers = getbufinfo({ 'buflisted' : 1 })->filter({_, val -> getbufvar(val.bufnr, '&buftype') != 'terminal' })->map({ _, val -> val.bufnr })
+	let before = copy(buffers)->filter({ _, val -> val < buf })
+	return before->get(-1, buffers->get(-1, buf))
+endfunction
+
 function! PreviousBuffer()
-	bprev
-	if &buftype == 'terminal'
-		bprev
-	endif
+	silent execute ":buffer " . BufferBefore(bufnr('%'))
 endfunction
 
 function! NextBuffer()
-	bnext
-	if &buftype == 'terminal'
-		bnext
-	endif
+	silent execute ":buffer " . BufferAfter(bufnr('%'))
 endfunction
 
 function! DeleteBuffer()
 	bdelete
 	if &buftype == 'terminal'
-		bnext
+		call PreviousBuffer()
 	endif
 endfunction
 
@@ -43,7 +51,7 @@ nnoremap <Leader>n :call NextBuffer()<CR>
 nnoremap <Leader>d :call DeleteBuffer()<CR>
 nnoremap <Leader>p :call PreviousBuffer()<CR>
 nnoremap <Leader>l :buffers<CR>
-nnoremap <Leader>b :buffers<CR>:b
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
 " toggle relative number
 nnoremap <Leader>r :set invrelativenumber<CR>

@@ -1,12 +1,12 @@
 " functions
-function! PreviousBufferTab()
+function! PreviousBuffer()
 	bprev
 	if &buftype == 'terminal'
 		bprev
 	endif
 endfunction
 
-function! NextBufferTab()
+function! NextBuffer()
 	bnext
 	if &buftype == 'terminal'
 		bnext
@@ -32,9 +32,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " buffer shortcuts
-nnoremap <Leader>n :call NextBufferTab()<CR>
+nnoremap <Leader>n :call NextBuffer()<CR>
 nnoremap <Leader>d :bdelete<CR>
-nnoremap <Leader>p :call PreviousBufferTab()<CR>
+nnoremap <Leader>p :call PreviousBuffer()<CR>
 nnoremap <Leader>l :buffers<CR>
 nnoremap <Leader>b :buffers<CR>:b
 

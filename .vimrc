@@ -1,16 +1,14 @@
 " functions
 function! BufferAfter(buf)
-	let buf = a:buf
 	let buffers = getbufinfo({ 'buflisted' : 1 })->filter({_, val -> getbufvar(val.bufnr, '&buftype') != 'terminal' })->map({ _, val -> val.bufnr })
-	let after = copy(buffers)->filter({ _, val -> val > buf })
-	return after->get(0, buffers->get(0, buf))
+	let after = copy(buffers)->filter({ _, val -> val > a:buf })
+	return after->get(0, buffers->get(0, a:buf))
 endfunction
 
 function! BufferBefore(buf)
-	let buf = a:buf
 	let buffers = getbufinfo({ 'buflisted' : 1 })->filter({_, val -> getbufvar(val.bufnr, '&buftype') != 'terminal' })->map({ _, val -> val.bufnr })
-	let before = copy(buffers)->filter({ _, val -> val < buf })
-	return before->get(-1, buffers->get(-1, buf))
+	let before = copy(buffers)->filter({ _, val -> val < a:buf })
+	return before->get(-1, buffers->get(-1, a:buf))
 endfunction
 
 function! PreviousBuffer()

@@ -49,7 +49,7 @@ nnoremap <Leader>n :call NextBuffer()<CR>
 nnoremap <Leader>d :call DeleteBuffer()<CR>
 nnoremap <Leader>p :call PreviousBuffer()<CR>
 nnoremap <Leader>l :buffers<CR>
-nnoremap <Leader>b :buffers<CR>:buffer<Space>
+nnoremap <Leader>b :buffer<Space>
 
 " toggle relative number
 nnoremap <Leader>r :set invrelativenumber<CR>

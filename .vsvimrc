@@ -1,0 +1,3 @@
+source ~/.common.vimrc
+
+nnoremap <Leader>q :vsc Edit.FormatDocument<CR>

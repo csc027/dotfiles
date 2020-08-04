@@ -45,12 +45,20 @@ if(-not (Test-Path -Path $ProfileDirectory)) {
 # List files to be symbolically linked to other locations
 $Items = @(
 	@{
+		"Source" = ".common.vimrc";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".common.vimrc";
+	},
+	@{
 		"Source" = ".vimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
 	},
 	@{
 		"Source" = ".vim";
 		"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
+	},
+	@{
+		"Source" = ".vsvimrc";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
 	},
 	@{
 		"Source" = "profile.ps1";

@@ -49,6 +49,10 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".common.vimrc";
 	},
 	@{
+		"Source" = ".gvimrc";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".gvimrc";
+	},
+	@{
 		"Source" = ".vimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
 	},

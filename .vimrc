@@ -88,12 +88,3 @@ if has("termguicolors")
 endif
 
 colorscheme solarized8_flat
-
-" gvim settings
-if has("gui_running")
-	autocmd GUIENTER * simalt ~x
-	set guifont=Lucida\ Console:h10:cANSI
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=r
-endif

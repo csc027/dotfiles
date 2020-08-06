@@ -1,7 +1,7 @@
 SCRIPT_LOCATION=$(readlink -f $0);
 SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 
-declare -a SYMLINKS=(".common.vimrc" ".vimrc" ".vim" ".vsvimrc" ".dircolors" ".bashrc" ".bash_aliases" ".git-completion.bash");
+declare -a SYMLINKS=(".common.vimrc" ".gvimrc" ".vim" ".vimrc" ".vsvimrc" ".bash_aliases" ".bashrc" ".dircolors" ".git-completion.bash");
 
 for i in ${SYMLINKS[@]}
 do

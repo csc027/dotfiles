@@ -69,6 +69,7 @@ set noshowmode
 set omnifunc=syntaxcomplete#Complete
 set sidescrolloff=5
 set smarttab
+set synmaxcol=300
 set shiftround
 set title
 set undolevels=1000

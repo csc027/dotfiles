@@ -12,6 +12,5 @@ set relativenumber
 set scrolloff=1
 set smartcase
 set shiftwidth=4
-set synmaxcol=300
 set tabstop=4
 set visualbell

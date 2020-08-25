@@ -11,7 +11,7 @@ if((Test-Path -Path $SolarizedDefaultPath) -and -not (Test-Path -Path "Env:\WT_S
 
 $Modules = @(
 	@{
-		"Name" = Join-Path -Path $ProfileDirectory -ChildPath "aliases.psm1";
+		"Name" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
 		"ArgumentList" = @();
 		"Force" = $true
 	}, @{

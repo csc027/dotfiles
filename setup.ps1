@@ -65,12 +65,12 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
 	},
 	@{
-		"Source" = "profile.ps1";
-		"Destination" = $PROFILE;
+		"Source" = "aliases.psm1";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
 	},
 	@{
-		"Source" = "aliases.psm1";
-		"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "aliases.psm1";
+		"Source" = "profile.ps1";
+		"Destination" = $PROFILE;
 	}
 ) | ForEach-Object {
 	New-Object -TypeName PsObject -Property $_;

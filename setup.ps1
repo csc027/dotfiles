@@ -65,7 +65,7 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
 	},
 	@{
-		"Source" = "aliases.psm1";
+		"Source" = ".aliases.psm1";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
 	},
 	@{

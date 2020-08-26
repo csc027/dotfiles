@@ -10,6 +10,7 @@ alias gc='git commit -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdn='git diff --name-only'
+alias gdt='git difftool'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gfp='git fetch --prune'
@@ -51,6 +52,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gd _git_diff
 	__git_complete gdc _git_diff
 	__git_complete gdn _git_diff
+	__git_complete gdt _git_difftool
 	__git_complete gf _git_fetch
 	__git_complete gfa _git_fetch
 	__git_complete gfp _git_fetch

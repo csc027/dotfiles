@@ -10,6 +10,7 @@ function Invoke-GitCommit { git commit -m $args }
 function Invoke-GitDiff { git diff $args }
 function Invoke-GitDiffCached { git diff --cached $args }
 function Invoke-GitDiffNameOnly { git diff --name-only $args }
+function Invoke-GitDiffTool { git difftool $args }
 function Invoke-GitFetch { git fetch $args }
 function Invoke-GitFetchAll { git fetch --all $args }
 function Invoke-GitFetchPrune { git fetch --prune $args }
@@ -51,6 +52,7 @@ $Aliases = @{
 	"gd"   = "Invoke-GitDiff";
 	"gdc"  = "Invoke-GitDiffCached";
 	"gdn"  = "Invoke-GitDiffNameOnly";
+	"gdt"  = "Invoke-GitDiffTool";
 	"gf"   = "Invoke-GitFetch";
 	"gfa"  = "Invoke-GitFetchAll";
 	"gfp"  = "Invoke-GitFetchPrune";

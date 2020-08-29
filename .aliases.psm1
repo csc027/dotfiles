@@ -2,7 +2,9 @@ function Invoke-GitAdd { git add $args }
 function Invoke-GitAddChunk { git add -p $args }
 function Invoke-GitBranch { git branch $args }
 function Invoke-GitBranchAll { git branch -a $args }
+function Invoke-GitBranchAllVerbose { git branch -avv $args }
 function Invoke-GitBranchDelete { git branch -d $args }
+function Invoke-GitBranchVerbose { git branch -vv $args }
 function Invoke-GitCheckout { git checkout $args }
 function Invoke-GitCheckoutBranch { git checkout -b $args }
 function Invoke-GitCherryPick { git cherry-pick $args }
@@ -44,7 +46,9 @@ $Aliases = @{
 	"gap"  = "Invoke-GitAddChunk";
 	"gb"   = "Invoke-GitBranch";
 	"gba"  = "Invoke-GitBranchAll";
+	"gbav" = "Invoke-GitBranchAllVerbose";
 	"gbd"  = "Invoke-GitBranchDelete";
+	"gbv"  = "Invoke-GitBranchVerbose";
 	"gk"   = "Invoke-GitCheckout";
 	"gkb"  = "Invoke-GitCheckoutBranch";
 	"gq"   = "Invoke-GitCherryPick";

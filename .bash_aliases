@@ -23,6 +23,7 @@ alias gl='git log --decorate --oneline --graph --color'
 alias gld='git log --decorate --oneline --graph --color --boundary'
 alias gldl='git log --decorate --graph --color --boundary'
 alias gll='git log --decorate --graph --color'
+alias gls='git ls-tree --name-only -r $args'
 alias gmg='git merge'
 alias gv='git mv'
 alias gu='git pull'
@@ -67,6 +68,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gld _git_log
 	__git_complete gldl _git_log
 	__git_complete gll _git_log
+	__git_complete gls _git_ls_tree
 	__git_complete gmg _git_merge
 	__git_complete gv _git_mv
 	__git_complete gu _git_pull

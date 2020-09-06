@@ -57,9 +57,8 @@
 	},
 	"schemes": [ ],
 	"keybindings": [
-		{ "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+c" },
-		{ "command": "paste", "keys": "ctrl+v" },
-		{ "command": "find", "keys": "ctrl+shift+f" },
-		{ "command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" }, "keys": "alt+shift+d" }
+		{ "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
+		{ "command": "paste", "keys": "ctrl+shift+v" },
+		{ "command": "find", "keys": "ctrl+shift+f" }
 	]
 }

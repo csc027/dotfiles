@@ -34,5 +34,5 @@ if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbrev
 
 $MachineScriptPath = Join-Path -Path $ProfileDirectory -ChildPath "machine.ps1";
 if (Test-Path -Path $MachineScriptPath) {
-	& $MachineScriptPath;
+	. $MachineScriptPath;
 }

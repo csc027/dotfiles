@@ -9,6 +9,7 @@
 			"fontFace": "Cascadia Mono",
 			"fontSize": 10,
 			"cursorShape": "vintage",
+			"useAcrylic": false,
 
 			"background": "#002B36",
 			"foreground": "#839496",

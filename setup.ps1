@@ -6,22 +6,6 @@ if(-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdenti
 	throw New-Object System.Exception "The setup script requires administrator privileges to run.";
 }
 
-function New-Symlink {
-	[CmdletBinding()]
-	param (
-		[String] $Path,
-		[String] $Value
-	)
-
-	if(Test-Path -Path $Path -PathType Container) {
-		cmd /c mklink /d $Value $Path | Out-Null;
-	} elseif(Test-Path -Path $Path -PathType Leaf) {
-		cmd /c mklink $Value $Path | Out-Null;
-	} else {
-		throw New-Object System.Exception "The source item $Path does not exist.";
-	}
-}
-
 function Rename-Backup {
 	[CmdletBinding()]
 	param (
@@ -84,7 +68,7 @@ foreach($Item in $Items) {
 	if(-not (Test-Path -Path $Item.Destination)) {
 		Write-Host "done.  The symbolic link does not exist.";
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		New-Symlink -Path $Source -Value $Item.Destination;
+		New-Item -ItemType SymbolicLink -Path $Item.Destination -Value $Source | Out-Null;
 		Write-Host "done.";
 	} elseif($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
 		Write-Host "done.  A file/directory exists, but is not a symbolic link.";
@@ -92,7 +76,7 @@ foreach($Item in $Items) {
 		Rename-Backup -Path $Item.Destination;
 		Write-Host "done."
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		New-Symlink -Path $Source -Value $Item.Destination;
+		New-Item -ItemType SymbolicLink -Path $Item.Destination -Value $Source | Out-Null;
 		Write-Host "done.";
 	} else {
 		Write-Host "done.";

@@ -34,8 +34,8 @@
 			{
 				"name": "PowerShell Core",
 				"source": "Windows.Terminal.PowershellCore",
-				"hidden": false
-				"commandline": "pwsh.exe -NoLogo",
+				"hidden": false,
+				"commandline": "pwsh.exe -NoLogo"
 			}, {
 				"name": "Windows PowerShell",
 				"commandline": "powershell.exe -NoLogo",

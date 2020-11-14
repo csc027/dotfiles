@@ -56,12 +56,24 @@ if (-not (Test-Path -Path $ProfileDirectory)) {
 # List files to be symbolically linked to other locations
 $Items = @(
 	@{
+		"Source" = ".aliases.psm1";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
+	},
+	@{
 		"Source" = ".common.vimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".common.vimrc";
 	},
 	@{
+		"Source" = ".dircolors";
+		"Destination" = Join-Path -Path $HOME -ChildPath ".dircolors";
+	},
+	@{
 		"Source" = ".gvimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".gvimrc";
+	},
+	@{
+		"Source" = "profile.ps1";
+		"Destination" = $PROFILE;
 	},
 	@{
 		"Source" = ".vimrc";
@@ -70,14 +82,6 @@ $Items = @(
 	@{
 		"Source" = ".vsvimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
-	},
-	@{
-		"Source" = ".aliases.psm1";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
-	},
-	@{
-		"Source" = "profile.ps1";
-		"Destination" = $PROFILE;
 	}
 );
 
@@ -133,7 +137,7 @@ foreach ($Item in $Items) {
 
 # Install modules
 if (Get-Command -Name "Install-Module") {
-	$Modules = @("posh-git", "PsReadLine");
+	$Modules = @("DirColors", "posh-git", "PsReadLine");
 	foreach ($Module in $Modules) {
 		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
 		if (-not (Get-Module -Name $Module)) {

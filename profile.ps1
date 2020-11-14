@@ -42,9 +42,7 @@ if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbrev
 $DotSourceNames = @("machine.ps1", "os.ps1");
 foreach ($DotSourceName in $DotSourceNames) {
 	$DotSourcePath = Join-Path -Path $ProfileDirectory -ChildPath $DotSourceName;
-	Write-Host "Checking if $DotSourcePath exists... " -NoNewLine;
 	if (Test-Path -Path $DotSourcePath) {
 		. $DotSourcePath;
-		Write-Host "done.";
 	}
 }

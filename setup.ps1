@@ -103,7 +103,7 @@ if ($IsWindows) {
 			"Destination" = Join-Path -Path $HOME -ChildPath ".vim";
 		},
 		@{
-			"Source" = "linux.ps1";
+			"Source" = "unix.ps1";
 			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 		}
 	)

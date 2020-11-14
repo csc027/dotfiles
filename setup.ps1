@@ -7,7 +7,7 @@ if (
 	($PsVersionTable.PsVersion.Major -le 5 -or $IsWindows) `
 	-and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 ) {
-	Start-Process powershell -ArgumentList $MyInvocation.MyCommand.Definition -Verb runAs;
+	Start-Process powershell -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
 	return;
 }
 

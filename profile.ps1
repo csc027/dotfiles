@@ -20,6 +20,10 @@ $Modules = @(
 		"Name" = "posh-git";
 		"ArgumentList" = @($false, $false, $true);
 		"Force" = $true
+	}, @{
+		"Name" = "DirColors";
+		"ArgumentList" = @();
+		"Force" = $true
 	}
 );
 

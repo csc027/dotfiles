@@ -11,6 +11,28 @@ if (
 	return;
 }
 
+function New-Symlink {
+	[CmdletBinding()]
+	param (
+		[String] $Path,
+		[String] $Value
+	)
+
+	if (-not (Test-Path -Path $Value)) {
+		throw New-Object System.Exception "The source item $Value does not exist.";
+	}
+
+	if ($PsVersionTable.PsVersion.Major -lt 5) {
+		if (Test-Path -Path $Path -PathType Container) {
+			cmd /c mklink /d $Value $Path | Out-Null;
+		} elseif (Test-Path -Path $Path -PathType Leaf) {
+			cmd /c mklink $Value $Path | Out-Null;
+		} else {
+		}
+	} else {
+		New-Item -ItemType SymbolicLink -Path $Path -Value $Value | Out-Null;
+	}
+}
 function Rename-Backup {
 	[CmdletBinding()]
 	param (
@@ -93,7 +115,7 @@ foreach ($Item in $Items) {
 	if (-not (Test-Path -Path $Item.Destination)) {
 		Write-Host "done.  The symbolic link does not exist.";
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		New-Item -ItemType SymbolicLink -Path $Item.Destination -Value $Source | Out-Null;
+		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host "done.";
 	} elseif ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
 		Write-Host "done.  A file/directory exists, but is not a symbolic link.";
@@ -101,7 +123,7 @@ foreach ($Item in $Items) {
 		Rename-Backup -Path $Item.Destination;
 		Write-Host "done."
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		New-Item -ItemType SymbolicLink -Path $Item.Destination -Value $Source | Out-Null;
+		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host "done.";
 	} else {
 		Write-Host "done.";

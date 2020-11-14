@@ -23,18 +23,21 @@ $Modules = @(
 	}
 );
 
-foreach($Module in $Modules) {
+foreach ($Module in $Modules) {
 	Import-Module @Module;
 }
 
 if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
 }
+
 if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 }
 
-$MachineScriptPath = Join-Path -Path $ProfileDirectory -ChildPath "machine.ps1";
-if (Test-Path -Path $MachineScriptPath) {
-	. $MachineScriptPath;
+$DotSourcePaths = @("machine.ps1", "os.ps1");
+foreach ($DotSourcePath in $DotSourcePaths) {
+	if (Test-Path -Path $DotSourcePath) {
+		. $DotSourcePath;
+	}
 }

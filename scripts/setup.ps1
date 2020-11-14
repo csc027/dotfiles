@@ -68,13 +68,7 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".common.vimrc";
 	},
 	@{
-		"Source" = $(
-			if ((Test-Path -Path "Env:\WT_SESSION") -or ($PsVersionTable.PsVersion.Major -gt 5 -and $IsLinux)) {
-				[IO.Path]::Combine("submodules", "dircolors-solarized", "dircolors.256dark");
-			} else {
-				[IO.Path]::Combine("submodules", "dircolors-solarized", "dircolors.ansi-dark");
-			}
-		);
+		"Source" = $([IO.Path]::Combine("submodules", "dircolors-solarized", "dircolors.256dark"));
 		"Destination" = Join-Path -Path $HOME -ChildPath ".dircolors";
 	},
 	@{

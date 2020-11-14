@@ -35,6 +35,10 @@ if ((Get-Command -Name "Get-PsReadLineOption") -and (Get-PsReadLineOption | Sele
 	Set-PsReadLineOption -EditMode "Windows";
 }
 
+if (Get-Command -Name "Update-DirColors") {
+	Update-DirColors -Path (Join-Path -Path $HOME -ChildPath ".dircolors");
+}
+
 if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
 }

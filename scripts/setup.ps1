@@ -80,38 +80,22 @@ $Items = @(
 		"Destination" = $PROFILE;
 	},
 	@{
+		"Source" = ".vim";
+		"Destination" = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath "vimfiles" } else { Join-Path -Path $HOME -ChildPath ".vim" });
+	},
+	@{
 		"Source" = ".vimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
 	},
 	@{
 		"Source" = ".vsvimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
+	},
+	@{
+		"Source" = $(if ($IsWindows) { Join-Path -Path "scripts" -ChildPath "windows.ps1" } else { Join-Path -Path "scripts" -ChildPath "unix.ps1" });
+		"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 	}
 );
-
-if ($IsWindows) {
-	$Items += @(
-		@{
-			"Source" = ".vim";
-			"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
-		},
-		@{
-			"Source" = Join-Path -Path "scripts" -ChildPath "windows.ps1";
-			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
-		}
-	)
-} elseif ($IsLinux -or $IsMacOs) {
-	$Items += @(
-		@{
-			"Source" = ".vim";
-			"Destination" = Join-Path -Path $HOME -ChildPath ".vim";
-		},
-		@{
-			"Source" = Join-Path -Path "scripts" -ChildPath "unix.ps1";
-			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
-		}
-	)
-}
 
 $Items = $Items | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
 

@@ -1,11 +1,13 @@
-$ProfileDirectory = Split-Path -Path $Profile -Parent;
-$SolarizedDefaultFile = switch($HOST.UI.RawUI.BackgroundColor.ToString()) {
+$ProfileDirectory = Split-Path -Path $PROFILE -Parent;
+
+$SolarizedDefaultFile = switch ($HOST.UI.RawUI.BackgroundColor.ToString()) {
 	"White" { "Set-SolarizedLightColorDefaults.ps1" }
 	"Black" { "Set-SolarizedDarkColorDefaults.ps1" }
-	default { return }
+	default { "Set-SolarizedDarkColorDefaults.ps1" }
 };
-$SolarizedDefaultPath = Join-Path -Path $ProfileDirectory -ChildPath $SolarizedDefaultFile
-if((Test-Path -Path $SolarizedDefaultPath) -and -not (Test-Path -Path "Env:\WT_SESSION")) {
+
+$SolarizedDefaultPath = Join-Path -Path $ProfileDirectory -ChildPath $SolarizedDefaultFile;
+if ((Test-Path -Path $SolarizedDefaultPath) -and -not (Test-Path -Path "Env:\WT_SESSION")) {
 	. $SolarizedDefaultPath;
 }
 

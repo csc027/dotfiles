@@ -39,8 +39,9 @@ if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbrev
 	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 }
 
-$DotSourcePaths = @("machine.ps1", "os.ps1");
-foreach ($DotSourcePath in $DotSourcePaths) {
+$DotSourceNames = @("machine.ps1", "os.ps1");
+foreach ($DotSourceName in $DotSourceNames) {
+	$DotSourcePath = Join-Path -Path $ProfileDirectory -ChildPath $DotSourceName;
 	if (Test-Path -Path $DotSourcePath) {
 		. $DotSourcePath;
 	}

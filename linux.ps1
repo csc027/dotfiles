@@ -7,7 +7,6 @@ $global:__aliases = @{
 	cpp   = "Copy-ItemProperty";
 	diff  = "Compare-Object";
 	echo  = "Write-Output";
-	fc    = "Format-Custom";
 	kill  = "Stop-Process";
 	ls    = "Get-ChildItem";
 	man   = "Get-Help";
@@ -15,7 +14,6 @@ $global:__aliases = @{
 	mv    = "Move-Item";
 	ps    = "Get-Process";
 	pwd   = "Get-Location";
-	ri    = "Remove-Item";
 	rm    = "Remove-Item";
 	rmdir = "Remove-Item";
 	sleep = "Start-Sleep";
@@ -27,5 +25,5 @@ $global:__aliases = @{
 
 $global:__aliases.Keys | ForEach-Object { 
 	Write-Verbose "Adding $_";
-	Set-Alias -Name $_ -Value $global:__aliases[$_] -Scope Global;
+	Set-Alias -Name $_ -Value $global:__aliases[$_] -Option AllScope -Scope Global;
 }

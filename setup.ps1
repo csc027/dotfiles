@@ -1,10 +1,7 @@
+[CmdletBinding()]
 param(
 	[Switch] $Force
 )
-
-if(-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-	throw New-Object System.Exception "The setup script requires administrator privileges to run.";
-}
 
 function Rename-Backup {
 	[CmdletBinding()]
@@ -13,7 +10,7 @@ function Rename-Backup {
 	)
 
 	$NewPath = $Path;
-	for($i = 1; Test-Path -Path $NewPath; $i++) {
+	for ($i = 1; Test-Path -Path $NewPath; $i++) {
 		$NewPath = $Path + ".$i.bak"
 	}
 
@@ -22,7 +19,7 @@ function Rename-Backup {
 
 # Create profile directory if it is missing
 $ProfileDirectory = Split-Path -Path $PROFILE -Parent;
-if(-not (Test-Path -Path $ProfileDirectory)) {
+if (-not (Test-Path -Path $ProfileDirectory)) {
 	New-Item -ItemType Directory $ProfileDirectory;
 }
 
@@ -41,10 +38,6 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
 	},
 	@{
-		"Source" = ".vim";
-		"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
-	},
-	@{
 		"Source" = ".vsvimrc";
 		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
 	},
@@ -56,21 +49,45 @@ $Items = @(
 		"Source" = "profile.ps1";
 		"Destination" = $PROFILE;
 	}
-) | ForEach-Object {
-	New-Object -TypeName PsObject -Property $_;
-};
+);
+
+if ($IsWindows) {
+	$Items += @(
+		@{
+			"Source" = ".vim";
+			"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
+		},
+		@{
+			"Source" = "windows.ps1";
+			"Destination" = Join-Path -Path (Split-Path -Path $PROFILE -Parent) -ChildPath "os.ps1";
+		}
+	)
+} elseif ($IsLinux -or $IsMacOs) {
+	$Items += @(
+		@{
+			"Source" = ".vim";
+			"Destination" = Join-Path -Path $HOME -ChildPath ".vim";
+		},
+		@{
+			"Source" = "linux.ps1";
+			"Destination" = Join-Path -Path (Split-Path -Path $PROFILE -Parent) -ChildPath "os.ps1";
+		}
+	)
+}
+
+$Items = $Items | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
 
 # Create the symbolic links
-foreach($Item in $Items) {
+foreach ($Item in $Items) {
 	$Source = Join-Path -Path $PsScriptRoot -ChildPath $Item.Source;
 
 	Write-Host "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
-	if(-not (Test-Path -Path $Item.Destination)) {
+	if (-not (Test-Path -Path $Item.Destination)) {
 		Write-Host "done.  The symbolic link does not exist.";
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Item -ItemType SymbolicLink -Path $Item.Destination -Value $Source | Out-Null;
 		Write-Host "done.";
-	} elseif($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
+	} elseif ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
 		Write-Host "done.  A file/directory exists, but is not a symbolic link.";
 		Write-Host "Backing up existing file/directory... ";
 		Rename-Backup -Path $Item.Destination;
@@ -85,16 +102,12 @@ foreach($Item in $Items) {
 }
 
 # Install modules
-if(Get-Command -Name "Install-Module") {
-	$Modules = @(
-		"posh-git",
-		"PsReadLine"
-	);
-	foreach($Module in $Modules) {
+if (Get-Command -Name "Install-Module") {
+	$Modules = @("posh-git", "PsReadLine");
+	foreach ($Module in $Modules) {
 		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
-		if(-not (Get-Module -Name $Module)) {
-			Write-Host "done."
-			Write-Host "Installing '$Module'... " -NoNewLine;
+		if (-not (Get-Module -Name $Module)) {
+			Write-Host "done.$([Environment]::NewLine)Installing '$Module'... " -NoNewLine;
 			Install-Module -Name $Module -Force;
 			Write-Host "done.";
 		} else {

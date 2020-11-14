@@ -23,16 +23,16 @@ function New-Symlink {
 	}
 
 	if ($PsVersionTable.PsVersion.Major -lt 5) {
-		if (Test-Path -Path $Path -PathType Container) {
-			cmd /c mklink /d $Value $Path | Out-Null;
-		} elseif (Test-Path -Path $Path -PathType Leaf) {
-			cmd /c mklink $Value $Path | Out-Null;
+		if (Test-Path -Path $Value -PathType Container) {
+			cmd /c mklink /d $Path $Value | Out-Null;
 		} else {
+			cmd /c mklink $Path $Value | Out-Null;
 		}
 	} else {
 		New-Item -ItemType SymbolicLink -Path $Path -Value $Value | Out-Null;
 	}
 }
+
 function Rename-Backup {
 	[CmdletBinding()]
 	param (

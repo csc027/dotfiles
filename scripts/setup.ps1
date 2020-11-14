@@ -7,7 +7,11 @@ if (
 	($PsVersionTable.PsVersion.Major -le 5 -or $IsWindows) `
 	-and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
 ) {
-	Start-Process powershell -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
+	if (Get-Command -Name "pwsh") {
+		Start-Process pwsh -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
+	} else {
+		Start-Process powershell -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
+	}
 	return;
 }
 
@@ -72,7 +76,7 @@ $Items = @(
 		"Destination" = Join-Path -Path $HOME -ChildPath ".gvimrc";
 	},
 	@{
-		"Source" = "profile.ps1";
+		"Source" = Join-Path -Path "scripts" -ChildPath "profile.ps1";
 		"Destination" = $PROFILE;
 	},
 	@{
@@ -92,7 +96,7 @@ if ($IsWindows) {
 			"Destination" = Join-Path -Path $HOME -ChildPath "vimfiles";
 		},
 		@{
-			"Source" = "windows.ps1";
+			"Source" = Join-Path -Path "scripts" -ChildPath "windows.ps1";
 			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 		}
 	)
@@ -103,7 +107,7 @@ if ($IsWindows) {
 			"Destination" = Join-Path -Path $HOME -ChildPath ".vim";
 		},
 		@{
-			"Source" = "unix.ps1";
+			"Source" = Join-Path -Path "scripts" -ChildPath "unix.ps1";
 			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 		}
 	)
@@ -113,7 +117,8 @@ $Items = $Items | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
 
 # Create the symbolic links
 foreach ($Item in $Items) {
-	$Source = Join-Path -Path $PsScriptRoot -ChildPath $Item.Source;
+	$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
+	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
 	Write-Host "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
 	if (-not (Test-Path -Path $Item.Destination)) {

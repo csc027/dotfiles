@@ -3,10 +3,8 @@ param(
 	[Switch] $Force
 )
 
-if (
-	($PsVersionTable.PsVersion.Major -le 5 -or $IsWindows) `
-	-and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")
-) {
+$IsWindows = $PsVersionTable.PsVersion.Major -le 5 -or $IsWindows;
+if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
 	if (Get-Command -Name "pwsh") {
 		Start-Process pwsh -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
 	} else {
@@ -26,7 +24,7 @@ function New-Symlink {
 		throw New-Object System.Exception "The source item $Value does not exist.";
 	}
 
-	if ($PsVersionTable.PsVersion.Major -lt 5) {
+	if ($IsWindows) {
 		if (Test-Path -Path $Value -PathType Container) {
 			cmd /c mklink /d $Path $Value | Out-Null;
 		} else {

@@ -16,3 +16,6 @@
 [submodule ".vim/pack/colors/start/vim-solarized8"]
 	path = .vim/pack/colors/start/vim-solarized8
 	url = https://github.com/lifepillar/vim-solarized8.git
+[submodule "submodules/dircolors-solarized"]
+	path = submodules/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized

@@ -27,6 +27,10 @@ foreach ($Module in $Modules) {
 	Import-Module @Module;
 }
 
+if (Get-Module -Name "PsReadLine") {
+	Set-PsReadLineOption -EditMode "Windows";
+}
+
 if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
 	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
 }

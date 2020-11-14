@@ -59,7 +59,7 @@ if ($IsWindows) {
 		},
 		@{
 			"Source" = "windows.ps1";
-			"Destination" = Join-Path -Path (Split-Path -Path $PROFILE -Parent) -ChildPath "os.ps1";
+			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 		}
 	)
 } elseif ($IsLinux -or $IsMacOs) {
@@ -70,7 +70,7 @@ if ($IsWindows) {
 		},
 		@{
 			"Source" = "linux.ps1";
-			"Destination" = Join-Path -Path (Split-Path -Path $PROFILE -Parent) -ChildPath "os.ps1";
+			"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 		}
 	)
 }

@@ -27,7 +27,7 @@ foreach ($Module in $Modules) {
 	Import-Module @Module;
 }
 
-if (Get-Module -Name "PsReadLine") {
+if ((Get-Command -Name "Get-PsReadLineOption") -and (Get-PsReadLineOption | Select-Object -ExpandProperty EditMode)) {
 	Set-PsReadLineOption -EditMode "Windows";
 }
 

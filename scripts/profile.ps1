@@ -1,6 +1,6 @@
 $ProfileDirectory = Split-Path -Path $PROFILE -Parent;
 
-$SolarizedDefaultFile = switch ($HOST.UI.RawUI.BackgroundColor.ToString()) {
+$SolarizedDefaultFile = switch ($Host.UI.RawUI.BackgroundColor.ToString()) {
 	"White" { "Set-SolarizedLightColorDefaults.ps1" }
 	"Black" { "Set-SolarizedDarkColorDefaults.ps1" }
 	default { "Set-SolarizedDarkColorDefaults.ps1" }
@@ -20,22 +20,28 @@ $Modules = @(
 		"Name" = "posh-git";
 		"ArgumentList" = @($false, $false, $true);
 		"Force" = $true
-	}, @{
-		"Name" = "DirColors";
-		"ArgumentList" = @();
-		"Force" = $true
 	}
 );
+
+if ($Host.UI.SupportsVirtualTerminal) {
+	$Modules += @(
+		@{
+			"Name" = "DirColors";
+			"ArgumentList" = @();
+			"Force" = $true
+		}
+	);
+}
 
 foreach ($Module in $Modules) {
 	Import-Module @Module;
 }
 
-if ((Get-Command -Name "Get-PsReadLineOption") -and (Get-PsReadLineOption | Select-Object -ExpandProperty EditMode)) {
+if ((Get-Command -Name "Get-PsReadLineOption" -ErrorAction SilentlyContinue) -and (Get-PsReadLineOption | Select-Object -ExpandProperty EditMode)) {
 	Set-PsReadLineOption -EditMode "Windows";
 }
 
-if (Get-Command -Name "Update-DirColors") {
+if (Get-Command -Name "Update-DirColors" -ErrorAction SilentlyContinue) {
 	Update-DirColors -Path (Join-Path -Path $HOME -ChildPath ".dircolors");
 }
 

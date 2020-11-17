@@ -19,3 +19,6 @@
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
+[submodule ".vim/pack/complete/start/omnisharp-vim"]
+	path = .vim/pack/complete/start/omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim

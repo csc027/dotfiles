@@ -96,9 +96,7 @@ $Items = @(
 		"Source" = $(if ($IsWindows) { Join-Path -Path "scripts" -ChildPath "windows.ps1" } else { Join-Path -Path "scripts" -ChildPath "unix.ps1" });
 		"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
 	}
-);
-
-$Items = $Items | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
+) | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
 
 # Create the symbolic links
 foreach ($Item in $Items) {

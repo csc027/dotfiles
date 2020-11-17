@@ -3,9 +3,12 @@ param(
 	[Switch] $Force
 )
 
-$IsWindows = $PsVersionTable.PsVersion.Major -le 5 -or $IsWindows;
+if ($PsVersionTable.PsVersion.Major -le 5) {
+	$IsWindows = $true;
+}
+
 if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
-	if (Get-Command -Name "pwsh") {
+	if ($PsVersionTable.PsVersion.Major -gt 5) {
 		Start-Process pwsh -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
 	} else {
 		Start-Process powershell -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
@@ -123,8 +126,12 @@ foreach ($Item in $Items) {
 }
 
 # Install modules
-if (Get-Command -Name "Install-Module") {
-	$Modules = @("DirColors", "posh-git", "PsReadLine");
+if (Get-Command -Name "Install-Module" -ErrorAction SilentlyContinue) {
+	if ($Host.UI.SupportsVirtualTerminal) {
+		$Modules = @("DirColors", "posh-git", "PsReadLine");
+	} else {
+		$Modules = @("posh-git", "PsReadLine");
+	}
 	foreach ($Module in $Modules) {
 		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
 		if (-not (Get-Module -Name $Module)) {

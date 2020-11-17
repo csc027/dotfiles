@@ -132,7 +132,7 @@ if (Get-Command -Name "Install-Module" -ErrorAction SilentlyContinue) {
 	}
 	foreach ($Module in $Modules) {
 		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
-		if (-not (Get-Module -Name $Module)) {
+		if (-not (Get-Module -Name $Module) -and -not (Get-InstalledModule -Name $Module)) {
 			Write-Host "done.$([Environment]::NewLine)Installing '$Module'... " -NoNewLine;
 			Install-Module -Name $Module -Force;
 			Write-Host "done.";

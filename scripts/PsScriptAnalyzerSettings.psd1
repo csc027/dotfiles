@@ -53,6 +53,7 @@
 		'PSUseUTF8EncodingForHelpFile'
 	)
 	Rules = @{
+		PSAvoidTrailingWhitespace = @{ Enable = $true };
 		PSAvoidUsingDoubleQuotesForConstantString = @{ Enable = $true };
 		PSAvoidUsingCmdletAliases = @{ Enable = $true };
 		PSMisleadingBacktick = @{ Enable = $true };

@@ -1,3 +1,5 @@
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidAssignmentToAutomaticVariable', '', Justification = 'This script assigns to the $IsWindows variable for PowerShell versions 5 or lower.')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingWriteHost', '', Justification = 'This script uses Write-Host for interactive display.')]
 [CmdletBinding()]
 param(
 	[Switch] $Force
@@ -7,7 +9,7 @@ if ($PsVersionTable.PsVersion.Major -le 5) {
 	$IsWindows = $true;
 }
 
-if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
 	if ($PsVersionTable.PsVersion.Major -gt 5) {
 		Start-Process pwsh -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
 	} else {
@@ -61,40 +63,40 @@ if (-not (Test-Path -Path $ProfileDirectory)) {
 # List files to be symbolically linked to other locations
 $Items = @(
 	@{
-		"Source" = ".aliases.psm1";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".aliases.psm1";
+		'Source' = '.aliases.psm1';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
 	},
 	@{
-		"Source" = ".common.vimrc";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".common.vimrc";
+		'Source' = '.common.vimrc';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.common.vimrc';
 	},
 	@{
-		"Source" = $([IO.Path]::Combine("submodules", "dircolors-solarized", "dircolors.256dark"));
-		"Destination" = Join-Path -Path $HOME -ChildPath ".dircolors";
+		'Source' = $([IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark'));
+		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	},
 	@{
-		"Source" = ".gvimrc";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".gvimrc";
+		'Source' = '.gvimrc';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.gvimrc';
 	},
 	@{
-		"Source" = Join-Path -Path "scripts" -ChildPath "profile.ps1";
-		"Destination" = $PROFILE;
+		'Source' = Join-Path -Path 'scripts' -ChildPath 'profile.ps1';
+		'Destination' = $PROFILE;
 	},
 	@{
-		"Source" = ".vim";
-		"Destination" = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath "vimfiles" } else { Join-Path -Path $HOME -ChildPath ".vim" });
+		'Source' = '.vim';
+		'Destination' = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath 'vimfiles' } else { Join-Path -Path $HOME -ChildPath '.vim' });
 	},
 	@{
-		"Source" = ".vimrc";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".vimrc";
+		'Source' = '.vimrc';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.vimrc';
 	},
 	@{
-		"Source" = ".vsvimrc";
-		"Destination" = Join-Path -Path $HOME -ChildPath ".vsvimrc";
+		'Source' = '.vsvimrc';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},
 	@{
-		"Source" = $(if ($IsWindows) { Join-Path -Path "scripts" -ChildPath "windows.ps1" } else { Join-Path -Path "scripts" -ChildPath "unix.ps1" });
-		"Destination" = Join-Path -Path $ProfileDirectory -ChildPath "os.ps1";
+		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
+		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
 	}
 ) | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
 
@@ -103,41 +105,41 @@ foreach ($Item in $Items) {
 	$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
-	Write-Host "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
+	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
 	if (-not (Test-Path -Path $Item.Destination)) {
-		Write-Host "done.  The symbolic link does not exist.";
+		Write-Host 'done.  The symbolic link does not exist.';
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source;
-		Write-Host "done.";
-	} elseif ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty "Attributes") -notmatch "ReparsePoint") {
-		Write-Host "done.  A file/directory exists, but is not a symbolic link.";
-		Write-Host "Backing up existing file/directory... ";
+		Write-Host 'done.';
+	} elseif ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
+		Write-Host 'done.  A file/directory exists, but is not a symbolic link.';
+		Write-Host 'Backing up existing file/directory... ';
 		Rename-Backup -Path $Item.Destination;
-		Write-Host "done."
+		Write-Host 'done.';
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source;
-		Write-Host "done.";
+		Write-Host 'done.';
 	} else {
-		Write-Host "done.";
+		Write-Host 'done.';
 		Write-Host "The symbolic link '$($Item.Destination)' already exists.";
 	}
 }
 
 # Install modules
-if (Get-Command -Name "Install-Module" -ErrorAction SilentlyContinue) {
+if (Get-Command -Name 'Install-Module' -ErrorAction SilentlyContinue) {
 	if ($Host.UI.SupportsVirtualTerminal) {
-		$Modules = @("DirColors", "posh-git", "PsReadLine");
+		$Modules = @('DirColors', 'posh-git', 'PsReadLine');
 	} else {
-		$Modules = @("posh-git", "PsReadLine");
+		$Modules = @('posh-git', 'PsReadLine');
 	}
 	foreach ($Module in $Modules) {
 		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
 		if (-not (Get-Module -Name $Module) -and -not (Get-InstalledModule -Name $Module)) {
 			Write-Host "done.$([Environment]::NewLine)Installing '$Module'... " -NoNewLine;
 			Install-Module -Name $Module -Force;
-			Write-Host "done.";
+			Write-Host 'done.';
 		} else {
-			Write-Host "done.  Module is already installed.";
+			Write-Host 'done.  Module is already installed.';
 		}
 	}
 }

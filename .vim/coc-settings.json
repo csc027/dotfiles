@@ -1,3 +1,5 @@
 {
-	"powershell.integratedConsole.showOnStartup": false
+	"powershell.integratedConsole.showOnStartup": false,
+	"powershell.integratedConsole.executeInCurrentScope": false,
+	"powershell.scriptAnalysis.settingsPath": "~/dotfiles/scripts/PsScriptAnalyzerSettings.psd1"
 }

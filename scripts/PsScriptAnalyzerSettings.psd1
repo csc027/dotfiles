@@ -53,11 +53,6 @@
 		'PSUseUTF8EncodingForHelpFile'
 	)
 	Rules = @{
-		PSAvoidTrailingWhitespace = @{ Enable = $true };
-		PSAvoidUsingDoubleQuotesForConstantString = @{ Enable = $true };
-		PSAvoidUsingCmdletAliases = @{ Enable = $true };
-		PSMisleadingBacktick = @{ Enable = $true };
-		PSProvideCommentHelp = @{ Enable = $true };
 		PSPlaceCloseBrace = @{
 			Enable = $true;
 			IgnoreOneLineBlock = $true;
@@ -87,6 +82,5 @@
 			CheckSeparator = $true
 			CheckParameter = $false
 		};
-		PSUseCorrectCasing = @{ Enable = $true };
 	}
 }

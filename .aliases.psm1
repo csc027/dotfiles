@@ -43,53 +43,53 @@ function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
 
 $Aliases = @{
-	"ga"   = "Invoke-GitAdd";
-	"gap"  = "Invoke-GitAddChunk";
-	"gb"   = "Invoke-GitBranch";
-	"gba"  = "Invoke-GitBranchAll";
-	"gbav" = "Invoke-GitBranchAllVerbose";
-	"gbd"  = "Invoke-GitBranchDelete";
-	"gbv"  = "Invoke-GitBranchVerbose";
-	"gk"   = "Invoke-GitCheckout";
-	"gkb"  = "Invoke-GitCheckoutBranch";
-	"gq"   = "Invoke-GitCherryPick";
-	"gc"   = "Invoke-GitCommit";
-	"gd"   = "Invoke-GitDiff";
-	"gdc"  = "Invoke-GitDiffCached";
-	"gdn"  = "Invoke-GitDiffNameOnly";
-	"gdt"  = "Invoke-GitDiffTool";
-	"gf"   = "Invoke-GitFetch";
-	"gfa"  = "Invoke-GitFetchAll";
-	"gfp"  = "Invoke-GitFetchPrune";
-	"gfap" = "Invoke-GitFetchAllPrune";
-	"gg"   = "Invoke-GitGrep";
-	"gi"   = "Invoke-GitInit";
-	"gl"   = "Invoke-GitLog";
-	"gld"  = "Invoke-GitLogDiff";
-	"gldl" = "Invoke-GitLogDiffLong";
-	"gll"  = "Invoke-GitLogLong";
-	"gls"  = "Invoke-GitListTree";
-	"gmg"  = "Invoke-GitMerge";
-	"gv"   = "Invoke-GitMv";
-	"gu"   = "Invoke-GitPull";
-	"gp"   = "Invoke-GitPush";
-	"gpu"  = "Invoke-GitPushSetUpstream";
-	"ge"   = "Invoke-GitRebase";
-	"gei"  = "Invoke-GitRebaseInteractive";
-	"go"   = "Invoke-GitRemote";
-	"goa"  = "Invoke-GitRemoteAdd";
-	"gr"   = "Invoke-GitReset";
-	"gw"   = "Invoke-GitShow";
-	"gh"   = "Invoke-GitStash";
-	"gha"  = "Invoke-GitStashApply";
-	"ghl"  = "Invoke-GitStashList";
-	"ghp"  = "Invoke-GitStashPop";
-	"gs"   = "Invoke-GitStatus";
-	"gt"   = "Invoke-GitTag";
+	'ga' = 'Invoke-GitAdd';
+	'gap' = 'Invoke-GitAddChunk';
+	'gb' = 'Invoke-GitBranch';
+	'gba' = 'Invoke-GitBranchAll';
+	'gbav' = 'Invoke-GitBranchAllVerbose';
+	'gbd' = 'Invoke-GitBranchDelete';
+	'gbv' = 'Invoke-GitBranchVerbose';
+	'gk' = 'Invoke-GitCheckout';
+	'gkb' = 'Invoke-GitCheckoutBranch';
+	'gq' = 'Invoke-GitCherryPick';
+	'gc' = 'Invoke-GitCommit';
+	'gd' = 'Invoke-GitDiff';
+	'gdc' = 'Invoke-GitDiffCached';
+	'gdn' = 'Invoke-GitDiffNameOnly';
+	'gdt' = 'Invoke-GitDiffTool';
+	'gf' = 'Invoke-GitFetch';
+	'gfa' = 'Invoke-GitFetchAll';
+	'gfp' = 'Invoke-GitFetchPrune';
+	'gfap' = 'Invoke-GitFetchAllPrune';
+	'gg' = 'Invoke-GitGrep';
+	'gi' = 'Invoke-GitInit';
+	'gl' = 'Invoke-GitLog';
+	'gld' = 'Invoke-GitLogDiff';
+	'gldl' = 'Invoke-GitLogDiffLong';
+	'gll' = 'Invoke-GitLogLong';
+	'gls' = 'Invoke-GitListTree';
+	'gmg' = 'Invoke-GitMerge';
+	'gv' = 'Invoke-GitMv';
+	'gu' = 'Invoke-GitPull';
+	'gp' = 'Invoke-GitPush';
+	'gpu' = 'Invoke-GitPushSetUpstream';
+	'ge' = 'Invoke-GitRebase';
+	'gei' = 'Invoke-GitRebaseInteractive';
+	'go' = 'Invoke-GitRemote';
+	'goa' = 'Invoke-GitRemoteAdd';
+	'gr' = 'Invoke-GitReset';
+	'gw' = 'Invoke-GitShow';
+	'gh' = 'Invoke-GitStash';
+	'gha' = 'Invoke-GitStashApply';
+	'ghl' = 'Invoke-GitStashList';
+	'ghp' = 'Invoke-GitStashPop';
+	'gs' = 'Invoke-GitStatus';
+	'gt' = 'Invoke-GitTag';
 };
 
-foreach($Key in $Aliases.Keys) {
-	while(Test-Path -Path "Alias:\$Key") {
+foreach ($Key in $Aliases.Keys) {
+	while (Test-Path -Path "Alias:\$Key") {
 		Remove-Item -Path "Alias:\$Key" -Force;
 	}
 	Set-Alias -Name $Key -Value ($Aliases.$Key);

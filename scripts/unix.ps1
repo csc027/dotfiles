@@ -1,8 +1,8 @@
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidGlobalVars', '', Justification = 'This script requires the use of global variables.')]
+[CmdletBinding()]
 param(
 )
 
-$global:__aliases = @{
+$script:aliases = @{
 	ac = 'Add-Content';
 	cat = 'Get-Content';
 	cd = 'Set-Location';
@@ -27,7 +27,7 @@ $global:__aliases = @{
 	write = 'Write-Output';
 };
 
-$global:__aliases.Keys | ForEach-Object {
+$script:Aliases.Keys | ForEach-Object {
 	Write-Verbose "Adding $_";
-	Set-Alias -Name $_ -Value $global:__aliases[$_] -Option AllScope -Scope Global;
+	Set-Alias -Name $_ -Value $script:Aliases[$_] -Option AllScope -Scope Global;
 }

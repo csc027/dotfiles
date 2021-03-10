@@ -49,12 +49,14 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 	Update-DirColors -Path (Join-Path -Path $HOME -ChildPath '.dircolors');
 }
 
-if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
-	$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
-}
+if ($global:GitPromptSettings) {
+	if ($global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
+		$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $false;
+	}
 
-if ($global:GitPromptSettings -and $global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
-	$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
+	if ($global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
+		$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
+	}
 }
 
 $DotSourceNames = @('machine.ps1', 'os.ps1');

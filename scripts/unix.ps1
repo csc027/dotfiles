@@ -2,7 +2,7 @@
 param(
 )
 
-$script:aliases = @{
+$script:Aliases = @{
 	ac = 'Add-Content';
 	cat = 'Get-Content';
 	cd = 'Set-Location';

@@ -51,7 +51,13 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 
 if ($global:GitPromptSettings) {
 	$global:GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue;
-	$global:GitPromptSettings.DefaultPromptPrefix = (Write-Prompt -ForegroundColor [ConsoleColor]::Green -Object "$env:USERNAME@$env:COMPUTERNAME") + ':';
+	$global:GitPromptSettings.DefaultPromptPrefix = "$env:USERNAME@$env:COMPUTERNAME";
+	$global:GitPromptSettings.BeforePath = ':';
+	$global:GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Green;
+	$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';
+	if ($null -ne $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
+		$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true;
+	}
 	if ($global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
 		$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 	}

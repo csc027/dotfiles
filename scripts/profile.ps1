@@ -51,7 +51,11 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 
 if ($global:GitPromptSettings) {
 	$global:GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue;
-	$global:GitPromptSettings.DefaultPromptPrefix = "$env:USERNAME@$env:COMPUTERNAME";
+	$global:GitPromptSettings.DefaultPromptPrefix = if ($IsLinux) {
+		"$env:USERNAME@$(hostname)";
+	} else {
+		"$env:USERNAME@$env:COMPUTERNAME";
+	}
 	$global:GitPromptSettings.BeforePath = ':';
 	$global:GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Green;
 	$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';

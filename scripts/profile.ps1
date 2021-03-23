@@ -50,19 +50,31 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 }
 
 if ($global:GitPromptSettings) {
-	$global:GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue;
-	$global:GitPromptSettings.DefaultPromptPrefix = if ($IsLinux) {
-		"$env:USERNAME@$(hostname)";
-	} else {
-		"$env:USERNAME@$env:COMPUTERNAME";
-	}
 	$global:GitPromptSettings.BeforePath = ':';
-	$global:GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Green;
 	$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';
-	if ($null -ne $global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory) {
+	if ($global:GitPromptSettings.DefaultPromptPath.PSObject.Properties.Name -contains 'ForegroundColor') {
+		$global:GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue;
+	}
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptPrefix') {
+		$global:GitPromptSettings.DefaultPromptPrefix = if ($IsLinux) {
+			"$env:USERNAME@$(hostname)";
+		} else {
+			"$env:USERNAME@$env:COMPUTERNAME";
+		}
+		if ($global:GitPromptSettings.DefaultPromptPrefix.PSObject.Properties.Name -contains 'ForegroundColor') {
+			$global:GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Green;
+		}
+	}
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'BeforePath') {
+		$global:GitPromptSettings.BeforePath = ':';
+	}
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptSuffix') {
+		$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';
+	}
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptAbbreviateHomeDirectory') {
 		$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true;
 	}
-	if ($global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory) {
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptAbbreviateGitDirectory') {
 		$global:GitPromptSettings.DefaultPromptAbbreviateGitDirectory = $false;
 	}
 }

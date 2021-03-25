@@ -22,6 +22,7 @@ nnoremap <Leader>c :call EnableCoc()<CR>
 
 " general settings
 set background=dark
+set colorcolumn=120,180
 set completeopt=longest,menuone
 set foldlevel=2
 set foldmethod=indent

@@ -10,10 +10,15 @@ if ($PsVersionTable.PsVersion.Major -le 5) {
 }
 
 if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-	if ($PsVersionTable.PsVersion.Major -gt 5) {
-		Start-Process pwsh -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
+	$Arguments = if ($Force) {
+		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)", '-Force' 
 	} else {
-		Start-Process powershell -ArgumentList "-NoExit -File $($MyInvocation.MyCommand.Definition)" -Verb runAs;
+		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)"
+	}
+	if ($PsVersionTable.PsVersion.Major -gt 5) {
+		Start-Process 'pwsh' -ArgumentList $Arguments -Verb runAs;
+	} else {
+		Start-Process 'powershell' -ArgumentList $Arguments -Verb runAs;
 	}
 	return;
 }
@@ -22,11 +27,16 @@ function New-Symlink {
 	[CmdletBinding()]
 	param (
 		[String] $Path,
-		[String] $Value
+		[String] $Value,
+		[Switch] $Force
 	)
 
 	if (-not (Test-Path -Path $Value)) {
 		throw New-Object System.Exception "The source item $Value does not exist.";
+	}
+
+	if ($Force -and (Test-Path -Path $Path)) {
+		Remove-Item -Path $Path;
 	}
 
 	if ($IsWindows) {
@@ -38,20 +48,6 @@ function New-Symlink {
 	} else {
 		New-Item -ItemType SymbolicLink -Path $Path -Value $Value | Out-Null;
 	}
-}
-
-function Rename-Backup {
-	[CmdletBinding()]
-	param (
-		[String] $Path
-	)
-
-	$NewPath = $Path;
-	for ($i = 1; Test-Path -Path $NewPath; $i++) {
-		$NewPath = $Path + ".$i.bak"
-	}
-
-	Rename-Item -Path $Path -NewName $NewPath;
 }
 
 # Create profile directory if it is missing
@@ -98,7 +94,7 @@ $Items = @(
 		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
 		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
 	}
-) | ForEach-Object { New-Object -TypeName PsObject -Property $_ };
+) | ForEach-Object { New-Object -TypeName PSObject -Property $_ };
 
 # Create the symbolic links
 foreach ($Item in $Items) {
@@ -106,16 +102,13 @@ foreach ($Item in $Items) {
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
 	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
-	if (-not (Test-Path -Path $Item.Destination)) {
-		Write-Host 'done.  The symbolic link does not exist.';
-		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
-		New-Symlink -Path $Item.Destination -Value $Source;
-		Write-Host 'done.';
-	} elseif ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
+	if ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
 		Write-Host 'done.  A file/directory exists, but is not a symbolic link.';
-		Write-Host 'Backing up existing file/directory... ';
-		Rename-Backup -Path $Item.Destination;
+		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
+		New-Symlink -Path $Item.Destination -Value $Source -Force:$Force;
 		Write-Host 'done.';
+	} elseif (-not (Test-Path -Path $Item.Destination)) {
+		Write-Host 'done.  The symbolic link does not exist.';
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host 'done.';

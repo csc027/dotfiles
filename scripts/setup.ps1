@@ -96,6 +96,13 @@ $Items = @(
 	}
 ) | ForEach-Object { New-Object -TypeName PSObject -Property $_ };
 
+if ($IsWindows) {
+	$Items += New-Object -TypeName PSObject -Property @{
+		'Source' = 'settings.json';
+		'Destination' = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Microsoft', 'Windows Terminal', 'settings.json');
+	};
+}
+
 # Create the symbolic links
 foreach ($Item in $Items) {
 	$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;

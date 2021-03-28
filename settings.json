@@ -1,6 +1,9 @@
 {
 	"$schema": "https://aka.ms/terminal-profiles-schema",
 	"defaultProfile": "",
+	"disabledProfileSources": [
+		"Windows.Terminal.Azure"
+	],
 	"copyOnSelect": false,
 	"copyFormatting": false,
 
@@ -50,10 +53,6 @@
 				"icon": "%SystemDrive%\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
 				"startingDirectory": "%USERPROFILE%",
 				"hidden": false
-			}, {
-				"name": "Azure Cloud Shell",
-				"source": "Windows.Terminal.Azure",
-				"hidden": true
 			}
 		]
 	},

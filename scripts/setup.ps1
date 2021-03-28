@@ -67,7 +67,7 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.common.vimrc';
 	},
 	@{
-		'Source' = $([IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark'));
+		'Source' = [IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark');
 		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	},
 	@{
@@ -97,9 +97,11 @@ $Items = @(
 ) | ForEach-Object { New-Object -TypeName PSObject -Property $_ };
 
 if ($IsWindows) {
+	$PackageSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Packages' 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState', 'settings.json');
+	$LocalSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Microsoft', 'Windows Terminal', 'settings.json');
 	$Items += New-Object -TypeName PSObject -Property @{
 		'Source' = 'settings.json';
-		'Destination' = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Microsoft', 'Windows Terminal', 'settings.json');
+		'Destination' = $(if (Test-Path -Path $PackageSettingsPath) { $PackageSettingsPath } else { $LocalSettingsPath });
 	};
 }
 

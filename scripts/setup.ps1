@@ -97,7 +97,7 @@ $Items = @(
 ) | ForEach-Object { New-Object -TypeName PSObject -Property $_ };
 
 if ($IsWindows) {
-	$PackageSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Packages' 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState', 'settings.json');
+	$PackageSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState', 'settings.json');
 	$LocalSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Microsoft', 'Windows Terminal', 'settings.json');
 	$Items += New-Object -TypeName PSObject -Property @{
 		'Source' = 'settings.json';

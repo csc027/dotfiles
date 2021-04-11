@@ -37,6 +37,7 @@ function Invoke-GitRemote { git remote -v $args }
 function Invoke-GitRemoteAdd { git remote add $args }
 function Invoke-GitReset { git reset $args }
 function Invoke-GitShow { git show $args }
+function Invoke-GitShowUpstreamBranches { git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads $args }
 function Invoke-GitStash { git stash $args }
 function Invoke-GitStashApply { git stash apply $args }
 function Invoke-GitStashList { git stash list $args }
@@ -94,6 +95,7 @@ $Aliases = @{
 	'gu' = 'Invoke-GitPull';
 	'gv' = 'Invoke-GitMv';
 	'gw' = 'Invoke-GitShow';
+	'gwu' = 'Invoke-GitShowUpstreamBranches';
 };
 
 foreach ($Key in $Aliases.Keys) {

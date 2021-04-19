@@ -111,19 +111,19 @@ foreach ($Item in $Items) {
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
 	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
-	if ($Force -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
+	if ($Force -and (Test-Path -Path $Item.Destination) -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
 		Write-Host 'done.  A file/directory exists, but is not a symbolic link.';
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source -Force:$Force;
 		Write-Host 'done.';
-	} elseif (-not (Test-Path -Path $Item.Destination)) {
+	} elseif (Test-Path -Path $Item.Destination) {
+		Write-Host 'done.';
+		Write-Host "The symbolic link '$($Item.Destination)' already exists.";
+	} else {
 		Write-Host 'done.  The symbolic link does not exist.';
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host 'done.';
-	} else {
-		Write-Host 'done.';
-		Write-Host "The symbolic link '$($Item.Destination)' already exists.";
 	}
 }
 

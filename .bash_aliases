@@ -31,7 +31,9 @@ alias gl='git log --decorate --oneline --graph --color'
 alias gld='git log --decorate --oneline --graph --color --boundary'
 alias gldl='git log --decorate --graph --color --boundary'
 alias gll='git log --decorate --graph --color'
-alias gls='git ls-tree --name-only -r'
+alias glr='git log --decorate --color -G'
+alias gls='git log --decorate --color -S'
+alias glt='git ls-tree --name-only -r'
 alias gmg='git merge'
 alias go='git remote -v'
 alias goa='git remote add'
@@ -81,7 +83,9 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gld _git_log
 	__git_complete gldl _git_log
 	__git_complete gll _git_log
-	__git_complete gls _git_ls_tree
+	__git_complete glr _git_log
+	__git_complete gls _git_log
+	__git_complete glt _git_ls_tree
 	__git_complete gmg _git_merge
 	__git_complete go _git_remote
 	__git_complete goa _git_remote

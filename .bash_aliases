@@ -47,7 +47,7 @@ alias gt='git tag'
 alias gu='git pull'
 alias gv='git mv'
 alias gw='git show'
-alias gwu='git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads'
+alias gwu='git for-each-ref --format='\''%(refname:short) <- %(upstream:short)'\'' refs/heads'
 
 if [ -f ~/.git-completion.bash ]; then
 	__git_complete ga _git_add

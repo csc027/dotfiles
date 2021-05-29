@@ -52,18 +52,18 @@ if [ "${color_prompt}" == "yes" ]; then
 fi
 
 git_bash_prompt() {
-    local -i ahead
-    local -i behind
-    local -i deleted
-    local -i modified
-    local -i added
-    local -i staged_deleted
-    local -i staged_modified
-    local -i untracked
-    local branch
-    local error
+	local -i ahead
+	local -i behind
+	local -i deleted
+	local -i modified
+	local -i added
+	local -i staged_deleted
+	local -i staged_modified
+	local -i untracked
+	local branch
+	local error
 
-    _reset_state() {
+	_reset_state() {
 		ahead=0
 		behind=0
 		deleted=0
@@ -71,47 +71,47 @@ git_bash_prompt() {
 		added=0
 		staged_deleted=0
 		staged_modified=0
-        untracked=0
-        branch=""
+		untracked=0
+		branch=""
 		remote=""
-        error=""
-    }
+		error=""
+	}
 
-    _git_state() {
-        _reset_state
+	_git_state() {
+		_reset_state
 
-        local line
-        while IFS= read -r line ; do
-            if [[ "${line:0:2}" = "xx" ]]; then
-                return 1
-            fi
+		local line
+		while IFS= read -r line ; do
+			if [[ "${line:0:2}" = "xx" ]]; then
+				return 1
+			fi
 
-            if [[ "${line:2:1}" != " " ]]; then
-                error="unexpected git status output"
-                return 0
-            fi
+			if [[ "${line:2:1}" != " " ]]; then
+				error="unexpected git status output"
+				return 0
+			fi
 
-            # https://git-scm.com/docs/git-status
-            local x=${line:0:1}
-            local y=${line:1:1}
+			# https://git-scm.com/docs/git-status
+			local x=${line:0:1}
+			local y=${line:1:1}
 
-            if [[ "${x}${y}" = "##" ]]; then
+			if [[ "${x}${y}" = "##" ]]; then
 				# extract branch information
-                branch=${line:3}
-                remote="${branch#*...}"
-                branch="${branch%%...*}"
+				branch=${line:3}
+				remote="${branch#*...}"
+				branch="${branch%%...*}"
 
 				# extract commit ahead count
 				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then
 					ahead=$((${BASH_REMATCH[1]}))
-                fi
+				fi
 
 				# extract commit behind count
 				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then
 					behind=$((${BASH_REMATCH[1]}))
-                fi
-            elif [[ "${x}${y}" = "??" ]]; then
-                ((untracked++))
+				fi
+			elif [[ "${x}${y}" = "??" ]]; then
+				((untracked++))
 			else
 				if [[ "${y}" = "A" ]]; then
 					((untracked++))
@@ -132,20 +132,20 @@ git_bash_prompt() {
 					((staged_deleted++))
 				fi
 			fi
-        done < <(LC_ALL=C git status --porcelain --branch 2>/dev/null || echo -e "xx $?")
-        return 0
-    }
+		done < <(LC_ALL=C git status --porcelain --branch 2>/dev/null || echo -e "xx $?")
+		return 0
+	}
 
-    _git_state
+	_git_state
 
-    # Functions are always global, so unset these so they don't leak.
-    unset _reset_state
-    unset _git_state
+	# Functions are always global, so unset these so they don't leak.
+	unset _reset_state
+	unset _git_state
 
-    local vcstate staged_state delimiter_state local_state working_state
-    if [[ -n "${error}" ]]; then
-        vcstate="${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
-    else
+	local vcstate staged_state delimiter_state local_state working_state
+	if [[ -n "${error}" ]]; then
+		vcstate="${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
+	else
 		if ((ahead == 0 && behind == 0)); then status_state="${GIT_CLEAN_STATUS_COLOR}${branch} ${GIT_CLEAN_INDICATOR}"
 		elif ((ahead > 0 && behind > 0)); then status_state="${GIT_AHEAD_BEHIND_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead} ${GIT_BEHIND_INDICATOR}${behind}"
 		elif ((ahead > 0)); then status_state="${GIT_AHEAD_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead}"
@@ -168,7 +168,7 @@ git_bash_prompt() {
 		if [[ -n "$branch" ]]; then
 			vcstate="${GIT_DELIMITER_COLOR}[${status_state}${staged_state}${delimiter_state}${local_state}${working_state}${GIT_DELIMITER_COLOR}] "
 		fi
-    fi
+	fi
 
-    echo -e " ${vcstate}"
+	echo -e " ${vcstate}"
 }

@@ -103,11 +103,13 @@ git_bash_prompt() {
 		if ((untracked > 0 || modified > 0 || deleted > 0)); then
 			local_state=" ${GIT_UNSTAGED_COLOR}${GIT_ADDED_INDICATOR}${untracked} ${GIT_MODIFIED_INDICATOR}${modified} ${GIT_DELETED_INDICATOR}${deleted}"
 		fi
+
 		if ((untracked > 0 || modified > 0 || deleted > 0)); then
 			working_state=" ${GIT_UNSTAGED_COLOR}${GIT_UNSTAGED_INDICATOR}"
 		elif ((added > 0 || staged_modified > 0 || staged_deleted)); then
 			working_state=" ${GIT_UNCOMMITTED_COLOR}${GIT_UNCOMMITTED_INDICATOR}"
 		fi
+
 		if [[ -n "$branch" ]]; then
 			vcstate="${GIT_DELIMITER_COLOR}[${status_state}${staged_state}${delimiter_state}${local_state}${working_state}${GIT_DELIMITER_COLOR}] "
 		fi

@@ -100,12 +100,12 @@ git_bash_prompt() {
                 branch="${branch%%...*}"
 
 				# extract commit ahead count
-				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+)\] ]]; then
+				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then
 					ahead=$((${BASH_REMATCH[1]}))
                 fi
 
 				# extract commit behind count
-				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+)\] ]]; then
+				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then
 					behind=$((${BASH_REMATCH[1]}))
                 fi
             elif [[ "${x}${y}" = "??" ]]; then
@@ -149,7 +149,7 @@ git_bash_prompt() {
 		if ((ahead == 0 && behind == 0)); then
 			status_state="${GIT_CLEAN_STATUS_COLOR}${branch} ${GIT_CLEAN_INDICATOR}"
 		elif ((ahead > 0 && behind > 0)); then
-			status_state="${GIT_AHEAD_BEHIND_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead}${GIT_BEHIND_INDICATOR}${behind}"
+			status_state="${GIT_AHEAD_BEHIND_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead} ${GIT_BEHIND_INDICATOR}${behind}"
 		elif ((ahead > 0)); then
 			status_state="${GIT_AHEAD_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead}"
 		elif ((behind > 0)); then

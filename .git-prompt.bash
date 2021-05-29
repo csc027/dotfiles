@@ -86,7 +86,7 @@ git_bash_prompt() {
 	local vcstate staged_state delimiter_state local_state working_state
 
 	if [[ -n "${error}" ]]; then
-		vcstate="${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
+		vcstate=" ${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
 	else
 		if ((ahead == 0 && behind == 0)); then status_state="${GIT_CLEAN_STATUS_COLOR}${branch} ${GIT_CLEAN_INDICATOR}"
 		elif ((ahead > 0 && behind > 0)); then status_state="${GIT_AHEAD_BEHIND_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead} ${GIT_BEHIND_INDICATOR}${behind}"
@@ -111,9 +111,9 @@ git_bash_prompt() {
 		fi
 
 		if [[ -n "$branch" ]]; then
-			vcstate="${GIT_DELIMITER_COLOR}[${status_state}${staged_state}${delimiter_state}${local_state}${working_state}${GIT_DELIMITER_COLOR}] "
+			vcstate=" ${GIT_DELIMITER_COLOR}[${status_state}${staged_state}${delimiter_state}${local_state}${working_state}${GIT_DELIMITER_COLOR}]"
 		fi
 	fi
 
-	echo -e " ${vcstate}"
+	echo -e "${vcstate}"
 }

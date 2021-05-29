@@ -136,8 +136,6 @@ git_bash_prompt() {
         return 0
     }
 
-
-    # Get vcs state, checking them all in order, first one wins.
     _git_state
 
     # Functions are always global, so unset these so they don't leak.

@@ -82,14 +82,8 @@ git_bash_prompt() {
 
 		local line
 		while IFS= read -r line ; do
-			if [[ "${line:0:2}" = "xx" ]]; then
-				return 1
-			fi
-
-			if [[ "${line:2:1}" != " " ]]; then
-				error="unexpected git status output"
-				return 0
-			fi
+			if [[ "${line:0:2}" = "xx" ]]; then return 1; fi
+			if [[ "${line:2:1}" != " " ]]; then error="unexpected git status output"; return 0; fi
 
 			# https://git-scm.com/docs/git-status
 			local x=${line:0:1}
@@ -101,36 +95,17 @@ git_bash_prompt() {
 				remote="${branch#*...}"
 				branch="${branch%%...*}"
 
-				# extract commit ahead count
-				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then
-					ahead=$((${BASH_REMATCH[1]}))
-				fi
-
-				# extract commit behind count
-				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then
-					behind=$((${BASH_REMATCH[1]}))
-				fi
-			elif [[ "${x}${y}" = "??" ]]; then
-				((untracked++))
+				# extract commit ahead and behind counts
+				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then ahead=$((${BASH_REMATCH[1]})); fi
+				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then behind=$((${BASH_REMATCH[1]})); fi
+			elif [[ "${x}${y}" = "??" ]]; then ((untracked++))
 			else
-				if [[ "${y}" = "A" ]]; then
-					((untracked++))
-				fi
-				if [[ "${y}" = "M" ]]; then
-					((modified++))
-				fi
-				if [[ "${y}" = "D" ]]; then
-					((deleted++))
-				fi
-				if [[ "${x}" = "A" ]]; then
-					((added++))
-				fi
-				if [[ "${x}" = "M" ]]; then
-					((staged_modified++))
-				fi
-				if [[ "${x}" = "D" ]]; then
-					((staged_deleted++))
-				fi
+				if [[ "${x}" = "A" ]]; then ((added++)); fi
+				if [[ "${x}" = "D" ]]; then ((staged_deleted++)); fi
+				if [[ "${x}" = "M" ]]; then ((staged_modified++)); fi
+				if [[ "${y}" = "A" ]]; then ((untracked++)); fi
+				if [[ "${y}" = "D" ]]; then ((deleted++)); fi
+				if [[ "${y}" = "M" ]]; then ((modified++)); fi
 			fi
 		done < <(LC_ALL=C git status --porcelain --branch 2>/dev/null || echo -e "xx $?")
 		return 0
@@ -151,6 +126,7 @@ git_bash_prompt() {
 		elif ((ahead > 0)); then status_state="${GIT_AHEAD_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead}"
 		elif ((behind > 0)); then status_state="${GIT_BEHIND_COLOR}${branch} ${GIT_BEHIND_INDICATOR}${behind}"
 		fi
+
 		if ((added > 0 || staged_modified > 0 || staged_deleted > 0)); then
 			staged_state=" ${GIT_STAGED_COLOR}${GIT_ADDED_INDICATOR}${added} ${GIT_MODIFIED_INDICATOR}${staged_modified} ${GIT_DELETED_INDICATOR}${staged_deleted}"
 		fi

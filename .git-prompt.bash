@@ -52,72 +52,39 @@ if [ "${color_prompt}" == "yes" ]; then
 fi
 
 git_bash_prompt() {
-	local -i ahead
-	local -i behind
-	local -i deleted
-	local -i modified
-	local -i added
-	local -i staged_deleted
-	local -i staged_modified
-	local -i untracked
-	local branch
-	local error
+	local -i ahead=0 behind=0 deleted=0 modified=0 added=0 staged_deleted=0 staged_modified=0 untracked=0
+	local branch="" error="" remote="" line
 
-	_reset_state() {
-		ahead=0
-		behind=0
-		deleted=0
-		modified=0
-		added=0
-		staged_deleted=0
-		staged_modified=0
-		untracked=0
-		branch=""
-		remote=""
-		error=""
-	}
+	while IFS= read -r line ; do
+		if [[ "${line:0:2}" = "xx" ]]; then return 1; fi
+		if [[ "${line:2:1}" != " " ]]; then error="unexpected git status output"; return 0; fi
 
-	_git_state() {
-		_reset_state
+		# https://git-scm.com/docs/git-status
+		local x=${line:0:1}
+		local y=${line:1:1}
 
-		local line
-		while IFS= read -r line ; do
-			if [[ "${line:0:2}" = "xx" ]]; then return 1; fi
-			if [[ "${line:2:1}" != " " ]]; then error="unexpected git status output"; return 0; fi
+		if [[ "${x}${y}" = "##" ]]; then
+			# extract branch information
+			branch=${line:3}
+			remote="${branch#*...}"
+			branch="${branch%%...*}"
 
-			# https://git-scm.com/docs/git-status
-			local x=${line:0:1}
-			local y=${line:1:1}
-
-			if [[ "${x}${y}" = "##" ]]; then
-				# extract branch information
-				branch=${line:3}
-				remote="${branch#*...}"
-				branch="${branch%%...*}"
-
-				# extract commit ahead and behind counts
-				if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then ahead=$((${BASH_REMATCH[1]})); fi
-				if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then behind=$((${BASH_REMATCH[1]})); fi
-			elif [[ "${x}${y}" = "??" ]]; then ((untracked++))
-			else
-				if [[ "${x}" = "A" ]]; then ((added++)); fi
-				if [[ "${x}" = "D" ]]; then ((staged_deleted++)); fi
-				if [[ "${x}" = "M" ]]; then ((staged_modified++)); fi
-				if [[ "${y}" = "A" ]]; then ((untracked++)); fi
-				if [[ "${y}" = "D" ]]; then ((deleted++)); fi
-				if [[ "${y}" = "M" ]]; then ((modified++)); fi
-			fi
-		done < <(LC_ALL=C git status --porcelain --branch 2>/dev/null || echo -e "xx $?")
-		return 0
-	}
-
-	_git_state
-
-	# Functions are always global, so unset these so they don't leak.
-	unset _reset_state
-	unset _git_state
+			# extract commit ahead and behind counts
+			if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then ahead=$((${BASH_REMATCH[1]})); fi
+			if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then behind=$((${BASH_REMATCH[1]})); fi
+		elif [[ "${x}${y}" = "??" ]]; then ((untracked++))
+		else
+			if [[ "${x}" = "A" ]]; then ((added++)); fi
+			if [[ "${x}" = "D" ]]; then ((staged_deleted++)); fi
+			if [[ "${x}" = "M" ]]; then ((staged_modified++)); fi
+			if [[ "${y}" = "A" ]]; then ((untracked++)); fi
+			if [[ "${y}" = "D" ]]; then ((deleted++)); fi
+			if [[ "${y}" = "M" ]]; then ((modified++)); fi
+		fi
+	done < <(LC_ALL=C git status --porcelain --branch 2>/dev/null || echo -e "xx $?")
 
 	local vcstate staged_state delimiter_state local_state working_state
+
 	if [[ -n "${error}" ]]; then
 		vcstate="${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
 	else

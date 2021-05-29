@@ -2,7 +2,7 @@ SCRIPT_LOCATION=$(readlink -f $0);
 SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 
 declare -A SYMLINKS=(
-	[".bash-prompt-git.bash"]=".bash-prompt-git.bash"
+	[".git-prompt.bash"]=".git-prompt.bash"
 	[".bash_aliases"]=".bash_aliases"
 	[".bashrc"]=".bashrc"
 	[".common.vimrc"]=".common.vimrc"

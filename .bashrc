@@ -36,25 +36,17 @@ else
 	color_prompt=
 fi
 
-
-# check if git is installed
-git --version 2>&1 >/dev/null
-GIT_IS_AVAILABLE=$?
-if [ $GIT_IS_AVAILABLE -eq 0 ]; then
-	parse_git_branch() {
-		git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-	}
-fi
-
-
-if [ $GIT_IS_AVAILABLE -eq 0 -a "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\] $(parse_git_branch)\[\033[00m\]\$ '
-elif [ $GIT_IS_AVAILABLE -eq 0 -a "$color_prompt" != yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(parse_git_branch)\$ '
-elif [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if [ -f ~/.git-prompt.bash ]; then
+	source ~/.git-prompt.bash
+	if [ "$color_prompt" == "yes" ]; then
+		PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\]$(git_bash_prompt)\[\033[00m\]\$ '
+	else
+		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(git_bash_prompt)\$ '
+	fi
+elif [ "$color_prompt" == "yes" ]; then
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;36m\]\[\033[00m\] \$ '
 else
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w \$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -62,9 +54,6 @@ unset color_prompt force_color_prompt
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 	alias ls='ls --color=auto'
-	#alias dir='dir --color=auto'
-	#alias vdir='vdir --color=auto'
-
 	alias grep='grep --color=auto'
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'

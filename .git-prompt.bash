@@ -52,7 +52,7 @@ if [ "${color_prompt}" == "yes" ]; then
 fi
 
 git_bash_prompt() {
-	local -i ahead=0 behind=0 index_added=0 index_deleted=0 index_modified=0 index_unmerged=0 worktree_added=0 worktree_deleted=0 worktree_modified=0 worktree_unmerged=0 untracked=0
+	local -i ahead=0 behind=0 index_added=0 index_deleted=0 index_modified=0 index_unmerged=0 worktree_added=0 worktree_deleted=0 worktree_modified=0 worktree_unmerged=0
 	local branch="" error="" remote="" line
 
 	while IFS= read -r line ; do
@@ -72,13 +72,12 @@ git_bash_prompt() {
 			# extract commit ahead and behind counts
 			if [[ $remote =~ .*\[.*ahead[[:blank:]]+([0-9]+).*\] ]]; then ahead=$((${BASH_REMATCH[1]})); fi
 			if [[ $remote =~ .*\[.*behind[[:blank:]]+([0-9]+).*\] ]]; then behind=$((${BASH_REMATCH[1]})); fi
-		elif [[ "${x}${y}" = "??" ]]; then ((untracked++))
 		else
 			if [[ "${x}" = "A" ]]; then ((index_added++)); fi
 			if [[ "${x}" = "D" ]]; then ((index_deleted++)); fi
 			if [[ "${x}" = "M" ]] || [[ "${x}" = "R" ]] || [[ "${x}" = "C" ]]; then ((index_modified++)); fi
 			if [[ "${x}" = "U" ]]; then ((index_unmerged++)); fi
-			if [[ "${y}" = "A" ]]; then ((worktree_added++)); fi
+			if [[ "${y}" = "A" ]] || [[ "${y}" = "?" ]]; then ((worktree_added++)); fi
 			if [[ "${y}" = "D" ]]; then ((worktree_deleted++)); fi
 			if [[ "${y}" = "M" ]]; then ((worktree_modified++)); fi
 			if [[ "${y}" = "U" ]]; then ((worktree_unmerged++)); fi

@@ -88,7 +88,7 @@ git_bash_prompt() {
 
 	if [[ -n "${error}" ]]; then
 		vcstate=" ${GIT_DELIMITER_COLOR}[${GIT_ERROR_COLOR}${error}${GIT_DELIMITER_COLOR}]"
-	elif [[ -n "$branch" ]]; then
+	elif [[ -n "${branch}" ]]; then
 		if ((ahead == 0 && behind == 0)); then status_state="${GIT_CLEAN_STATUS_COLOR}${branch} ${GIT_CLEAN_INDICATOR}"
 		elif ((ahead > 0 && behind > 0)); then status_state="${GIT_AHEAD_BEHIND_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead} ${GIT_BEHIND_INDICATOR}${behind}"
 		elif ((ahead > 0)); then status_state="${GIT_AHEAD_COLOR}${branch} ${GIT_AHEAD_INDICATOR}${ahead}"

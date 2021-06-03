@@ -9,6 +9,7 @@ alias gc='git commit -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdn='git diff --name-only'
+alias gds='git diff --name-status'
 alias gdt='git difftool'
 alias ge='git rebase'
 alias gei='git rebase --interactive'
@@ -61,6 +62,7 @@ if [ -f ~/.git-completion.bash ]; then
 	__git_complete gd _git_diff
 	__git_complete gdc _git_diff
 	__git_complete gdn _git_diff
+	__git_complete gds _git_diff
 	__git_complete gdt _git_difftool
 	__git_complete ge _git_rebase
 	__git_complete gei _git_rebase

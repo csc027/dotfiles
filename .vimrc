@@ -20,6 +20,11 @@ inoremap <C-f> <C-x><C-f>
 inoremap <C-l> <C-x><C-l>
 nnoremap <Leader>c :call EnableCoc()<CR>
 
+" diff shortcuts
+nnoremap <Leader>i :call DiffToggleCaseSensitivity()<CR>
+nnoremap <Leader>w :call DiffToggleWhiteSpace()<CR>
+nnoremap <Leader>s :call DiffToggle()<CR>
+
 " general settings
 set background=dark
 set colorcolumn=120,180

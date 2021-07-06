@@ -1,6 +1,3 @@
-# bash-prompt-git.bash - Library that exposes git_bash_prompt() for
-#                        showing version control state in the bash prompt.
-#
 # Copyright (c) 2016 Marc Meadows
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -11,7 +11,7 @@ declare -A SYMLINKS=(
 	[".vimrc"]=".vimrc"
 	[".vsvimrc"]=".vsvimrc"
 	["submodules/dircolors-solarized/dircolors.256dark"]=".dircolors"
-	["submodules/.git-prompt.bash"]=".git-prompt.bash"
+	["submodules/git-bash-prompt/.git-prompt.bash"]=".git-prompt.bash"
 )
 
 for i in ${!SYMLINKS[@]}

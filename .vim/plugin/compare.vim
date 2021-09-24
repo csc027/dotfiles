@@ -1,8 +1,8 @@
 function! DiffToggle()
 	if &diff
-		windo set nodiff
+		windo diffoff
 	else
-		windo set diff
+		windo diffthis
 	endif
 endfunction
 

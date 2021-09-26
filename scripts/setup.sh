@@ -5,7 +5,6 @@ declare -A SYMLINKS=(
 	[".bash_aliases"]=".bash_aliases"
 	[".bashrc"]=".bashrc"
 	[".common.vimrc"]=".common.vimrc"
-	[".git-completion.bash"]=".git-completion.bash"
 	[".gvimrc"]=".gvimrc"
 	[".vim"]=".vim"
 	[".vimrc"]=".vimrc"

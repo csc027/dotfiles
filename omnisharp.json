@@ -6,9 +6,16 @@
 
 		"IndentBlock": true,
 		"IndentBraces": false,
-		"IndentSwitchSection": true,
 		"IndentSwitchCaseSection": true,
 		"IndentSwitchCaseSectionWhenBlock": false,
+		"IndentSwitchSection": true,
+
+		"NewLineForCatch": false,
+		"NewLineForClausesInQuery": true,
+		"NewLineForElse": false,
+		"NewLineForFinally": false,
+		"NewLineForMembersInAnonymousTypes": true,
+		"NewLineForMembersInObjectInit": true,
 
 		"NewLinesForBracesInAccessors": false,
 		"NewLinesForBracesInAnonymousMethods": false,
@@ -20,15 +27,7 @@
 		"NewLinesForBracesInProperties": false,
 		"NewLinesForBracesInTypes": false,
 
-		"NewLineForCatch": false,
-		"NewLineForClausesInQuery": true,
-		"NewLineForElse": false,
-		"NewLineForFinally": false,
-		"NewLineForMembersInAnonymousTypes": true,
-		"NewLineForMembersInObjectInit": true,
-
-		"SpacingAfterMethodDeclarationName": false,
-		"SpacingAroundBinaryOperator": "single",
+		"OrganizeImports": true,
 
 		"SpaceAfterCast": true,
 		"SpaceAfterColonInBaseTypeDeclaration": true,
@@ -53,6 +52,7 @@
 		"SpaceWithinOtherParentheses": false,
 		"SpaceWithinSquareBrackets": false,
 
-		"OrganizeImports": true
+		"SpacingAfterMethodDeclarationName": false,
+		"SpacingAroundBinaryOperator": "single"
 	}
 }

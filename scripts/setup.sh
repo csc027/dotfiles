@@ -19,9 +19,6 @@ do
 	SOURCE="$(dirname "$SCRIPT_DIRECTORY")/$i";
 	DESTINATION="$HOME/${SYMLINKS[$i]}";
 
-	echo $SOURCE
-	echo $DESTINATION
-
 	if [ ! -e $SOURCE ]; then
 		echo -e "The source file '$SOURCE' does not exist!.";
 		continue;

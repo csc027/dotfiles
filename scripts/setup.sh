@@ -3,13 +3,13 @@ SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 
 declare -A SYMLINKS=(
 	[".bash_aliases"]=".bash_aliases"
-	[".bashrc"]=".bashrc"
 	[".common.vimrc"]=".common.vimrc"
 	[".gvimrc"]=".gvimrc"
 	[".vim"]=".vim"
 	[".vimrc"]=".vimrc"
 	[".vsvimrc"]=".vsvimrc"
 	["omnisharp.json"]=".omnisharp/omnisharp.json"
+	["submodules/bashrc/.bashrc"]=".bashrc"
 	["submodules/dircolors-solarized/dircolors.256dark"]=".dircolors"
 	["submodules/git-bash-prompt/.git-prompt.bash"]=".git-prompt.bash"
 )

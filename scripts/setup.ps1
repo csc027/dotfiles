@@ -11,7 +11,7 @@ if ($PsVersionTable.PsVersion.Major -le 5) {
 
 if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
 	$Arguments = if ($Force) {
-		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)", '-Force' 
+		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)", '-Force'
 	} else {
 		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)"
 	}
@@ -41,12 +41,12 @@ function New-Symlink {
 
 	if ($IsWindows) {
 		if (Test-Path -Path $Value -PathType Container) {
-			cmd /c mklink /d $Path $Value | Out-Null;
+			cmd /c mklink /d $Path $Value > $null;
 		} else {
-			cmd /c mklink $Path $Value | Out-Null;
+			cmd /c mklink $Path $Value > $null;
 		}
 	} else {
-		New-Item -ItemType SymbolicLink -Path $Path -Value $Value | Out-Null;
+		New-Item -ItemType SymbolicLink -Path $Path -Value $Value > $null;
 	}
 }
 
@@ -91,6 +91,10 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},
 	@{
+		'Source' = 'omnisharp.json';
+		'Destination' = [IO.Path]::Combine($HOME, '.omnisharp', 'omnisharp.json');
+	},
+	@{
 		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
 		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
 	}
@@ -121,6 +125,12 @@ foreach ($Item in $Items) {
 		Write-Host "The symbolic link '$($Item.Destination)' already exists.";
 	} else {
 		Write-Host 'done.  The symbolic link does not exist.';
+		$ParentDirectory = Split-Path -Path $Item.Destination -Parent;
+		if (-not (Test-Path -Path $ParentDirectory -PathType Container)) {
+			Write-Host "Creating missing parent directory '$ParentDirectory'... " -NoNewLine;
+			New-Item -ItemType Directory -Path $ParentDirectory > $null;
+			Write-Host 'done.';
+		}
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
 		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host 'done.';

@@ -9,6 +9,7 @@ declare -A SYMLINKS=(
 	[".vim"]=".vim"
 	[".vimrc"]=".vimrc"
 	[".vsvimrc"]=".vsvimrc"
+	["omnisharp.json"]=".omnisharp/omnisharp.json"
 	["submodules/dircolors-solarized/dircolors.256dark"]=".dircolors"
 	["submodules/git-bash-prompt/.git-prompt.bash"]=".git-prompt.bash"
 )

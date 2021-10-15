@@ -8,7 +8,7 @@
 		"IndentBraces": false,
 		"IndentSwitchSection": true,
 		"IndentSwitchCaseSection": true,
-		"IndentSwitchCaseSectionWhenBlock": true,
+		"IndentSwitchCaseSectionWhenBlock": false,
 
 		"NewLinesForBracesInAccessors": false,
 		"NewLinesForBracesInAnonymousMethods": false,
@@ -21,11 +21,11 @@
 		"NewLinesForBracesInTypes": false,
 
 		"NewLineForCatch": false,
-		"NewLineForClausesInQuery": false,
+		"NewLineForClausesInQuery": true,
 		"NewLineForElse": false,
 		"NewLineForFinally": false,
-		"NewLineForMembersInAnonymousTypes": false,
-		"NewLineForMembersInObjectInit": false,
+		"NewLineForMembersInAnonymousTypes": true,
+		"NewLineForMembersInObjectInit": true,
 
 		"SpacingAfterMethodDeclarationName": false,
 		"SpacingAroundBinaryOperator": "single",

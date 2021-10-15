@@ -31,7 +31,7 @@ do
 	if [ ! -e $DESTINATION ]; then
 		echo -e "done.  The symlink does not exist.";
 		echo -n "Creating a symlink at '$DESTINATION'... ";
-		mkdir --parents $DESTINATION;
+		mkdir --parents $(dirname $DESTINATION);
 		ln -s $SOURCE $DESTINATION;
 		echo "done";
 	elif { [ "$1" = "-f" ] || [ "$1" = "--force" ]; } && [ ! -L $DESTINATION ]; then

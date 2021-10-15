@@ -27,4 +27,4 @@
 	url = https://github.com/csc027/git-bash-prompt.git
 [submodule "submodules/bashrc"]
 	path = submodules/bashrc
-	url = git@github.com:csc027/bashrc.git
+	url = https://github.com/csc027/bashrc.git

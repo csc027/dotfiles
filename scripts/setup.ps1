@@ -59,11 +59,11 @@ if (-not (Test-Path -Path $ProfileDirectory)) {
 # List files to be symbolically linked to other locations
 $Items = @(
 	@{
-		'Source' = '.aliases.psm1';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.aliases.psm1';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
 	},
 	@{
-		'Source' = '.common.vimrc';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.common.vimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.common.vimrc';
 	},
 	@{
@@ -71,7 +71,7 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	},
 	@{
-		'Source' = '.gvimrc';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.gvimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.gvimrc';
 	},
 	@{
@@ -83,15 +83,15 @@ $Items = @(
 		'Destination' = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath 'vimfiles' } else { Join-Path -Path $HOME -ChildPath '.vim' });
 	},
 	@{
-		'Source' = '.vimrc';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.vimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vimrc';
 	},
 	@{
-		'Source' = '.vsvimrc';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},
 	@{
-		'Source' = 'omnisharp.json';
+		'Source' = Join-Path -Path 'settings' -ChildPath 'omnisharp.json';
 		'Destination' = [IO.Path]::Combine($HOME, '.omnisharp', 'omnisharp.json');
 	},
 	@{

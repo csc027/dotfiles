@@ -103,10 +103,19 @@ $Items = @(
 if (Get-Command -Name 'wt' -ErrorAction 'SilentlyContinue') {
 	$PackageSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState', 'settings.json');
 	$LocalSettingsPath = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'Microsoft', 'Windows Terminal', 'settings.json');
-	$Items += New-Object -TypeName PSObject -Property @{
-		'Source' = 'settings.json';
-		'Destination' = $(if (Test-Path -Path $PackageSettingsPath) { $PackageSettingsPath } else { $LocalSettingsPath });
-	};
+	$RepositorySettingsPath = Join-Path -Path 'settings' -ChildPath 'settings.json';
+	if (Test-Path -Path $LocalSettingsPath) {
+		$Items += New-Object -TypeName PSObject -Property @{
+			'Source' = $RepositorySettingsPath;
+			'Destination' = $LocalSettingsPath;
+		};
+	}
+	if (Test-Path -Path $PackageSettingsPath) {
+		$Items += New-Object -TypeName PSObject -Property @{
+			'Source' = $RepositorySettingsPath;
+			'Destination' = $PackageSettingsPath;
+		};
+	}
 }
 
 # Create the symbolic links

@@ -123,10 +123,10 @@ foreach ($Item in $Items) {
 	$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
-	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewLine;
+	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewline;
 	if ($Force -and (Test-Path -Path $Item.Destination) -and (Get-Item -Path $Item.Destination | Select-Object -ExpandProperty 'Attributes') -notmatch 'ReparsePoint') {
 		Write-Host 'done.  A file/directory exists, but is not a symbolic link.';
-		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
+		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewline;
 		New-Symlink -Path $Item.Destination -Value $Source -Force:$Force;
 		Write-Host 'done.';
 	} elseif (Test-Path -Path $Item.Destination) {
@@ -136,11 +136,11 @@ foreach ($Item in $Items) {
 		Write-Host 'done.  The symbolic link does not exist.';
 		$ParentDirectory = Split-Path -Path $Item.Destination -Parent;
 		if (-not (Test-Path -Path $ParentDirectory -PathType Container)) {
-			Write-Host "Creating missing parent directory '$ParentDirectory'... " -NoNewLine;
+			Write-Host "Creating missing parent directory '$ParentDirectory'... " -NoNewline;
 			New-Item -ItemType Directory -Path $ParentDirectory > $null;
 			Write-Host 'done.';
 		}
-		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewLine;
+		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewline;
 		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host 'done.';
 	}
@@ -154,9 +154,9 @@ if (Get-Command -Name 'Install-Module' -ErrorAction SilentlyContinue) {
 		$Modules = @('posh-git', 'PsReadLine');
 	}
 	foreach ($Module in $Modules) {
-		Write-Host "Checking if module '$Module' is installed... " -NoNewLine;
+		Write-Host "Checking if module '$Module' is installed... " -NoNewline;
 		if (-not (Get-Module -Name $Module) -and -not (Get-InstalledModule -Name $Module)) {
-			Write-Host "done.$([Environment]::NewLine)Installing '$Module'... " -NoNewLine;
+			Write-Host "done.$([Environment]::NewLine)Installing '$Module'... " -NoNewline;
 			Install-Module -Name $Module -Force;
 			Write-Host 'done.';
 		} else {

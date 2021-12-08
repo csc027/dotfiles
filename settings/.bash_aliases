@@ -25,6 +25,7 @@ alias ghl='git stash list'
 alias ghp='git stash pop'
 alias ghw='git stash show -p'
 alias ghwn='git stash show'
+alias ghu='git stash -u'
 alias gi='git init'
 alias gk='git checkout'
 alias gkb='git checkout -b'
@@ -77,6 +78,7 @@ __git_complete ghl _git_stash
 __git_complete ghp _git_stash
 __git_complete ghw _git_stash
 __git_complete ghwn _git_stash
+__git_complete ghu _git_stash
 __git_complete gi _git_init
 __git_complete gk _git_checkout
 __git_complete gkb _git_checkout

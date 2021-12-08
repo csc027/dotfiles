@@ -47,6 +47,7 @@ function Invoke-GitStashList { git stash list $args }
 function Invoke-GitStashPop { git stash pop $args }
 function Invoke-GitStashShow { git stash show -p $args }
 function Invoke-GitStashShowNameOnly { git stash show $args }
+function Invoke-GitStashUntracked { git stash -u $args }
 function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
 
@@ -78,6 +79,7 @@ $Aliases = @{
 	'ghp' = 'Invoke-GitStashPop';
 	'ghw' = 'Invoke-GitStashShow';
 	'ghwn' = 'Invoke-GitStashShowNameOnly';
+	'ghu' = 'Invoke-GitStashUntracked';
 	'gi' = 'Invoke-GitInit';
 	'gk' = 'Invoke-GitCheckout';
 	'gkb' = 'Invoke-GitCheckoutBranch';

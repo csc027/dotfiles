@@ -45,6 +45,18 @@ set shiftround
 set title
 set undolevels=1000
 
+" shell settings
+if has("win32") || has("gui_win32")
+	if executable("pwsh")
+		set shell=pwsh
+	else
+		set shell=powerShell
+	endif
+	set shellcmdflag=-ExecutionPolicy\ RemoteSigned\ -NoLogo\ -Command 
+	set shellquote=\"
+	set shellxquote= 
+endif
+
 " ft/syntax settings
 syntax on
 filetype plugin indent on

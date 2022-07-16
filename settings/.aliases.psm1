@@ -26,6 +26,8 @@ function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
 function Invoke-GitLogDiff { git log --decorate --oneline --graph --color --boundary $args }
 function Invoke-GitLogDiffLong { git log --decorate --graph --color --boundary $args }
 function Invoke-GitLogLong { git log --decorate --graph --color $args }
+function Invoke-GitLogLongPatch { git log --decorate --graph --color -p $args }
+function Invoke-GitLogPatch { git log --decorate --oneline --graph --color -p $args }
 function Invoke-GitLogRegularExpression { git log --decorate --color -G $args }
 function Invoke-GitLogSearch { git log --decorate --color -S $args }
 function Invoke-GitMerge { git merge $args }
@@ -84,9 +86,11 @@ $Aliases = @{
 	'gk' = 'Invoke-GitCheckout';
 	'gkb' = 'Invoke-GitCheckoutBranch';
 	'gl' = 'Invoke-GitLog';
+	'glp' = 'Invoke-GitLogPatch';
 	'gld' = 'Invoke-GitLogDiff';
 	'gldl' = 'Invoke-GitLogDiffLong';
 	'gll' = 'Invoke-GitLogLong';
+	'gllp' = 'Invoke-GitLogLongPatch';
 	'glr' = 'Invoke-GitLogRegularExpression';
 	'gls' = 'Invoke-GitLogSearch';
 	'glt' = 'Invoke-GitListTree';

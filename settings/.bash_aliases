@@ -31,10 +31,12 @@ alias gk='git checkout'
 alias gkb='git checkout -b'
 alias gl='git log --decorate --oneline --graph --color'
 alias glp='git log --decorate --oneline --graph --color -p'
+alias glpf='git log --decorate --oneline --graph --color -p --follow --'
 alias gld='git log --decorate --oneline --graph --color --boundary'
 alias gldl='git log --decorate --graph --color --boundary'
 alias gll='git log --decorate --graph --color'
 alias gllp='git log --decorate --graph --color -p'
+alias gllpf='git log --decorate --graph --color -p --follow --'
 alias glr='git log --decorate --color -G'
 alias gls='git log --decorate --color -S'
 alias glt='git ls-tree --name-only -r'
@@ -89,7 +91,9 @@ __git_complete gld _git_log
 __git_complete gldl _git_log
 __git_complete gll _git_log
 __git_complete gllp _git_log
+__git_complete gllpf _git_log
 __git_complete glp _git_log
+__git_complete glpf _git_log
 __git_complete glr _git_log
 __git_complete gls _git_log
 __git_complete glt _git_ls_tree

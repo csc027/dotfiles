@@ -91,9 +91,9 @@ __git_complete gld _git_log
 __git_complete gldl _git_log
 __git_complete gll _git_log
 __git_complete gllp _git_log
-__git_complete gllpf _git_log
+__git_complete_index_file gllpf
 __git_complete glp _git_log
-__git_complete glpf _git_log
+__git_complete_index_file glpf
 __git_complete glr _git_log
 __git_complete gls _git_log
 __git_complete glt _git_ls_tree

@@ -99,7 +99,7 @@ __git_complete glr _git_log
 __git_complete gls _git_log
 __git_complete glt _git_ls_tree
 __git_complete gmg _git_merge
-__git_complete_index_file gmt _git_mergetool
+__git_complete_index_file gmt
 __git_complete go _git_remote
 __git_complete goa _git_remote
 __git_complete gp _git_push

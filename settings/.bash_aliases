@@ -41,6 +41,7 @@ alias glr='git log --decorate --color -G'
 alias gls='git log --decorate --color -S'
 alias glt='git ls-tree --name-only -r'
 alias gmg='git merge'
+alias gmt='git mergetool'
 alias go='git remote -v'
 alias goa='git remote add'
 alias gp='git push'
@@ -98,6 +99,7 @@ __git_complete glr _git_log
 __git_complete gls _git_log
 __git_complete glt _git_ls_tree
 __git_complete gmg _git_merge
+__git_complete_index_file gmt _git_mergetool
 __git_complete go _git_remote
 __git_complete goa _git_remote
 __git_complete gp _git_push

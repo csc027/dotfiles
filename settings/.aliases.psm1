@@ -33,6 +33,7 @@ function Invoke-GitLogPatchFollow { git log --decorate --oneline --graph --color
 function Invoke-GitLogRegularExpression { git log --decorate --color -G $args }
 function Invoke-GitLogSearch { git log --decorate --color -S $args }
 function Invoke-GitMerge { git merge $args }
+function Invoke-GitMergeTool { git mergetool $args }
 function Invoke-GitMv { git mv $args }
 function Invoke-GitPull { git pull $args }
 function Invoke-GitPush { git push $args }
@@ -99,6 +100,7 @@ $Aliases = @{
 	'gls' = 'Invoke-GitLogSearch';
 	'glt' = 'Invoke-GitListTree';
 	'gmg' = 'Invoke-GitMerge';
+	'gmt' = 'Invoke-GitMergeTool';
 	'go' = 'Invoke-GitRemote';
 	'goa' = 'Invoke-GitRemoteAdd';
 	'gp' = 'Invoke-GitPush';

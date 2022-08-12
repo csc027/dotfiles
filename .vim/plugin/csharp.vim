@@ -1,5 +1,6 @@
 " OmniSharp settings
 let g:OmniSharp_popup_options = { 'highlight': 'Normal', 'padding': [1], 'border': [1] }
+let g:OmniSharp_server_net_use6 = 1
 
 " Don't autoselect first omnicomplete option, show options even if there is only
 " one (so the preview documentation is accessible). Remove 'preview', 'popup'

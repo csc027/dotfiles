@@ -25,6 +25,9 @@ nnoremap <Leader>i :call DiffToggleCaseSensitivity()<CR>
 nnoremap <Leader>w :call DiffToggleWhiteSpace()<CR>
 nnoremap <Leader>s :call DiffToggle()<CR>
 
+" netrw shortcuts
+nnoremap <Leader>f :Lexplore<CR>
+
 " general settings
 set background=dark
 set colorcolumn=120,180
@@ -58,5 +61,11 @@ let g:lightline = { 'colorscheme': 'solarized', 'active': { 'left': [ [ 'mode', 
 if has("termguicolors")
 	set termguicolors
 endif
+
+" netrw settings
+let g:netrw_banner = 0
+let g:netrw_browse_split = 4
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 30
 
 colorscheme solarized8_flat

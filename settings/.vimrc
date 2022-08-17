@@ -27,6 +27,7 @@ nnoremap <Leader>s :call DiffToggle()<CR>
 
 " netrw shortcuts
 nnoremap <Leader>f :Lexplore<CR>
+nnoremap <Leader>F :Lexplore!<CR>
 
 " general settings
 set background=dark

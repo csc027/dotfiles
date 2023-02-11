@@ -21,4 +21,4 @@
 	url = https://github.com/csc027/bashrc.git
 [submodule ".vim/pack/complete/start/lspconfig"]
 	path = .vim/pack/complete/start/lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git

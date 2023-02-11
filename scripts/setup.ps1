@@ -63,10 +63,6 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.common.vimrc';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.common.vimrc';
-	},
-	@{
 		'Source' = [IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark');
 		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	},
@@ -83,8 +79,12 @@ $Items = @(
 		'Destination' = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath 'vimfiles' } else { Join-Path -Path $HOME -ChildPath '.vim' });
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.vimrc';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.vimrc';
+		'Source' = '.vim';
+		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
+	},
+	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath 'init.lua';
+		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim', 'init.lua') } else { [IO.Path]::Combine($HOME, '.config', 'nvim', 'init.lua') })
 	},
 	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';

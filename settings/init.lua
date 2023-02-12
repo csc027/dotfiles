@@ -5,9 +5,10 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true })
 
 -- buffer shortcuts
-vim.api.nvim_set_keymap('n', '<Leader>n', ':call NextBuffer()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>d', ':call DeleteBuffer()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>p', ':call PreviousBuffer()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>n', ':bnext<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>p', ':bprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>l', ':buffers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>b', ':buffer<Space>', { noremap = true })
 

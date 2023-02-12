@@ -25,3 +25,9 @@ function DiffToggleWhiteSpace()
 	end
 	vim.cmd 'diffupdate'
 end
+
+-- diff shortcuts
+local opts = { noremap = true }
+vim.api.nvim_set_keymap('n', '<Leader>i', ':lua DiffToggleCaseSensitivity()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<Leader>w', ':lua DiffToggleWhiteSpace()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<Leader>s', ':lua DiffToggle()<CR>', opts)

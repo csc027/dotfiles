@@ -19,9 +19,10 @@ vim.api.nvim_set_keymap('i', '<C-l>', '<C-x><C-l>', { noremap = true })
 require('complete')
 
 -- diff shortcuts
-vim.api.nvim_set_keymap('n', '<Leader>i', ':call DiffToggleCaseSensitivity()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>w', ':call DiffToggleWhiteSpace()<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>s', ':call DiffToggle()<CR>', { noremap = true })
+require('compare')
+vim.api.nvim_set_keymap('n', '<Leader>i', ':lua DiffToggleCaseSensitivity()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>w', ':lua DiffToggleWhiteSpace()<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>s', ':lua DiffToggle()<CR>', { noremap = true })
 
 -- netrw shortcuts
 vim.api.nvim_set_keymap('n', '<Leader>f', ':Lexplore<CR>', { noremap = true })

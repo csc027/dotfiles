@@ -4,7 +4,6 @@ SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 declare -A SYMLINKS=(
 	[".vim"]=".config/nvim"
 	["settings/.bash_aliases"]=".bash_aliases"
-	["settings/.gvimrc"]=".gvimrc"
 	["settings/init.lua"]=".config/nvim/init.lua"
 	["settings/.vsvimrc"]=".vsvimrc"
 	["settings/omnisharp.json"]=".omnisharp/omnisharp.json"

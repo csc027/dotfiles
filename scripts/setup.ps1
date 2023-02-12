@@ -67,16 +67,8 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.gvimrc';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.gvimrc';
-	},
-	@{
 		'Source' = Join-Path -Path 'scripts' -ChildPath 'profile.ps1';
 		'Destination' = $PROFILE;
-	},
-	@{
-		'Source' = '.vim';
-		'Destination' = $(if ($IsWindows) { Join-Path -Path $HOME -ChildPath 'vimfiles' } else { Join-Path -Path $HOME -ChildPath '.vim' });
 	},
 	@{
 		'Source' = '.vim';

@@ -32,7 +32,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<Leader>td', vim.lsp.buf.type_definition, bufopts)
 end
 
-require 'lspconfig'.omnisharp.setup {
+require('lspconfig')['omnisharp'].setup {
 	on_attach = on_attach,
 	flags = { debounce_text_changes = 150 },
 	cmd = { 'dotnet', '' },
@@ -45,7 +45,7 @@ require 'lspconfig'.omnisharp.setup {
 	analyze_open_documents_only = false
 }
 
-require'lspconfig'.powershell_es.setup {
+require('lspconfig')['powershell_es'].setup {
 	bundle_path = '',
 	on_attach = on_attach
 }

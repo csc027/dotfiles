@@ -22,3 +22,6 @@
 [submodule ".vim/pack/complete/start/lspconfig"]
 	path = .vim/pack/complete/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".vim/pack/treesitter/start/treesitter"]
+	path = .vim/pack/treesitter/start/treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git

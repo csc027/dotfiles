@@ -3,7 +3,6 @@ require('compare')
 require('complete')
 require('general')
 require('netrw')
-require('other')
 require('window')
 
 -- ft/syntax settings

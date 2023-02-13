@@ -1,15 +1,15 @@
 -- completion shortcuts
 local iopts = { noremap = true }
-vim.api.nvim_set_keymap('i', '<C-k>', '<C-x><C-k>', iopts)
-vim.api.nvim_set_keymap('i', '<C-o>', '<C-x><C-o>', iopts)
-vim.api.nvim_set_keymap('i', '<C-f>', '<C-x><C-f>', iopts)
-vim.api.nvim_set_keymap('i', '<C-l>', '<C-x><C-l>', iopts)
+vim.keymap.set('i', '<C-k>', '<C-x><C-k>', iopts)
+vim.keymap.set('i', '<C-o>', '<C-x><C-o>', iopts)
+vim.keymap.set('i', '<C-f>', '<C-x><C-f>', iopts)
+vim.keymap.set('i', '<C-l>', '<C-x><C-l>', iopts)
 
 local nopts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<Leader>e', vim.diagnostic.open_float, nopts)
-vim.api.nvim_set_keymap('n', '[d', vim.diagnostic.goto_prev, nopts)
-vim.api.nvim_set_keymap('n', ']d', vim.diagnostic.goto_next, nopts)
-vim.api.nvim_set_keymap('n', '<Leader>sl', vim.diagnostic.setloclist, nopts)
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, nopts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, nopts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, nopts)
+vim.keymap.set('n', '<Leader>sl', vim.diagnostic.setloclist, nopts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -20,16 +20,16 @@ local on_attach = function(client, bufnr)
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.api.nvim_set_keymap('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.api.nvim_set_keymap('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.api.nvim_set_keymap('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.api.nvim_set_keymap('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.api.nvim_set_keymap('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.api.nvim_set_keymap('n', '<Leader>td', vim.lsp.buf.type_definition, bufopts)
-	vim.api.nvim_set_keymap('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
-	vim.api.nvim_set_keymap('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-	vim.api.nvim_set_keymap('n', 'gr', vim.lsp.buf.references, bufopts)
-	vim.api.nvim_set_keymap('n', '<Leader>q', function() vim.lsp.buf.format { async = true } end, bufopts)
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<Leader>td', vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+	vim.keymap.set('n', '<Leader>q', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 require 'lspconfig'.omnisharp.setup {

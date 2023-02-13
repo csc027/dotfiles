@@ -1,7 +1,7 @@
 -- netrw shortcuts
 local opts = { noremap = true }
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Lexplore<CR>', opts)
-vim.api.nvim_set_keymap('n', '<Leader>F', ':Lexplore!<CR>', opts)
+vim.keymap.set('n', '<Leader>f', ':Lexplore<CR>', opts)
+vim.keymap.set('n', '<Leader>F', ':Lexplore!<CR>', opts)
 
 -- netrw settings
 vim.g.netrw_banner = 0

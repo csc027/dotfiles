@@ -25,3 +25,6 @@
 [submodule ".vim/pack/treesitter/start/treesitter"]
 	path = .vim/pack/treesitter/start/treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".vim/pack/complete/omnisharp_extended"]
+	path = .vim/pack/complete/omnisharp_extended
+	url = https://github.com/Hoffs/omnisharp-extended-lsp.nvim

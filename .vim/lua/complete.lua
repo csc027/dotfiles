@@ -36,7 +36,7 @@ require('lspconfig')['omnisharp'].setup {
 	on_attach = on_attach,
 	flags = { debounce_text_changes = 150 },
 	cmd = { },
-	handler = {
+	handlers = {
 		["textDocument/definition"] = require('omnisharp_extended').handler
 	},
 	enable_editorconfig_support = true,

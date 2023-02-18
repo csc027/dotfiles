@@ -1,15 +1,9 @@
-[submodule ".vim/bundle/lightline.vim"]
-	path = .vim/pack/plugins/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-repeat"]
 	path = .vim/pack/plugins/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
-[submodule ".vim/pack/colors/start/vim-solarized8"]
-	path = .vim/pack/colors/start/vim-solarized8
-	url = https://github.com/lifepillar/vim-solarized8.git
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized
@@ -28,3 +22,9 @@
 [submodule ".vim/pack/complete/start/omnisharp_extended"]
 	path = .vim/pack/complete/start/omnisharp_extended
 	url = https://github.com/Hoffs/omnisharp-extended-lsp.nvim
+[submodule ".vim/pack/colors/start/nvim-solarized"]
+	path = .vim/pack/colors/start/nvim-solarized
+	url = https://github.com/ishan9299/nvim-solarized-lua.git
+[submodule ".vim/pack/plugins/start/lualine.nvim"]
+	path = .vim/pack/plugins/start/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git

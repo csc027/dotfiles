@@ -50,5 +50,6 @@ require('lspconfig')['omnisharp'].setup {
 
 require('lspconfig')['powershell_es'].setup {
 	bundle_path = '',
-	on_attach = on_attach
+	on_attach = on_attach,
+	settings = { powershell = { scriptAnalysis = { settingsPath = '' } } }
 }

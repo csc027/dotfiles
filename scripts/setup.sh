@@ -2,7 +2,7 @@ SCRIPT_LOCATION=$(readlink -f $0);
 SCRIPT_DIRECTORY=$(dirname $SCRIPT_LOCATION);
 
 declare -A SYMLINKS=(
-	[".vim"]=".config/nvim"
+	["nvim"]=".config/nvim"
 	["settings/.bash_aliases"]=".bash_aliases"
 	["settings/.vsvimrc"]=".vsvimrc"
 	["settings/omnisharp.json"]=".omnisharp/omnisharp.json"

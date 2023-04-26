@@ -71,7 +71,7 @@ $Items = @(
 		'Destination' = $PROFILE;
 	},
 	@{
-		'Source' = '.vim';
+		'Source' = 'nvim';
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
 	},
 	@{

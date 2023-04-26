@@ -75,10 +75,6 @@ $Items = @(
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath 'init.lua';
-		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim', 'init.lua') } else { [IO.Path]::Combine($HOME, '.config', 'nvim', 'init.lua') })
-	},
-	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},

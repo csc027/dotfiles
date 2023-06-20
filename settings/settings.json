@@ -71,8 +71,8 @@
 			}
 		]
 	}, "schemes": [
-	], "keybindings": [
-		{ "command": {"action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
+	], "actions": [
+		{ "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
 		{ "command": "paste", "keys": "ctrl+shift+v" },
 		{ "command": "find", "keys": "ctrl+shift+f" }
 	]

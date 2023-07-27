@@ -29,6 +29,9 @@ require('nvim-treesitter.configs').setup {
 			if (lang == 'gitignore') then
 				return true
 			end
+			if (vim.bo.filetype == 'ps1') then
+				return true
+			end
 
 			local max_filesize = 32 * 1024 * 1024 -- 1 MB
 			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))

@@ -1,8 +1,8 @@
 function DiffToggle()
 	if (vim.wo.diff) then
-		vim.cmd 'windo diffoff'
+		vim.cmd.windo('diffoff')
 	else
-		vim.cmd 'windo diffthis'
+		vim.cmd.windo('diffthis')
 	end
 end
 

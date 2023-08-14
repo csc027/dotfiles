@@ -12,7 +12,7 @@ function DiffToggleCaseSensitivity()
 	else
 		vim.opt.diffopt:append { 'icase' }
 	end
-	vim.cmd 'diffupdate'
+	vim.cmd.diffupdate()
 end
 
 function DiffToggleWhiteSpace()
@@ -23,7 +23,7 @@ function DiffToggleWhiteSpace()
 	else
 		vim.opt.diffopt:append { 'iwhiteall' }
 	end
-	vim.cmd 'diffupdate'
+	vim.cmd.diffupdate()
 end
 
 -- diff shortcuts

@@ -1,7 +1,7 @@
 -- terminal aware buffer delete
 function BDelete()
 	if (vim.bo.buftype == 'terminal') then
-		vim.cmd.bdelete({ bang = true })
+		vim.cmd.bdelete { bang = true }
 	else
 		vim.cmd.bdelete()
 	end

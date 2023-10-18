@@ -14,6 +14,9 @@ vim.keymap.set('n', '<Leader>sl', vim.diagnostic.setloclist, nopts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+	-- Disable lspconfig coloring for languages that have better native and/or treesitter coloring
+	client.server_capabilities.semanticTokensProvider = nil;
+
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

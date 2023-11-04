@@ -1,3 +1,4 @@
+# git wrappers
 function Invoke-GitAdd { git add $args }
 function Invoke-GitAddChunk { git add -p $args }
 function Invoke-GitBranch { git branch $args }
@@ -55,6 +56,33 @@ function Invoke-GitStashShowNameOnly { git stash show $args }
 function Invoke-GitStashUntracked { git stash -u $args }
 function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
+
+#github cli wrapper
+function Invoke-GitHubCli { gh.exe $args }
+function Invoke-GitHubCliAlias { gh.exe alias $args }
+function Invoke-GitHubCliApi { gh.exe api $args }
+function Invoke-GitHubCliAuth { gh.exe auth $args }
+function Invoke-GitHubCliBrowse { gh.exe browse $args }
+function Invoke-GitHubCliCodespace { gh.exe codespace $args }
+function Invoke-GitHubCliConfig { gh.exe config $args }
+function Invoke-GitHubCliExtension { gh.exe extension $args }
+function Invoke-GitHubCliGist { gh.exe gist $args }
+function Invoke-GitHubCliGpgKey { gh.exe gpg-key $args }
+function Invoke-GitHubCliIssue { gh.exe issue $args }
+function Invoke-GitHubCliLabel { gh.exe label $args }
+function Invoke-GitHubCliOrg { gh.exe org $args }
+function Invoke-GitHubCliPr { gh.exe pr $args }
+function Invoke-GitHubCliProject { gh.exe project $args }
+function Invoke-GitHubCliRelease { gh.exe release $args }
+function Invoke-GitHubCliRepo { gh.exe repo $args }
+function Invoke-GitHubCliRuleset { gh.exe ruleset $args }
+function Invoke-GitHubCliSearch { gh.exe search $args }
+function Invoke-GitHubCliSecret { gh.exe secret $args }
+function Invoke-GitHubCliSshKey { gh.exe ssh-key $args }
+function Invoke-GitHubCliStatus { gh.exe status $args }
+function Invoke-GitHubCliVariable { gh.exe variable $args }
+
+#neovim wrapper
 function Invoke-Neovim {
 	$MultislotArgument = @('--startuptime', '-c', '--cmd', '-S', '-l', '-ll', '-u', '-i', '-s', '-w', '-w', '-W', '--listen');
 	$ArgumentList = @();
@@ -87,6 +115,7 @@ function Invoke-Neovim {
 }
 
 $Aliases = @{
+	#git
 	'ga' = 'Invoke-GitAdd';
 	'gap' = 'Invoke-GitAddChunk';
 	'gb' = 'Invoke-GitBranch';
@@ -144,8 +173,36 @@ $Aliases = @{
 	'gv' = 'Invoke-GitMv';
 	'gw' = 'Invoke-GitShow';
 	'gwu' = 'Invoke-GitShowUpstreamBranches';
+
+	#github cli
+	'ghb' = 'Invoke-GitHubCli';
+	'ghalias' = 'Invoke-GitHubCliAlias';
+	'ghapi' = 'Invoke-GitHubCliApi';
+	'ghauth' = 'Invoke-GitHubCliAuth';
+	'ghbrws' = 'Invoke-GitHubCliBrowse';
+	'ghcode' = 'Invoke-GitHubCliCodespace';
+	'ghcfg' = 'Invoke-GitHubCliConfig';
+	'ghext' = 'Invoke-GitHubCliExtension';
+	'ghgist' = 'Invoke-GitHubCliGist';
+	'ghgpg' = 'Invoke-GitHubCliGpgKey';
+	'ghisu' = 'Invoke-GitHubCliIssue';
+	'ghlbl' = 'Invoke-GitHubCliLabel';
+	'ghorg' = 'Invoke-GitHubCliOrg';
+	'ghpr' = 'Invoke-GitHubCliPr';
+	'ghproj' = 'Invoke-GitHubCliProject';
+	'ghrls' = 'Invoke-GitHubCliRelease';
+	'ghrepo' = 'Invoke-GitHubCliRepo';
+	'ghrule' = 'Invoke-GitHubCliRuleset';
+	'ghfind' = 'Invoke-GitHubCliSearch';
+	'ghsct' = 'Invoke-GitHubCliSecret';
+	'ghssh' = 'Invoke-GitHubCliSshKey';
+	'ghst' = 'Invoke-GitHubCliStatus';
+	'ghvar' = 'Invoke-GitHubCliVariable';
+
+	#neovim
 	'nvim' = 'Invoke-Neovim';
 };
+
 
 foreach ($Key in $Aliases.Keys) {
 	while (Test-Path -Path "Alias:\$Key") {

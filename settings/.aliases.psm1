@@ -55,8 +55,6 @@ function Invoke-GitStashShowNameOnly { git stash show $args }
 function Invoke-GitStashUntracked { git stash -u $args }
 function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
-
-function Invoke-GitHubCli { gh.exe $args }
 function Invoke-Neovim {
 	$MultislotArgument = @('--startuptime', '-c', '--cmd', '-S', '-l', '-ll', '-u', '-i', '-s', '-w', '-w', '-W', '--listen');
 	$ArgumentList = @();
@@ -110,10 +108,10 @@ $Aliases = @{
 	'gfp' = 'Invoke-GitFetchPrune';
 	'gft' = 'Invoke-GitFetchTags';
 	'gg' = 'Invoke-GitGrep';
-	'gh' = 'Invoke-GitStash';
 	'gha' = 'Invoke-GitStashApply';
 	'ghl' = 'Invoke-GitStashList';
-	'ghp' = 'Invoke-GitStashPop';
+	'gho' = 'Invoke-GitStashPop';
+	'ghp' = 'Invoke-GitStash';
 	'ghw' = 'Invoke-GitStashShow';
 	'ghwn' = 'Invoke-GitStashShowNameOnly';
 	'ghu' = 'Invoke-GitStashUntracked';
@@ -146,8 +144,6 @@ $Aliases = @{
 	'gv' = 'Invoke-GitMv';
 	'gw' = 'Invoke-GitShow';
 	'gwu' = 'Invoke-GitShowUpstreamBranches';
-
-	'ghb' = 'Invoke-GitHubCli';
 	'nvim' = 'Invoke-Neovim';
 };
 

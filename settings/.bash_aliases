@@ -19,10 +19,10 @@ alias gfap='git fetch --all --prune'
 alias gfp='git fetch --prune'
 alias gft='git fetch --tags'
 alias gg='git grep'
-alias gh='git stash'
 alias gha='git stash apply'
 alias ghl='git stash list'
-alias ghp='git stash pop'
+alias gho='git stash pop'
+alias ghp='git stash'
 alias ghw='git stash show -p'
 alias ghwn='git stash show'
 alias ghu='git stash -u'
@@ -77,9 +77,9 @@ __git_complete gfap _git_fetch
 __git_complete gfp _git_fetch
 __git_complete gft _git_fetch
 __git_complete gg _git_grep
-__git_complete gh _git_stash
 __git_complete gha _git_stash
 __git_complete ghl _git_stash
+__git_complete gho _git_stash
 __git_complete ghp _git_stash
 __git_complete ghw _git_stash
 __git_complete ghwn _git_stash

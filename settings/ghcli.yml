@@ -1,0 +1,9 @@
+pcat: pr view --comments
+pls: search prs --author '@me' --state 'open'
+pm: pr merge
+prm: pr close
+prv: pr review
+rls: search prs --review-requested '@me' --state 'open'
+rpcat: repo view
+rpls: repo list
+s: status

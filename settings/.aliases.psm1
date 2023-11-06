@@ -46,15 +46,37 @@ function Invoke-GitRemoteAdd { git remote add $args }
 function Invoke-GitReset { git reset $args }
 function Invoke-GitShow { git show $args }
 function Invoke-GitShowUpstreamBranches { git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads $args }
-function Invoke-GitStash { git stash $args }
 function Invoke-GitStashApply { git stash apply $args }
 function Invoke-GitStashList { git stash list $args }
 function Invoke-GitStashPop { git stash pop $args }
+function Invoke-GitStashPush { git stash push $args }
 function Invoke-GitStashShow { git stash show -p $args }
 function Invoke-GitStashShowNameOnly { git stash show $args }
 function Invoke-GitStashUntracked { git stash -u $args }
 function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
+function Invoke-RepeatCommand {
+	[CmdletBinding()]
+	param(
+		[Parameter(Mandatory = $true, Position = 0)]
+		[ScriptBlock] $Command,
+
+		[Parameter(Mandatory = $false, Position = 1)]
+		[int] $Interval = 2,
+
+		[Parameter(Mandatory = $false)]
+		[switch] $NoTitle
+	)
+
+	end {
+		Clear-Host;
+		if (-not $NoTitle) {
+			Write-Host "Every $Interval seconds: $($Command.ToString())";
+		}
+		& $Command;
+		Start-Sleep -Seconds $Interval;
+	}
+}
 function Invoke-Neovim {
 	$MultislotArgument = @('--startuptime', '-c', '--cmd', '-S', '-l', '-ll', '-u', '-i', '-s', '-w', '-w', '-W', '--listen');
 	$ArgumentList = @();
@@ -111,7 +133,7 @@ $Aliases = @{
 	'gha' = 'Invoke-GitStashApply';
 	'ghl' = 'Invoke-GitStashList';
 	'gho' = 'Invoke-GitStashPop';
-	'ghp' = 'Invoke-GitStash';
+	'ghp' = 'Invoke-GitStashPush';
 	'ghw' = 'Invoke-GitStashShow';
 	'ghwn' = 'Invoke-GitStashShowNameOnly';
 	'ghu' = 'Invoke-GitStashUntracked';
@@ -145,6 +167,7 @@ $Aliases = @{
 	'gw' = 'Invoke-GitShow';
 	'gwu' = 'Invoke-GitShowUpstreamBranches';
 	'nvim' = 'Invoke-Neovim';
+	'watch' = 'Invoke-RepeatCommand';
 };
 
 foreach ($Key in $Aliases.Keys) {

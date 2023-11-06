@@ -69,12 +69,14 @@ function Invoke-RepeatCommand {
 	)
 
 	end {
-		Clear-Host;
-		if (-not $NoTitle) {
-			Write-Host "Every $Interval seconds: $($Command.ToString())";
+		while ($true) {
+			Clear-Host;
+			if (-not $NoTitle) {
+				Write-Host "Every $Interval seconds: $($Command.ToString())";
+			}
+			& $Command;
+			Start-Sleep -Seconds $Interval;
 		}
-		& $Command;
-		Start-Sleep -Seconds $Interval;
 	}
 }
 function Invoke-Neovim {

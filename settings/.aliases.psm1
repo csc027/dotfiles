@@ -55,6 +55,16 @@ function Invoke-GitStashShowNameOnly { git stash show $args }
 function Invoke-GitStashUntracked { git stash -u $args }
 function Invoke-GitStatus { git status $args }
 function Invoke-GitTag { git tag $args }
+<#
+.DESCRIPTION
+Repeats the supplied command until dismissed with a keyboard interrupt, or the process is killed.
+.PARAMETER Interval
+The number of seconds between command invocations.
+.PARAMETER NoTitle
+An indication that the command definition and interval should not be printed to the console.
+.PARAMETER Command
+The command to be repeated, represented as a [SwitchBlock].
+#>
 function Invoke-RepeatCommand {
 	[CmdletBinding()]
 	param(

@@ -60,10 +60,10 @@ function Invoke-GitTag { git tag $args }
 Repeats the supplied command until dismissed with a keyboard interrupt, or the process is killed.
 .PARAMETER Interval
 The number of seconds between command invocations.
-.PARAMETER NoTitle
-An indication that the command definition and interval should not be printed to the console.
 .PARAMETER Command
 The command to be repeated, represented as a [SwitchBlock].
+.PARAMETER NoTitle
+An indication that the command definition and interval should not be printed to the console.
 #>
 function Invoke-RepeatCommand {
 	[CmdletBinding()]
@@ -72,12 +72,12 @@ function Invoke-RepeatCommand {
 		[Alias('n')]
 		[double] $Interval = 2.0,
 
-		[Parameter(Mandatory = $false, Position = 1)]
-		[Alias('t')]
-		[switch] $NoTitle,
+		[Parameter(Mandatory = $true, Position = 1)]
+		[ScriptBlock] $Command,
 
-		[Parameter(Mandatory = $true, Position = 2)]
-		[ScriptBlock] $Command
+		[Parameter(Mandatory = $false)]
+		[Alias('t')]
+		[switch] $NoTitle
 	)
 
 	end {

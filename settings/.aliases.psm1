@@ -58,14 +58,16 @@ function Invoke-GitTag { git tag $args }
 function Invoke-RepeatCommand {
 	[CmdletBinding()]
 	param(
-		[Parameter(Mandatory = $true, Position = 0)]
-		[ScriptBlock] $Command,
+		[Parameter(Mandatory = $false, Position = 0)]
+		[Alias('n')]
+		[double] $Interval = 2.0,
 
 		[Parameter(Mandatory = $false, Position = 1)]
-		[int] $Interval = 2,
-
-		[Parameter(Mandatory = $false)]
+		[Alias('t')]
 		[switch] $NoTitle
+
+		[Parameter(Mandatory = $true, Position = 2)]
+		[ScriptBlock] $Command,
 	)
 
 	end {

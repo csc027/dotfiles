@@ -74,10 +74,10 @@ function Invoke-RepeatCommand {
 
 		[Parameter(Mandatory = $false, Position = 1)]
 		[Alias('t')]
-		[switch] $NoTitle
+		[switch] $NoTitle,
 
 		[Parameter(Mandatory = $true, Position = 2)]
-		[ScriptBlock] $Command,
+		[ScriptBlock] $Command
 	)
 
 	end {

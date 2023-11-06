@@ -41,8 +41,8 @@ foreach ($Module in $Modules) {
 	Import-Module @Module;
 }
 
-if ((Get-Command -Name 'Get-PsReadLineOption' -ErrorAction SilentlyContinue) -and (Get-PsReadLineOption | Select-Object -ExpandProperty EditMode)) {
-	Set-PsReadLineOption -EditMode 'Windows';
+if ((Get-Command -Name 'Get-PSReadLineOption' -ErrorAction SilentlyContinue) -and (Get-PSReadLineOption | Select-Object -ExpandProperty EditMode)) {
+	Set-PSReadLineOption -EditMode 'Windows';
 }
 
 if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {

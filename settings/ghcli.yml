@@ -1,9 +1,17 @@
+pa: pr review --approve
 pcat: pr view --comments
+pdiff: pr diff
 pls: search prs --author '@me' --state 'open'
-pm: pr merge
+pmg: pr merge
 prm: pr close
 prv: pr review
+ra: pr review --approve
+rcat: pr view --comments
+rdiff: pr diff
 rls: search prs --review-requested '@me' --state 'open'
+rmg: pr merge
+rrm: pr close
+rrv: pr review
 rpcat: repo view
 rpls: repo list
 s: status

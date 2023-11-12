@@ -107,8 +107,8 @@ if (Get-Command -Name 'wt' -ErrorAction 'SilentlyContinue') {
 }
 
 # Create the symbolic links
+$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
 foreach ($Item in $Items) {
-	$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 
 	Write-Host -Object "Checking if the symbolic link at '$($Item.Destination)' exists... " -NoNewline;
@@ -131,6 +131,17 @@ foreach ($Item in $Items) {
 		Write-Host "Creating a symbolic link at '$($Item.Destination)'... " -NoNewline;
 		New-Symlink -Path $Item.Destination -Value $Source;
 		Write-Host 'done.';
+	}
+}
+
+# Setup GitHub CLI aliases
+if (Get-Command -Name 'gh' -ErrorAction 'SilentlyContinue') {
+	$GitHubAliases = [IO.Path]::Combine($DotfilesRootDirectory, 'settings', 'ghcli.yml');
+	if (Test-Path -Path $GitHubAliases) {
+		if ($Force) {
+			gh.exe alias delete --all;
+		}
+		gh.exe alias import $GitHubAliases;
 	}
 }
 

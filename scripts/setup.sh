@@ -48,3 +48,13 @@ do
 		echo "The symlink '$DESTINATION' already exists.";
 	fi
 done
+
+if type gh &> /dev/null; then
+	if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then
+		echo -e "Setting the GitHub CLI aliases.";
+		gh alias delete --all;
+	fi
+	ALIASES="$(dirname "$SCRIPT_DIRECTORY")/settings/ghcli.yml";
+	echo -e "Importing GitHub CLI aliases from $ALIASES.";
+	gh alias import "${ALIASES}";
+fi

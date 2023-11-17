@@ -107,8 +107,8 @@ function Invoke-Neovim {
 				)
 			) {
 				# If a glob/tilde is detected, wrap the glob/tilde value with a
-				# :next command execution
-				$ArgumentList += @("+n $($args[$i])");
+				# :next command execution and prepend spaces with a backslash
+				$ArgumentList += @("+n $($args[$i] -replace ' ', '\ ')");
 			} else {
 				$ArgumentList += @($args[$i]);
 			}

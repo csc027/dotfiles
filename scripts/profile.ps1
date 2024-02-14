@@ -78,11 +78,11 @@ function prompt {
 			Write-Host -Object $BranchStatus -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor (Get-GitBranchStatusColor).ForegroundColor -NoNewline;
 		}
-		if ($Status.HasIndex) {
+		if ($global:GitStatus.HasIndex) {
 			Write-Host -Object (Write-GitIndexStatus -Status $global:GitStatus -NoLeadingSpace) -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor 'Green' -NoNewline;
 		}
-		if ($Status.HasWorking) {
+		if ($global:GitStatus.HasWorking) {
 			Write-Host -Object "$(Write-GitWorkingDirStatus -Status $global:GitStatus -NoLeadingSpace)$(Write-GitWorkingDirStatusSummary -Status $global:GitStatus -NoLeadingSpace)" -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor 'DarkRed' -NoNewline;
 		}

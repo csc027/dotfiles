@@ -72,11 +72,12 @@ function prompt {
 	Write-Host -Object "$($env:USERNAME)$script:RightSeparator" -ForegroundColor 'Green' -NoNewline;
 	Write-Host -Object "$(Get-PromptPath)$script:RightSeparator" -ForegroundColor 'Blue' -NoNewline;
 	if ($global:GitStatus = Get-GitStatus -Force) {
+		$BranchColor = Get-GitBranchStatusColor -Status $global:GitStatus;
 		Write-Host -Object (Write-GitBranchName -Status $global:GitStatus -NoLeadingSpace) -NoNewline;
-		Write-Host -Object $script:RightSeparator -ForegroundColor 'Cyan' -NoNewline;
+		Write-Host -Object $script:RightSeparator -ForegroundColor $BranchColor.ForegroundColor -NoNewline;
 		if ($BranchStatus = Write-GitBranchStatus -Status $global:GitStatus -NoLeadingSpace) {
 			Write-Host -Object $BranchStatus -NoNewline;
-			Write-Host -Object $script:RightSeparator -ForegroundColor (Get-GitBranchStatusColor).ForegroundColor -NoNewline;
+			Write-Host -Object $script:RightSeparator -ForegroundColor $BranchColor.ForegroundColor -NoNewline;
 		}
 		if ($global:GitStatus.HasIndex) {
 			Write-Host -Object (Write-GitIndexStatus -Status $global:GitStatus -NoLeadingSpace) -NoNewline;

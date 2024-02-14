@@ -49,27 +49,70 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 	Update-DirColors -Path (Join-Path -Path $HOME -ChildPath '.dircolors');
 }
 
-if ($global:GitPromptSettings) {
-	$global:GitPromptSettings.BeforePath = ':';
-	$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';
-	if ($global:GitPromptSettings.DefaultPromptPath.PSObject.Properties.Name -contains 'ForegroundColor') {
-		$global:GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Blue;
+if ($env:WT_SESSION) {
+	$script:RightSeparator = ' ❭ ';
+	$script:LeftSeparator = ' ❬ ';
+} else {
+	$script:RightSeparator = ' > ';
+	$script:LeftSeparator = ' < ';
+}
+
+function prompt {
+	$LastCommandState = $?;
+
+	Write-Host -Object '┌ ' -ForegroundColor 'Gray' -NoNewline;
+	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+		Write-Host -Object "Admin$script:RightSeparator" -ForegroundColor 'Red' -NoNewline;
+	} elseif ($PSDebugContext) {
+		Write-Host -Object "Debug$script:RightSeparator" -ForegroundColor 'Yellow' -NoNewline;
 	}
+
+	$Machine = if ($IsLinux) { (hostname); } else { $env:COMPUTERNAME; }
+	Write-Host -Object "$Machine$script:RightSeparator" -ForegroundColor 'Magenta' -NoNewline;
+	Write-Host -Object "$($env:USERNAME)$script:RightSeparator" -ForegroundColor 'Green' -NoNewline;
+	Write-Host -Object "$(Get-PromptPath)$script:RightSeparator" -ForegroundColor 'Blue' -NoNewline;
+	if ($Status = Get-GitStatus -Force) {
+		Write-Host -Object (Write-GitBranchName -Status $Status -NoLeadingSpace) -NoNewline;
+		Write-Host -Object $script:RightSeparator -ForegroundColor 'Cyan' -NoNewline;
+		if ($BranchStatus = Write-GitBranchStatus -Status $Status -NoLeadingSpace) {
+			Write-Host -Object $BranchStatus -NoNewline;
+			Write-Host -Object $script:RightSeparator -ForegroundColor (Get-GitBranchStatusColor).ForegroundColor -NoNewline;
+		}
+		if ($Status.HasIndex) {
+			Write-Host -Object "$(Write-GitWorkingDirStatus -Status $Status -NoLeadingSpace)$(Write-GitWorkingDirStatusSummary -Status $Status -NoLeadingSpace)" -NoNewline;
+			Write-Host -Object $script:RightSeparator -ForegroundColor 'DarkRed' -NoNewline;
+		}
+	}
+
+	$RightWidth = if (-not $LastCommandState) { 36; } else { 32; }
+	$BlankWidth = $Host.UI.RawUI.WindowSize.Width - $Host.UI.RawUI.CursorPosition.X - $RightWidth;
+	if ($BlankWidth -gt 0) {
+		Write-Host (' ' * $BlankWidth) -NoNewline;
+		if (-not $LastCommandState) {
+			Write-Host -Object "$script:LeftSeparator!" -ForegroundColor 'Red' -NoNewline;
+		}
+	}
+	$Date = Get-Date;
+	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'MM/dd/yyyy')" -ForegroundColor 'DarkYellow' -NoNewline;
+	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'hh:mm tt')" -ForegroundColor 'DarkMagenta' -NoNewline;
+	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'ss.ff')" -ForegroundColor 'Gray' -NoNewline;
+
+	Write-Host -Object "`n└─▶" -NoNewline;
+	return ' ';
+}
+
+if ($global:GitPromptSettings) {
 	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptPrefix') {
-		$global:GitPromptSettings.DefaultPromptPrefix = if ($IsLinux) {
-			"$env:USERNAME@$(hostname)";
-		} else {
-			"$env:USERNAME@$env:COMPUTERNAME";
-		}
-		if ($global:GitPromptSettings.DefaultPromptPrefix.PSObject.Properties.Name -contains 'ForegroundColor') {
-			$global:GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Green;
-		}
+		$global:GitPromptSettings.DefaultPromptPrefix = $null;
 	}
 	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'BeforePath') {
-		$global:GitPromptSettings.BeforePath = ':';
+		$global:GitPromptSettings.BeforePath = $null;
+	}
+	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultBeforeSuffix') {
+		$global:GitPromptSettings.DefaultPromptBeforeSuffix = $null;
 	}
 	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptSuffix') {
-		$global:GitPromptSettings.DefaultPromptSuffix = ' $ ';
+		$global:GitPromptSettings.DefaultPromptSuffix = $null;
 	}
 	if ($global:GitPromptSettings.PSObject.Properties.Name -contains 'DefaultPromptAbbreviateHomeDirectory') {
 		$global:GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true;

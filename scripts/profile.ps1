@@ -58,7 +58,7 @@ if ($env:WT_SESSION) {
 }
 
 function prompt {
-	$LastCommandState = $?;
+	$LastCommandState = $global:?;
 
 	Write-Host -Object '┌ ' -ForegroundColor 'Gray' -NoNewline;
 	if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
@@ -71,19 +71,19 @@ function prompt {
 	Write-Host -Object "$Machine$script:RightSeparator" -ForegroundColor 'Magenta' -NoNewline;
 	Write-Host -Object "$($env:USERNAME)$script:RightSeparator" -ForegroundColor 'Green' -NoNewline;
 	Write-Host -Object "$(Get-PromptPath)$script:RightSeparator" -ForegroundColor 'Blue' -NoNewline;
-	if ($Status = Get-GitStatus -Force) {
-		Write-Host -Object (Write-GitBranchName -Status $Status -NoLeadingSpace) -NoNewline;
+	if ($global:GitStatus = Get-GitStatus -Force) {
+		Write-Host -Object (Write-GitBranchName -Status $global:GitStatus -NoLeadingSpace) -NoNewline;
 		Write-Host -Object $script:RightSeparator -ForegroundColor 'Cyan' -NoNewline;
-		if ($BranchStatus = Write-GitBranchStatus -Status $Status -NoLeadingSpace) {
+		if ($BranchStatus = Write-GitBranchStatus -Status $global:GitStatus -NoLeadingSpace) {
 			Write-Host -Object $BranchStatus -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor (Get-GitBranchStatusColor).ForegroundColor -NoNewline;
 		}
 		if ($Status.HasIndex) {
-			Write-Host -Object (Write-GitIndexStatus -Status $Status -NoLeadingSpace) -NoNewline;
+			Write-Host -Object (Write-GitIndexStatus -Status $global:GitStatus -NoLeadingSpace) -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor 'Green' -NoNewline;
 		}
 		if ($Status.HasWorking) {
-			Write-Host -Object "$(Write-GitWorkingDirStatus -Status $Status -NoLeadingSpace)$(Write-GitWorkingDirStatusSummary -Status $Status -NoLeadingSpace)" -NoNewline;
+			Write-Host -Object "$(Write-GitWorkingDirStatus -Status $global:GitStatus -NoLeadingSpace)$(Write-GitWorkingDirStatusSummary -Status $global:GitStatus -NoLeadingSpace)" -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor 'DarkRed' -NoNewline;
 		}
 	}

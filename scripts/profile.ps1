@@ -79,6 +79,10 @@ function prompt {
 			Write-Host -Object $script:RightSeparator -ForegroundColor (Get-GitBranchStatusColor).ForegroundColor -NoNewline;
 		}
 		if ($Status.HasIndex) {
+			Write-Host -Object (Write-GitIndexStatus -Status $Status -NoLeadingSpace) -NoNewline;
+			Write-Host -Object $script:RightSeparator -ForegroundColor 'Green' -NoNewline;
+		}
+		if ($Status.HasWorking) {
 			Write-Host -Object "$(Write-GitWorkingDirStatus -Status $Status -NoLeadingSpace)$(Write-GitWorkingDirStatusSummary -Status $Status -NoLeadingSpace)" -NoNewline;
 			Write-Host -Object $script:RightSeparator -ForegroundColor 'DarkRed' -NoNewline;
 		}
@@ -91,11 +95,11 @@ function prompt {
 		if (-not $LastCommandState) {
 			Write-Host -Object "$script:LeftSeparator!" -ForegroundColor 'Red' -NoNewline;
 		}
+		$Date = Get-Date;
+		Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'MM/dd/yyyy')" -ForegroundColor 'DarkYellow' -NoNewline;
+		Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'hh:mm tt')" -ForegroundColor 'DarkMagenta' -NoNewline;
+		Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'ss.ff')" -ForegroundColor 'Gray' -NoNewline;
 	}
-	$Date = Get-Date;
-	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'MM/dd/yyyy')" -ForegroundColor 'DarkYellow' -NoNewline;
-	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'hh:mm tt')" -ForegroundColor 'DarkMagenta' -NoNewline;
-	Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'ss.ff')" -ForegroundColor 'Gray' -NoNewline;
 
 	Write-Host -Object "`n└─▶" -NoNewline;
 	return ' ';

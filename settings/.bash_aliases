@@ -6,10 +6,14 @@ alias gbav='git branch -avv'
 alias gbd='git branch -d'
 alias gbv='git branch -vv'
 alias gc='git commit -m'
+alias gca='git commit --amend -m'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gdcw='git diff --cached -w'
 alias gdn='git diff --name-only'
+alias gdnw='git diff --name-only -w'
 alias gds='git diff --name-status'
+alias gdsw='git diff --name-status -w'
 alias gdt='git difftool'
 alias ge='git rebase'
 alias gei='git rebase --interactive'
@@ -64,10 +68,14 @@ __git_complete gbav _git_branch
 __git_complete gbd _git_branch
 __git_complete gbv _git_branch
 __git_complete gc _git_commit
+__git_complete gca _git_commit
 __git_complete gd _git_diff
 __git_complete gdc _git_diff
+__git_complete gdcw _git_diff
 __git_complete gdn _git_diff
+__git_complete gdnw _git_diff
 __git_complete gds _git_diff
+__git_complete gdsw _git_diff
 __git_complete gdt _git_difftool
 __git_complete ge _git_rebase
 __git_complete gei _git_rebase

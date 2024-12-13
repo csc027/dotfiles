@@ -8,11 +8,16 @@ function Invoke-GitBranchVerbose { git branch -vv $args }
 function Invoke-GitCheckout { git checkout $args }
 function Invoke-GitCheckoutBranch { git checkout -b $args }
 function Invoke-GitCherryPick { git cherry-pick $args }
-function Invoke-GitCommit { git commit -m $args }
+function Invoke-GitCommit { git commit --message $args }
+function Invoke-GitCommitAmend { git commit --amend --message $args }
 function Invoke-GitDiff { git diff $args }
+function Invoke-GitDiffWhitespace { git diff --ignore-all-space $args }
 function Invoke-GitDiffCached { git diff --cached $args }
+function Invoke-GitDiffCachedWhitespace { git diff --ignore-all-space --cached $args }
 function Invoke-GitDiffNameOnly { git diff --name-only $args }
+function Invoke-GitDiffNameOnlyWhitespace { git diff --ignore-all-space --name-only $args }
 function Invoke-GitDiffNameStatus { git diff --name-status $args }
+function Invoke-GitDiffNameStatusWhitespace { git diff --ignore-all-space --name-status $args }
 function Invoke-GitDiffTool { git difftool $args }
 function Invoke-GitFetch { git fetch $args }
 function Invoke-GitFetchAll { git fetch --all $args }
@@ -131,10 +136,15 @@ $Aliases = @{
 	'gbd' = 'Invoke-GitBranchDelete';
 	'gbv' = 'Invoke-GitBranchVerbose';
 	'gc' = 'Invoke-GitCommit';
+	'gca' = 'Invoke-GitCommitAmend';
 	'gd' = 'Invoke-GitDiff';
+	'gdw' = 'Invoke-GitDiffWhitespace';
 	'gdc' = 'Invoke-GitDiffCached';
+	'gdcw' = 'Invoke-GitDiffCachedWhitespace';
 	'gdn' = 'Invoke-GitDiffNameOnly';
+	'gdnw' = 'Invoke-GitDiffNameOnlyWhitespace';
 	'gds' = 'Invoke-GitDiffNameStatus';
+	'gdsw' = 'Invoke-GitDiffNameStatusWhitespace';
 	'gdt' = 'Invoke-GitDiffTool';
 	'ge' = 'Invoke-GitRebase';
 	'gei' = 'Invoke-GitRebaseInteractive';

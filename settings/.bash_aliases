@@ -5,15 +5,16 @@ alias gba='git branch -a'
 alias gbav='git branch -avv'
 alias gbd='git branch -d'
 alias gbv='git branch -vv'
-alias gc='git commit -m'
-alias gca='git commit --amend -m'
+alias gc='git commit --message'
+alias gca='git commit --amend --message'
 alias gd='git diff'
+alias gdw='git diff --ignore-all-space'
 alias gdc='git diff --cached'
-alias gdcw='git diff --cached -w'
+alias gdcw='git diff --cached --ignore-all-space'
 alias gdn='git diff --name-only'
-alias gdnw='git diff --name-only -w'
+alias gdnw='git diff --name-only --ignore-all-spacew'
 alias gds='git diff --name-status'
-alias gdsw='git diff --name-status -w'
+alias gdsw='git diff --name-status --ignore-all-spacew'
 alias gdt='git difftool'
 alias ge='git rebase'
 alias gei='git rebase --interactive'
@@ -70,6 +71,7 @@ __git_complete gbv _git_branch
 __git_complete gc _git_commit
 __git_complete gca _git_commit
 __git_complete gd _git_diff
+__git_complete gdw _git_diff
 __git_complete gdc _git_diff
 __git_complete gdcw _git_diff
 __git_complete gdn _git_diff

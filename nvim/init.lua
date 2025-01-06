@@ -13,7 +13,7 @@ vim.cmd.filetype({ 'plugin', 'indent', 'on' })
 
 -- color settings
 vim.g.solarized_italics = 0
-vim.cmd.colorscheme('solarized')
+vim.cmd.colorscheme('ayu-dark')
 
 if vim.fn.has('termguicolors') then
 	vim.opt.termguicolors = true

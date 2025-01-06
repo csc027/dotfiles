@@ -11,6 +11,6 @@ require('lualine').setup {
 		component_separators = '|',
 		icons_enabled = false,
 		section_separators = '',
-		theme = 'solarized_dark'
+		theme = 'ayu_dark'
 	}
 }

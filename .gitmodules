@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/lualine.nvim"]
 	path = nvim/pack/plugins/start/lualine.nvim
 	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "nvim/pack/colors/start/neovim-ayu"]
+	path = nvim/pack/colors/start/neovim-ayu
+	url = https://github.com/Shatur/neovim-ayu

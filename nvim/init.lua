@@ -3,7 +3,6 @@ require('compare')
 require('complete')
 require('general')
 require('netrw')
-require('statusline')
 require('treesitter')
 require('window')
 
@@ -21,6 +20,9 @@ require('ayu').setup({
 	}
 })
 require('ayu').colorscheme()
+
+-- statusline; dependent on the colorscheme being set first
+require('statusline')
 
 if vim.fn.has('termguicolors') then
 	vim.opt.termguicolors = true

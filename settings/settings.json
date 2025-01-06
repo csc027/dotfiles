@@ -19,26 +19,7 @@
 				"size": 10
 			},
 			"useAcrylic": false,
-
-			"background": "#002B36",
-			"foreground": "#839496",
-
-			"black": "#002831",
-			"red": "#D11C24",
-			"green": "#738A05",
-			"yellow": "#A57706",
-			"blue": "#2176C7",
-			"purple": "#C61C6F",
-			"cyan": "#259286",
-			"white": "#EAE3CB",
-			"brightBlack": "#475B62",
-			"brightRed": "#BD3613",
-			"brightGreen": "#475B62",
-			"brightYellow": "#536870",
-			"brightBlue": "#708284",
-			"brightPurple": "#5956BA",
-			"brightCyan": "#819090",
-			"brightWhite": "#FCF4DC"
+			"theme": "Ayu Dark"
 		}, "list": [
 			{
 				"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -71,6 +52,48 @@
 			}
 		]
 	}, "schemes": [
+		{
+			"background": "#0a0e14",
+			"black": "#01060e",
+			"blue": "#53bdfa",
+			"brightBlack": "#686868",
+			"brightBlue": "#59c2ff",
+			"brightCyan": "#95e6cb",
+			"brightGreen": "#c2d94c",
+			"brightPurple": "#ffee99",
+			"brightRed": "#f07178",
+			"brightWhite": "#ffffff",
+			"brightYellow": "#ffb454",
+			"cyan": "#90e1c6",
+			"foreground": "#b3b1ad",
+			"green": "#91b362",
+			"name": "Ayu Dark",
+			"purple": "#fae994",
+			"red": "#ea6c73",
+			"white": "#c7c7c7",
+			"yellow": "#f9af4f"
+		}, {
+			"background": "#002b36",
+			"black": "#073642",
+			"blue": "#268bd2",
+			"brightBlack": "#657b83",
+			"brightBlue": "#839496",
+			"brightCyan": "#93a1a1",
+			"brightGreen": "#586e75",
+			"brightPurple": "#6c71c4",
+			"brightRed": "#cb4b16",
+			"brightWhite": "#fdf6e3",
+			"brightYellow": "#657b83",
+			"cursorColor": "#657b83",
+			"cyan": "#2aa198",
+			"foreground": "#fdf6e3",
+			"green": "#859900",
+			"name": "Solarized Dark Patched",
+			"purple": "#d33682",
+			"red": "#dc322f",
+			"white": "#eee8d5",
+			"yellow": "#b58900"
+		}
 	], "actions": [
 		{ "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
 		{ "command": "paste", "keys": "ctrl+shift+v" },

@@ -12,8 +12,15 @@ vim.cmd.syntax('on')
 vim.cmd.filetype({ 'plugin', 'indent', 'on' })
 
 -- color settings
-vim.g.solarized_italics = 0
-vim.cmd.colorscheme('ayu-dark')
+require('ayu').setup({
+	mirage = false,
+	terminal = true,
+	overrides = {
+		Comment = { italic = false },
+		LineNr = { fg = '#8F8D86' }
+	}
+})
+require('ayu').colorscheme()
 
 if vim.fn.has('termguicolors') then
 	vim.opt.termguicolors = true

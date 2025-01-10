@@ -1,6 +1,6 @@
 require('nvim-treesitter.configs').setup {
 	-- A list of parser names, or 'all' (the four listed parsers should always be installed)
-	ensure_installed = { 'c_sharp', 'diff', 'json', 'lua', 'markdown', 'vim', 'vimdoc' },
+	ensure_installed = { 'c_sharp', 'diff', 'json', 'lua', 'markdown', 'markdown_inline', 'powershell', 'vim', 'vimdoc' },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -26,13 +26,6 @@ require('nvim-treesitter.configs').setup {
 		-- disable = { },
 		-- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
 		disable = function(lang, buf)
-			if (lang == 'gitignore') then
-				return true
-			end
-			if (vim.bo.filetype == 'ps1') then
-				return true
-			end
-
 			local max_filesize = 32 * 1024 * 1024 -- 1 MB
 			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
 			if ok and stats and stats.size > max_filesize then

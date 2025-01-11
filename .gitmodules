@@ -1,7 +1,7 @@
-[submodule ".vim/bundle/vim-surround"]
+[submodule "nvim/pack/plugins/start/vim-surround"]
 	path = nvim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-repeat"]
+[submodule "nvim/pack/plugins/start/vim-repeat"]
 	path = nvim/pack/plugins/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule "submodules/dircolors-solarized"]
@@ -13,19 +13,16 @@
 [submodule "submodules/bashrc"]
 	path = submodules/bashrc
 	url = https://github.com/csc027/bashrc.git
-[submodule ".vim/pack/complete/start/lspconfig"]
+[submodule "nvim/pack/complete/start/lspconfig"]
 	path = nvim/pack/complete/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule ".vim/pack/treesitter/start/treesitter"]
+[submodule "nvim/pack/treesitter/start/treesitter"]
 	path = nvim/pack/treesitter/start/treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule ".vim/pack/complete/start/omnisharp_extended"]
+[submodule "nvim/pack/complete/start/omnisharp_extended"]
 	path = nvim/pack/complete/start/omnisharp_extended
 	url = https://github.com/Hoffs/omnisharp-extended-lsp.nvim
-[submodule ".vim/pack/colors/start/nvim-solarized"]
-	path = nvim/pack/colors/start/nvim-solarized
-	url = https://github.com/ishan9299/nvim-solarized-lua.git
-[submodule ".vim/pack/plugins/start/lualine.nvim"]
+[submodule "nvim/pack/plugins/start/lualine.nvim"]
 	path = nvim/pack/plugins/start/lualine.nvim
 	url = https://github.com/nvim-lualine/lualine.nvim.git
 [submodule "nvim/pack/colors/start/neovim-ayu"]

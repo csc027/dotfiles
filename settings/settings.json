@@ -2,15 +2,31 @@
 	"$help": "https://aka.ms/terminal-documentation",
 	"$schema": "https://aka.ms/terminal-profiles-schema",
 
+	"confirmCloseAllTabs": false,
+	"copyFormatting": "none",
+	"copyOnSelect": false,
 	"defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
 	"disabledProfileSources": [
 		"Windows.Terminal.Azure"
 	],
 
-	"confirmCloseAllTabs": false,
-	"copyFormatting": "none",
-	"copyOnSelect": false,
-
+	"keybindings": [
+		{
+			"id": "Terminal.CopyToClipboard",
+			"keys": "ctrl+shift+c"
+		}, {
+			"id": "Terminal.PasteFromClipboard",
+			"keys": "ctrl+shift+v"
+		}, {
+			"id": "Terminal.FindText",
+			"keys": "ctrl+shift+f"
+		}
+	],
+	"newTabMenu": [
+		{
+			"type": "remainingProfiles"
+		}
+	],
 	"profiles": {
 		"defaults": {
 			"cursorShape": "vintage",
@@ -18,85 +34,79 @@
 				"face": "Cascadia Mono",
 				"size": 10
 			},
-			"useAcrylic": false,
-			"theme": "Ayu Dark"
-		}, "list": [
+			"useAcrylic": false
+		},
+		"list": [
 			{
-				"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-				"name": "PowerShell Core",
-				"source": "Windows.Terminal.PowershellCore",
 				"commandline": "pwsh.exe -NoLogo",
-				"hidden": false
+				"guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+				"hidden": false,
+				"name": "PowerShell Core",
+				"source": "Windows.Terminal.PowershellCore"
 			}, {
-				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-				"name": "Windows PowerShell",
 				"commandline": "powershell.exe -NoLogo",
-				"hidden": false
+				"guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+				"hidden": false,
+				"name": "Windows PowerShell"
 			}, {
 				"guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-				"name": "Command Prompt",
-				"hidden": false
+				"hidden": false,
+				"name": "Command Prompt"
 			}, {
-				"guid": "{d15b228a-05d7-50d1-8472-f60aaba86efc}",
-				"name": "Git Bash",
 				"commandline": "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+				"guid": "{d15b228a-05d7-50d1-8472-f60aaba86efc}",
+				"hidden": false,
 				"icon": "%SystemDrive%\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
-				"startingDirectory": "%USERPROFILE%",
-				"hidden": false
-			}, {
-				"guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-				"name": "Ubuntu-20.04",
-				"source": "Windows.Terminal.Wsl",
-				"startingDirectory": "\\\\wsl$\\Ubuntu-20.04\\home\\cchen",
-				"hidden": false
+				"name": "Git Bash",
+				"startingDirectory": "%USERPROFILE%"
 			}
 		]
-	}, "schemes": [
+	},
+	"schemes": [
 		{
-			"background": "#0a0e14",
-			"black": "#01060e",
-			"blue": "#53bdfa",
+			"background": "#0A0E14",
+			"black": "#01060E",
+			"blue": "#53BDFA",
 			"brightBlack": "#686868",
-			"brightBlue": "#59c2ff",
-			"brightCyan": "#95e6cb",
-			"brightGreen": "#c2d94c",
+			"brightBlue": "#59C2FF",
+			"brightCyan": "#95E6CB",
+			"brightGreen": "#C2D94C",
 			"brightPurple": "#ffee99",
-			"brightRed": "#f07178",
-			"brightWhite": "#ffffff",
-			"brightYellow": "#ffb454",
-			"cyan": "#90e1c6",
-			"foreground": "#b3b1ad",
-			"green": "#91b362",
+			"brightRed": "#F07178",
+			"brightWhite": "#FFFFFF",
+			"brightYellow": "#FFB454",
+			"cyan": "#90E1C6",
+			"foreground": "#B3B1AD",
+			"green": "#91B362",
 			"name": "Ayu Dark",
-			"purple": "#fae994",
-			"red": "#ea6c73",
-			"white": "#c7c7c7",
-			"yellow": "#f9af4f"
+			"purple": "#FAE994",
+			"red": "#EA6C73",
++			"selectionBackground": "#FFFFFF",
+			"white": "#C7C7C7",
+			"yellow": "#F9AF4F"
 		}, {
-			"background": "#002b36",
+			"background": "#002B36",
 			"black": "#073642",
-			"blue": "#268bd2",
-			"brightBlack": "#657b83",
+			"blue": "#268BD2",
+			"brightBlack": "#657B83",
 			"brightBlue": "#839496",
-			"brightCyan": "#93a1a1",
-			"brightGreen": "#586e75",
-			"brightPurple": "#6c71c4",
-			"brightRed": "#cb4b16",
-			"brightWhite": "#fdf6e3",
-			"brightYellow": "#657b83",
-			"cursorColor": "#657b83",
-			"cyan": "#2aa198",
-			"foreground": "#fdf6e3",
+			"brightCyan": "#93A1A1",
+			"brightGreen": "#586E75",
+			"brightPurple": "#6C71C4",
+			"brightRed": "#CB4B16",
+			"brightWhite": "#FDF6E3",
+			"brightYellow": "#657B83",
+			"cursorColor": "#657B83",
+			"cyan": "#2AA198",
+			"foreground": "#FDF6E3",
 			"green": "#859900",
 			"name": "Solarized Dark Patched",
-			"purple": "#d33682",
-			"red": "#dc322f",
-			"white": "#eee8d5",
-			"yellow": "#b58900"
+			"purple": "#D33682",
+			"red": "#DC322F",
++			"selectionBackground": "#FFFFFF",
+			"white": "#EEE8D5",
+			"yellow": "#B58900"
 		}
-	], "actions": [
-		{ "command": { "action": "copy", "singleLine": false }, "keys": "ctrl+shift+c" },
-		{ "command": "paste", "keys": "ctrl+shift+v" },
-		{ "command": "find", "keys": "ctrl+shift+f" }
-	]
+	],
+	"themes": []
 }

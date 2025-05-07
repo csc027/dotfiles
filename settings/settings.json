@@ -81,7 +81,7 @@
 			"name": "Ayu Dark",
 			"purple": "#FAE994",
 			"red": "#EA6C73",
-+			"selectionBackground": "#FFFFFF",
+			"selectionBackground": "#FFFFFF",
 			"white": "#C7C7C7",
 			"yellow": "#F9AF4F"
 		}, {
@@ -103,7 +103,7 @@
 			"name": "Solarized Dark Patched",
 			"purple": "#D33682",
 			"red": "#DC322F",
-+			"selectionBackground": "#FFFFFF",
+			"selectionBackground": "#FFFFFF",
 			"white": "#EEE8D5",
 			"yellow": "#B58900"
 		}

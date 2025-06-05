@@ -1,0 +1,11 @@
+[legacy/profiles:]
+default='9ad53c29-b7dc-490c-88b2-b12e3e2b4b52'
+list=['9ad53c29-b7dc-490c-88b2-b12e3e2b4b52']
+
+[legacy/profiles:/:9ad53c29-b7dc-490c-88b2-b12e3e2b4b52]
+background-color='rgb(10,14,20)'
+bold-color-same-as-fg=true
+bold-is-bright=true
+foreground-color='rgb(179,177,173)'
+palette=['rgb(1,6,14)', 'rgb(234,108,115)', 'rgb(145,179,98)', 'rgb(249,175,79)', 'rgb(83,189,250)', 'rgb(250,233,148)', 'rgb(144,225,198)', 'rgb(199,199,199)', 'rgb(104,104,104)', 'rgb(240,113,120)', 'rgb(194,217,76)', 'rgb(255,180,84)', 'rgb(89,194,255)', 'rgb(255,238,153)', 'rgb(149,230,203)', 'rgb(255,255,255)']
+visible-name='Ayu Dark'

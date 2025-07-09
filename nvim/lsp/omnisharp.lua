@@ -12,7 +12,7 @@ return {
 			OrganizeImports = true
 		},
 		MsBuild = {
-			LoadProjectsOnDemand = false,
+			LoadProjectsOnDemand = false
 		},
 		RoslynExtensionsOptions = {
 			EnableAnalyzersSupport = true,

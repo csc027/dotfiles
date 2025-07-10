@@ -1,5 +1,5 @@
 -- buffer shortcuts
-local opts = { noremap = true }
+local opts = { noremap = true, buffer = true }
 vim.keymap.set('n', '<Leader>cd', '<Esc>Ado {<CR>} while (true);<Esc>', opts)
 vim.keymap.set('n', '<Leader>ce', '<Esc>Aelse {<CR>}<Esc>', opts)
 vim.keymap.set('n', '<Leader>cei', '<Esc>Aelseif (true) {<CR>}<Esc>', opts)

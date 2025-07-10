@@ -33,6 +33,17 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<Leader>td', vim.lsp.buf.type_definition, bufopts)
 end
 
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = '❌',
+			[vim.diagnostic.severity.WARN] = '⚠️',
+			[vim.diagnostic.severity.INFO] = 'ℹ️',
+			[vim.diagnostic.severity.HINT] = '💡'
+		}
+	}
+})
+
 vim.lsp.config['*'] = {
 	on_attach = on_attach
 }

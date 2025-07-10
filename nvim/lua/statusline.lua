@@ -2,7 +2,17 @@ require('lualine').setup {
 	sections = {
 		lualine_a = { 'mode' },
 		lualine_b = { { 'filename', path = 3 } },
-		lualine_c = { 'diagnostics' },
+		lualine_c = {
+			{
+				'diagnostics',
+				symbols = {
+					error = '❌',
+					warn = '⚠️',
+					info = 'ℹ️',
+					hint = '💡'
+				}
+			}
+		},
 		lualine_x = { 'fileformat', 'encoding', 'filetype' },
 		lualine_y = { 'progress' },
 		lualine_z = { 'location' }

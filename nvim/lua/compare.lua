@@ -28,6 +28,6 @@ end
 
 -- diff shortcuts
 local opts = { noremap = true }
-vim.keymap.set('n', '<Leader>i', ':lua DiffToggleCaseSensitivity()<CR>', opts)
-vim.keymap.set('n', '<Leader>s', ':lua DiffToggle()<CR>', opts)
-vim.keymap.set('n', '<Leader>w', ':lua DiffToggleWhiteSpace()<CR>', opts)
+vim.keymap.set('n', '<Leader>i', DiffToggleCaseSensitivity, opts)
+vim.keymap.set('n', '<Leader>s', DiffToggle, opts)
+vim.keymap.set('n', '<Leader>w', DiffToggleWhiteSpace, opts)

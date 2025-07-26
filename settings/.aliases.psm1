@@ -124,7 +124,11 @@ function Invoke-Neovim {
 		}
 	}
 
-	nvim.exe $ArgumentList;
+	if ($input) {
+		$input | nvim.exe $ArgumentList;
+	} else {
+		nvim.exe $ArgumentList;
+	}
 }
 
 $Aliases = @{

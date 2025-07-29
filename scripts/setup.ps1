@@ -5,7 +5,7 @@ param(
 	[Switch] $Force
 )
 
-if ($PsVersionTable.PsVersion.Major -le 5) {
+if ($PSVersionTable.PsVersion.Major -le 5) {
 	$IsWindows = $true;
 }
 

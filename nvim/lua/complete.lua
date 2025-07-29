@@ -48,4 +48,10 @@ vim.lsp.config['*'] = {
 	on_attach = on_attach
 }
 
-vim.lsp.enable({ 'omnisharp', 'powershell_es' })
+if (vim.fn.executable('pwsh') == 1) then
+	vim.lsp.enable({ 'powershell_es' })
+end
+
+if (vim.fn.executable('omnisharp') == 1) then
+	vim.lsp.enable({ 'omnisharp' })
+end

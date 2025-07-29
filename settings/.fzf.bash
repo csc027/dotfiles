@@ -1,6 +1,6 @@
-$env:FZF_DEFAULT_OPTS = "
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 	--multi
-	--preview 'type {}'
+	--preview 'cat {}'
 	--bind 'ctrl-e:become(nvim {})'
 	--style full
 	--list-label ' Search '

@@ -9,20 +9,6 @@ if ($PsVersionTable.PsVersion.Major -le 5) {
 	$IsWindows = $true;
 }
 
-if ($IsWindows -and -not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
-	$Arguments = if ($Force) {
-		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)", '-Force'
-	} else {
-		'-NoExit', "-File $($MyInvocation.MyCommand.Definition)"
-	}
-	if ($PsVersionTable.PsVersion.Major -gt 5) {
-		Start-Process 'pwsh' -ArgumentList $Arguments -Verb runAs;
-	} else {
-		Start-Process 'powershell' -ArgumentList $Arguments -Verb runAs;
-	}
-	return;
-}
-
 function New-Symlink {
 	[CmdletBinding()]
 	param (
@@ -115,7 +101,7 @@ if (Get-Command -Name 'wt' -ErrorAction 'SilentlyContinue') {
 }
 
 # Create the symbolic links
-$DotfilesRootDirectory = Split-Path -Path $PsScriptRoot -Parent;
+$DotfilesRootDirectory = Split-Path -Path $PSScriptRoot -Parent;
 foreach ($Item in $Items) {
 	$Source = Join-Path -Path $DotfilesRootDirectory -ChildPath $Item.Source;
 

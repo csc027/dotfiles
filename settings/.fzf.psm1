@@ -6,7 +6,7 @@ $env:FZF_DEFAULT_OPTS = "
 	--list-label ' Search '
 	--input-label ' Input '
 	--preview-label ' Preview '
-	--color 'preview-border:#d26aff,preview-label:#d26aff'
+	--color 'preview-border:#d2a6ff,preview-label:#d2a6ff'
 	--color 'list-border:#91b362,list-label:#91b362'
-	--color 'input-border:#ea6373,input-label:#ea6373'
+	--color 'input-border:#ea6c73,input-label:#ea6c73'
 "

@@ -41,12 +41,16 @@ function New-Symlink {
 
 	if ($IsWindows) {
 		if (Test-Path -Path $Value -PathType Container) {
-			cmd /c mklink /d $Path $Value > $null;
+			cmd /c mklink /j $Path $Value > $null;
 		} else {
-			cmd /c mklink $Path $Value > $null;
+			cmd /c mklink /h $Path $Value > $null;
 		}
 	} else {
-		New-Item -ItemType SymbolicLink -Path $Path -Value $Value > $null;
+		if (Test-Path -Path $Value -PathType Container) {
+			New-Item -ItemType Junction -Path $Path -Value $Value > $null;
+		} else {
+			New-Item -ItemType HardLink -Path $Path -Value $Value > $null;
+		}
 	}
 }
 
@@ -73,6 +77,10 @@ $Items = @(
 	@{
 		'Source' = 'nvim';
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
+	},
+	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath '.fzf.psm1';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.fzf.psm1';
 	},
 	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';

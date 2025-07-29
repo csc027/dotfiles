@@ -96,6 +96,7 @@ function Invoke-RepeatCommand {
 		}
 	}
 }
+
 function Invoke-Neovim {
 	$MultislotArgument = @('--startuptime', '-c', '--cmd', '-S', '-l', '-ll', '-u', '-i', '-s', '-w', '-w', '-W', '--listen');
 	$ArgumentList = @();

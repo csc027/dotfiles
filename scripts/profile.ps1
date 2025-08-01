@@ -10,10 +10,6 @@ $Modules = @(
 		'ArgumentList' = @();
 		'Force' = $true
 	}, @{
-		'Name' = Join-Path -Path $HOME -ChildPath '.fzf.psm1';
-		'ArgumentList' = @();
-		'Force' = $true
-	}, @{
 		'Name' = 'posh-git';
 		'ArgumentList' = @($false, $false, $true);
 		'Force' = $true

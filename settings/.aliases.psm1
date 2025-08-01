@@ -1,5 +1,4 @@
 function Invoke-FzfFileNameSearch {
-	$RipGrep = '';
 	fzf.exe `
 		--multi `
 		--preview 'type {}' `
@@ -17,7 +16,6 @@ function Invoke-FzfFileNameSearch {
 	;
 }
 function Invoke-FzfFileSearch {
-	$RipGrep = '';
 	fzf.exe `
 		--ansi `
 		--delimiter ':' `

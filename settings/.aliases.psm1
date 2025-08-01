@@ -1,3 +1,48 @@
+function Invoke-FzfFileNameSearch {
+	$RipGrep = '';
+	fzf.exe `
+		--multi `
+		--preview 'type {}' `
+		--bind 'enter:become(nvim {})' `
+		--height=50% `
+		--layout=reverse `
+		--style full `
+		--list-label ' Search ' `
+		--input-label ' Input ' `
+		--preview-label ' Preview ' `
+		--color 'preview-border:#d2a6ff,preview-label:#d2a6ff' `
+		--color 'list-border:#91b362,list-label:#91b362' `
+		--color 'input-border:#ea6c73,input-label:#ea6c73' `
+		$args
+	;
+}
+function Invoke-FzfFileSearch {
+	$RipGrep = '';
+	fzf.exe `
+		--ansi `
+		--delimiter ':' `
+		--height=50% `
+		--layout=reverse `
+		--bind 'start:reload:rg.exe --column --line-number --no-heading --color=always --smart-case .' `
+		--bind 'enter:become(nvim {1} +{2})' `
+		$args
+	;
+}
+function Invoke-FzfRegexFileSearch {
+	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
+	fzf.exe `
+		--ansi `
+		--delimiter ':' `
+		--disabled `
+		--height=50% `
+		--layout=reverse `
+		--query "${*:-}" `
+		--bind "start:reload:$RipGrep {q}" `
+		--bind "change:reload:$RipGrep {q} || true" `
+		--bind 'enter:become(nvim {1} +{2})' `
+		$args
+	;
+}
 function Invoke-GitAdd { git add $args }
 function Invoke-GitAddChunk { git add -p $args }
 function Invoke-GitBranch { git branch $args }
@@ -133,6 +178,8 @@ function Invoke-Neovim {
 }
 
 $Aliases = @{
+	'fs' = 'Invoke-FzfFileSearch';
+	'fns' = 'Invoke-FzfFileNameSearch';
 	'ga' = 'Invoke-GitAdd';
 	'gap' = 'Invoke-GitAddChunk';
 	'gb' = 'Invoke-GitBranch';
@@ -196,6 +243,7 @@ $Aliases = @{
 	'gw' = 'Invoke-GitShow';
 	'gwu' = 'Invoke-GitShowUpstreamBranches';
 	'nvim' = 'Invoke-Neovim';
+	'rfs' = 'Invoke-FzfRegexFileSearch';
 	'watch' = 'Invoke-RepeatCommand';
 };
 

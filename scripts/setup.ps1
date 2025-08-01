@@ -65,10 +65,6 @@ $Items = @(
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.fzf.psm1';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.fzf.psm1';
-	},
-	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},

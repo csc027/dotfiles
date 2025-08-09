@@ -2,7 +2,6 @@ function Invoke-FzfFileNameSearch {
 	fzf.exe `
 		--multi `
 		--preview 'type {}' `
-		--bind 'enter:become(nvim {})' `
 		--height=50% `
 		--layout=reverse `
 		--style full `
@@ -12,6 +11,7 @@ function Invoke-FzfFileNameSearch {
 		--color 'preview-border:#d2a6ff,preview-label:#d2a6ff' `
 		--color 'list-border:#91b362,list-label:#91b362' `
 		--color 'input-border:#ea6c73,input-label:#ea6c73' `
+		--bind 'ctrl-e:become(nvim {+})' `
 		$args
 	;
 }
@@ -22,7 +22,7 @@ function Invoke-FzfFileSearch {
 		--height=50% `
 		--layout=reverse `
 		--bind 'start:reload:rg.exe --column --line-number --no-heading --color=always --smart-case .' `
-		--bind 'enter:become(nvim {1} +{2})' `
+		--bind 'ctrl-e:become(nvim {1} +{2})' `
 		$args
 	;
 }
@@ -37,7 +37,7 @@ function Invoke-FzfRegexFileSearch {
 		--query "${*:-}" `
 		--bind "start:reload:$RipGrep {q}" `
 		--bind "change:reload:$RipGrep {q} || true" `
-		--bind 'enter:become(nvim {1} +{2})' `
+		--bind 'ctrl-e:become(nvim {1} +{2})' `
 		$args
 	;
 }

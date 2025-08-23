@@ -36,6 +36,14 @@
 					"type": "session"
 				},
 				{
+					"foreground": "p:white",
+					"background": "p:orange",
+					"powerline_symbol": "",
+					"style": "powerline",
+					"type": "shell"
+
+				},
+				{
 					"background": "p:magenta",
 					"foreground": "p:white",
 					"template": " {{ .HostName }} ",

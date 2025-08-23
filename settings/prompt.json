@@ -109,6 +109,14 @@
 					"style": "powerline",
 					"type": "text",
 					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }}{{ if .Segments.Git.Staging.Changed }} ~{{ end }} "
+				},
+				{
+					"background": "p:red",
+					"foreground": "p:white",
+					"powerline_symbol": "",
+					"style": "powerline",
+					"type": "text",
+					"template": "{{ if .Segments.Git.Detached }} Detached {{ end }}{{ if .Segments.Git.Merge }} Merge {{ end }}{{ if .Segments.Git.CherryPick }} Cherry Pick {{ end }}{{ if .Segments.Git.Revert }} Revert {{ end }}{{ if .Segments.Git.Rebase }} Rebase {{ .Segments.Git.Rebase.HEAD }} onto {{ .Segments.Git.Rebase.Onto }} [{{ .Segments.Git.Rebase.Current }} / {{ .Segments.Git.Rebase.Total }}]{{ end }}"
 				}
 			]
 		},

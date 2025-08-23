@@ -100,7 +100,7 @@
 					"powerline_symbol": "",
 					"style": "powerline",
 					"type": "text",
-					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ else if .Segments.Git.Staging.Changed }}~{{ end }} "
+					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }}{{ if .Segments.Git.Staging.Changed }} ~{{ end }} "
 				}
 			]
 		},

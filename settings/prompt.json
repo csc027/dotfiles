@@ -13,7 +13,7 @@
 		"red": "#9b0f1b",
 		"violet": "#8800dd",
 		"white": "#ffffff",
-		"yellow": "#cfc98a"
+		"yellow": "#ebae35"
 	},
 	"blocks": [
 		{
@@ -111,12 +111,36 @@
 					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }}{{ if .Segments.Git.Staging.Changed }} ~{{ end }} "
 				},
 				{
-					"background": "p:red",
+					"background": "p:orange",
 					"foreground": "p:white",
 					"powerline_symbol": "",
 					"style": "powerline",
 					"type": "text",
-					"template": "{{ if .Segments.Git.Detached }} Detached {{ end }}{{ if .Segments.Git.Merge }} Merge {{ end }}{{ if .Segments.Git.CherryPick }} Cherry Pick {{ end }}{{ if .Segments.Git.Revert }} Revert {{ end }}{{ if .Segments.Git.Rebase }} Rebase {{ .Segments.Git.Rebase.HEAD }} onto {{ .Segments.Git.Rebase.Onto }} [{{ .Segments.Git.Rebase.Current }} / {{ .Segments.Git.Rebase.Total }}]{{ end }}"
+					"template": "{{ if .Segments.Git.Merge }} Merge {{ end }}"
+				},
+				{
+					"background": "p:magenta",
+					"foreground": "p:white",
+					"powerline_symbol": "",
+					"style": "powerline",
+					"type": "text",
+					"template": "{{ if .Segments.Git.CherryPick }} Cherry Pick {{ end }}"
+				},
+				{
+					"background": "p:blue",
+					"foreground": "p:white",
+					"powerline_symbol": "",
+					"style": "powerline",
+					"type": "text",
+					"template": "{{ if .Segments.Git.Revert }} Revert {{ end }}"
+				},
+				{
+					"background": "p:violet",
+					"foreground": "p:white",
+					"powerline_symbol": "",
+					"style": "powerline",
+					"type": "text",
+					"template": "{{ if .Segments.Git.Rebase }} Rebase onto {{ .Segments.Git.Rebase.Onto }} [{{ .Segments.Git.Rebase.Current }}/{{ .Segments.Git.Rebase.Total }}] {{ end }}"
 				}
 			]
 		},
@@ -124,6 +148,14 @@
 			"type": "prompt",
 			"alignment": "right",
 			"segments": [
+				{
+					"leading_diamond": "",
+					"background": "p:yellow",
+					"foreground": "p:white",
+					"style": "diamond",
+					"type": "text",
+					"template": " {{ join \", \" (without (concat .Segments.Git.Commit.Refs.Remotes .Segments.Git.Commit.Refs.Tags) .Segments.Git.Ref) }} "
+				},
 				{
 					"leading_diamond": "",
 					"foreground": "p:white",

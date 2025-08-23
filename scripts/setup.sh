@@ -8,8 +8,10 @@ declare -A SYMLINKS=(
 	["settings/.inputrc"]=".inputrc"
 	["settings/.vsvimrc"]=".vsvimrc"
 	["settings/omnisharp.json"]=".omnisharp/omnisharp.json"
+	["settings/prompt.json"]=".prompt.json"
 	["submodules/bashrc/.bashrc"]=".bashrc"
 	["submodules/bashrc/.bash_profile"]=".bash_profile"
+	["submodules/bashrc/.profile"]=".profile"
 	["submodules/dircolors-solarized/dircolors.256dark"]=".dircolors"
 	["submodules/git-bash-prompt/.git-prompt.bash"]=".git-prompt.bash"
 )

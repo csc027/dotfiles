@@ -60,6 +60,7 @@
 					"type": "path"
 				},
 				{
+					"alias": "Git",
 					"foreground_templates": [
 						"{{ if or (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",
 						"p:white"
@@ -88,25 +89,17 @@
 					"background": "p:green",
 					"foreground": "p:white",
 					"powerline_symbol": "",
-					"properties": {
-						"fetch_status": true,
-						"source": "cli"
-					},
 					"style": "powerline",
-					"type": "git",
-					"template": "{{ if .Staging.Changed }} +{{ .Staging.Added }} ~{{ .Staging.Modified }} -{{ .Staging.Deleted }} {{ end }}"
+					"type": "text",
+					"template": "{{ if .Segments.Git.Staging.Changed }} +{{ .Segments.Git.Staging.Added }} ~{{ .Segments.Git.Staging.Modified }} -{{ .Segments.Git.Staging.Deleted }} {{ end }}"
 				},
 				{
 					"background": "p:red",
 					"foreground": "p:white",
 					"powerline_symbol": "",
-					"properties": {
-						"fetch_status": true,
-						"source": "cli"
-					},
 					"style": "powerline",
-					"type": "git",
-					"template": "{{ if .Working.Changed }} +{{ .Working.Untracked }} ~{{ .Working.Modified }} -{{ .Working.Deleted }}{{ end }}{{ if gt .Working.Untracked 0 }}!{{ else if .Staging.Changed }}~{{ end }} "
+					"type": "text",
+					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ else if .Segments.Git.Staging.Changed }}~{{ end }} "
 				}
 			]
 		},

@@ -154,7 +154,7 @@
 					"foreground": "p:white",
 					"style": "diamond",
 					"type": "text",
-					"template": " {{ join \", \" (without (concat .Segments.Git.Commit.Refs.Remotes .Segments.Git.Commit.Refs.Tags) .Segments.Git.Ref) }} "
+					"template": " {{ join \", \" .Segments.Git.Commit.Refs.Tags }} "
 				},
 				{
 					"leading_diamond": "",

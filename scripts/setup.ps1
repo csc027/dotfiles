@@ -73,6 +73,10 @@ $Items = @(
 		'Destination' = [IO.Path]::Combine($HOME, '.omnisharp', 'omnisharp.json');
 	},
 	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath 'prompt.json';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.prompt.json';
+	},
+	@{
 		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
 		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
 	}

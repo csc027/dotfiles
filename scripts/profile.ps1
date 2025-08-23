@@ -39,7 +39,8 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 }
 
 if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
-	oh-my-posh.exe init pwsh | Invoke-Expression;
+	$OhMyPoshConfigPath = Join-Path -Path $HOME -ChildPath '.prompt.json';
+	oh-my-posh.exe init pwsh --config $OhMyPoshConfigPath | Invoke-Expression;
 } else {
 	if ($env:WT_SESSION) {
 		$script:RightSeparator = ' ❭ ';

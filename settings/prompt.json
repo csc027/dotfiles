@@ -38,16 +38,16 @@
 				{
 					"foreground": "p:white",
 					"background": "p:orange",
-					"powerline_symbol": "",
-					"style": "powerline",
+					"style": "diamond",
 					"type": "shell"
 
 				},
 				{
 					"background": "p:magenta",
 					"foreground": "p:white",
+					"powerline_symbol": "",
 					"template": " {{ .HostName }} ",
-					"style": "diamond",
+					"style": "powerline",
 					"type": "session"
 				},
 				{

@@ -40,7 +40,7 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 
 if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 	$OhMyPoshCacheDirectory = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'oh-my-posh');
-	$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
+	$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*.ps1' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
 	if ($LatestCachedPrompt) {
 		& $LatestCachedPrompt > $null;
 	} else {

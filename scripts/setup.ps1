@@ -128,6 +128,18 @@ foreach ($Item in $Items) {
 	}
 }
 
+# Clear Oh My Posh cached entries
+$OhMyPoshCacheDirectory = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'oh-my-posh');
+if (Test-Path -Path $OhMyPoshCacheDirectory -PathType Container) {
+	Get-ChildItem -Path $OhMyPoshCacheDirectory | Remove-Item -Recurse -Force;
+}
+
+# Initialize Oh My Posh
+if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
+	$OhMyPoshConfigPath = Join-Path -Path $HOME -ChildPath '.prompt.json';
+	oh-my-posh init pwsh --config $OhMyPoshConfigPath;
+}
+
 # Setup GitHub CLI aliases
 if (Get-Command -Name 'gh' -ErrorAction 'SilentlyContinue') {
 	$GitHubAliases = [IO.Path]::Combine($DotfilesRootDirectory, 'settings', 'ghcli.yml');

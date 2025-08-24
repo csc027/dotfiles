@@ -36,6 +36,13 @@
 					"type": "session"
 				},
 				{
+					"background": "p:yellow",
+					"foreground": "p:white",
+					"template": "{{ if .SSHSession }} SSH {{ end }}",
+					"style": "diamond",
+					"type": "session"
+				},
+				{
 					"foreground": "p:white",
 					"background": "p:orange",
 					"style": "diamond",

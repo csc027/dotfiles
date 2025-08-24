@@ -53,6 +53,16 @@ do
 	fi
 done
 
+# clear old cached prompts if they exist
+if [ -d ~/.cache/oh-my-posh ]; then
+	rm -rf ~/.cache/oh-my-posh/*;
+fi
+
+# initialize prompt
+if [ -z "$(command -v oh-my-posh)" ]; then
+	oh-my-posh init bash --config ~/.prompt.json;
+fi
+
 if type gh &> /dev/null; then
 	if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then
 		echo -e "Setting the GitHub CLI aliases.";

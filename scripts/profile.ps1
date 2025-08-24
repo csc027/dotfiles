@@ -40,9 +40,9 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 
 if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 	$OhMyPoshCacheDirectory = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'oh-my-posh');
-	$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
+	$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
 	if ($LatestCachedPrompt) {
-		& $LatestCachedPrompt;
+		& $LatestCachedPrompt > $null;
 	} else {
 		Write-Host "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
 	}

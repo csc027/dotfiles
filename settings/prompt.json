@@ -76,10 +76,7 @@
 				},
 				{
 					"alias": "Git",
-					"foreground_templates": [
-						"{{ if or (gt .Ahead 0) (gt .Behind 0) }}p:white{{ end }}",
-						"p:white"
-					],
+					"foreground": "p:white",
 					"background_templates": [
 						"{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:yellow{{ end }}",
 						"{{ if gt .Ahead 0 }}p:green{{ end }}",

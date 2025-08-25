@@ -44,6 +44,7 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 		$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*.ps1' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
 		if ($LatestCachedPrompt) {
 			& $LatestCachedPrompt > $null;
+			$env:POSH_GIT_ENABLED = $true;
 		} else {
 			Write-Host "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
 		}

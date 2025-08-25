@@ -137,7 +137,7 @@ if (Test-Path -Path $OhMyPoshCacheDirectory -PathType Container) {
 # Initialize Oh My Posh
 if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 	$OhMyPoshConfigPath = Join-Path -Path $HOME -ChildPath '.prompt.json';
-	oh-my-posh init pwsh --config $OhMyPoshConfigPath;
+	oh-my-posh init pwsh --config $OhMyPoshConfigPath > $null;
 }
 
 # Setup GitHub CLI aliases

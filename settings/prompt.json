@@ -95,7 +95,7 @@
 					},
 					"style": "powerline",
 					"type": "git",
-					"template": " {{ .Ref }}{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}"
+					"template": " {{ splitList \"\" .HEAD | rest | join \"\" }}{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}"
 				},
 				{
 					"background": "p:green",
@@ -111,7 +111,7 @@
 					"powerline_symbol": "",
 					"style": "powerline",
 					"type": "text",
-					"template": "{{ if .Segments.Git.Working.Changed }} +{{ .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }}{{ if .Segments.Git.Staging.Changed }} ~{{ end }} "
+					"template": "{{ if .Segments.Git.Working.Changed }} +{{ add .Segments.Git.Working.Added .Segments.Git.Working.Untracked }} ~{{ .Segments.Git.Working.Modified }} -{{ .Segments.Git.Working.Deleted }}{{ end }}{{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }}{{ if .Segments.Git.Staging.Changed }} ~{{ end }} "
 				},
 				{
 					"background": "p:orange",

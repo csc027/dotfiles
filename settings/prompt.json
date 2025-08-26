@@ -166,7 +166,7 @@
 				{
 					"leading_diamond": "",
 					"foreground": "p:white",
-					"background": "p:violet",
+					"background": "p:blue",
 					"template": " {{ .FormattedMs }} ",
 					"properties": {
 						"threshold": 50,
@@ -179,7 +179,7 @@
 				{
 					"leading_diamond": "",
 					"foreground": "p:white",
-					"background": "p:blue",
+					"background": "p:orange",
 					"properties": {
 						"time_format": "01/02/2006"
 					},
@@ -190,7 +190,7 @@
 				{
 					"leading_diamond": "",
 					"foreground": "p:white",
-					"background": "p:orange",
+					"background": "p:magenta",
 					"properties": {
 						"time_format": "03:04 PM"
 					},

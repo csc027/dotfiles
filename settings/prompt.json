@@ -155,7 +155,8 @@
 			"alignment": "right",
 			"segments": [
 				{
-					"leading_diamond": "",
+					"leading_diamond": "",
+					"trailing_diamond": " ",
 					"background": "p:yellow",
 					"foreground": "p:white",
 					"style": "diamond",

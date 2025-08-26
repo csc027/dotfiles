@@ -44,12 +44,16 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 		$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*.ps1' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
 		if ($LatestCachedPrompt) {
 			& $LatestCachedPrompt > $null;
-			$env:POSH_GIT_ENABLED = $true;
+			function Set-PoshGitStatus {
+				$global:GitStatus = Get-GitStatus
+				$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus
+			}
+			New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force
 		} else {
-			Write-Host "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
+			Write-Host -Object "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
 		}
 	} else {
-		Write-Host "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
+		Write-Host -Object "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
 	}
 } else {
 	if ($env:WT_SESSION) {

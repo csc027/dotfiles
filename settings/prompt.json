@@ -91,6 +91,9 @@
 					"branch_gone_icon": "x",
 					"properties": {
 						"fetch_status": true,
+						"ignore_submodules": {
+							"*": "dirty"
+						},
 						"source": "cli"
 					},
 					"style": "powerline",

@@ -45,10 +45,10 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 		if ($LatestCachedPrompt) {
 			& $LatestCachedPrompt > $null;
 			function Set-PoshGitStatus {
-				$global:GitStatus = Get-GitStatus
-				$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus
+				$global:GitStatus = Get-GitStatus;
+				$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus;
 			}
-			New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force
+			New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force;
 		} else {
 			Write-Host -Object "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
 		}

@@ -105,7 +105,9 @@ __git_complete gkb _git_checkout
 __git_complete gl _git_log
 __git_complete gld _git_log
 __git_complete gldl _git_log
+__git_complete glf _git_log
 __git_complete gll _git_log
+__git_complete gllf _git_log
 __git_complete gllp _git_log
 __git_complete_index_file gllpf
 __git_complete glp _git_log

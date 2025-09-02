@@ -73,6 +73,8 @@ function Invoke-GitListTree { git ls-tree --name-only -r $args }
 function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
 function Invoke-GitLogDiff { git log --decorate --oneline --graph --color --boundary $args }
 function Invoke-GitLogDiffLong { git log --decorate --graph --color --boundary $args }
+function Invoke-GitLogFormat { git log --graph --abbrev-commit --format=format:'%C(auto)%>|(26)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)' --all $args }
+function Invoke-GitLogLongFormat { git log --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(cyan)%an <%ae>%C(reset)  %C(magenta)%ad%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)' $args }
 function Invoke-GitLogLong { git log --decorate --graph --color $args }
 function Invoke-GitLogLongPatch { git log --decorate --graph --color -p $args }
 function Invoke-GitLogLongPatchFollow { git log --decorate --graph --color -p --follow -- $args }
@@ -176,31 +178,31 @@ function Invoke-Neovim {
 }
 
 $Aliases = @{
-	'fs' = 'Invoke-FzfFileSearch';
 	'fns' = 'Invoke-FzfFileNameSearch';
+	'fs' = 'Invoke-FzfFileSearch';
 	'ga' = 'Invoke-GitAdd';
 	'gap' = 'Invoke-GitAddChunk';
-	'gb' = 'Invoke-GitBranch';
 	'gba' = 'Invoke-GitBranchAll';
 	'gbav' = 'Invoke-GitBranchAllVerbose';
 	'gbd' = 'Invoke-GitBranchDelete';
+	'gb' = 'Invoke-GitBranch';
 	'gbv' = 'Invoke-GitBranchVerbose';
-	'gc' = 'Invoke-GitCommit';
 	'gca' = 'Invoke-GitCommitAmend';
-	'gd' = 'Invoke-GitDiff';
-	'gdw' = 'Invoke-GitDiffWhitespace';
+	'gc' = 'Invoke-GitCommit';
 	'gdc' = 'Invoke-GitDiffCached';
 	'gdcw' = 'Invoke-GitDiffCachedWhitespace';
+	'gd' = 'Invoke-GitDiff';
 	'gdn' = 'Invoke-GitDiffNameOnly';
 	'gdnw' = 'Invoke-GitDiffNameOnlyWhitespace';
 	'gds' = 'Invoke-GitDiffNameStatus';
 	'gdsw' = 'Invoke-GitDiffNameStatusWhitespace';
 	'gdt' = 'Invoke-GitDiffTool';
-	'ge' = 'Invoke-GitRebase';
+	'gdw' = 'Invoke-GitDiffWhitespace';
 	'gei' = 'Invoke-GitRebaseInteractive';
-	'gf' = 'Invoke-GitFetch';
+	'ge' = 'Invoke-GitRebase';
 	'gfa' = 'Invoke-GitFetchAll';
 	'gfap' = 'Invoke-GitFetchAllPrune';
+	'gf' = 'Invoke-GitFetch';
 	'gfp' = 'Invoke-GitFetchPrune';
 	'gft' = 'Invoke-GitFetchTags';
 	'gg' = 'Invoke-GitGrep';
@@ -208,27 +210,29 @@ $Aliases = @{
 	'ghl' = 'Invoke-GitStashList';
 	'gho' = 'Invoke-GitStashPop';
 	'ghp' = 'Invoke-GitStashPush';
+	'ghu' = 'Invoke-GitStashUntracked';
 	'ghw' = 'Invoke-GitStashShow';
 	'ghwn' = 'Invoke-GitStashShowNameOnly';
-	'ghu' = 'Invoke-GitStashUntracked';
 	'gi' = 'Invoke-GitInit';
-	'gk' = 'Invoke-GitCheckout';
 	'gkb' = 'Invoke-GitCheckoutBranch';
-	'gl' = 'Invoke-GitLog';
-	'glp' = 'Invoke-GitLogPatch';
-	'glpf' = 'Invoke-GitLogPatchFollow';
+	'gk' = 'Invoke-GitCheckout';
 	'gld' = 'Invoke-GitLogDiff';
 	'gldl' = 'Invoke-GitLogDiffLong';
+	'gl' = 'Invoke-GitLog';
+	'glf' = 'Invoke-GitLogFormat';
 	'gll' = 'Invoke-GitLogLong';
-	'gllp' = 'Invoke-GitLogLongPatch';
+	'gllf' = 'Invoke-GitLogLongFormat';
 	'gllpf' = 'Invoke-GitLogLongPatchFollow';
+	'gllp' = 'Invoke-GitLogLongPatch';
+	'glpf' = 'Invoke-GitLogPatchFollow';
+	'glp' = 'Invoke-GitLogPatch';
 	'glr' = 'Invoke-GitLogRegularExpression';
 	'gls' = 'Invoke-GitLogSearch';
 	'glt' = 'Invoke-GitListTree';
 	'gmg' = 'Invoke-GitMerge';
 	'gmt' = 'Invoke-GitMergeTool';
-	'go' = 'Invoke-GitRemote';
 	'goa' = 'Invoke-GitRemoteAdd';
+	'go' = 'Invoke-GitRemote';
 	'gp' = 'Invoke-GitPush';
 	'gpt' = 'Invoke-GitPushTags';
 	'gpu' = 'Invoke-GitPushSetUpstream';

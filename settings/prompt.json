@@ -17,7 +17,6 @@
 	},
 	"blocks": [
 		{
-			"type": "prompt",
 			"alignment": "left",
 			"overflow": "break",
 			"segments": [
@@ -182,20 +181,20 @@
 					"trailing_diamond": "",
 					"type": "text"
 				}
-			]
+			],
+			"type": "prompt"
 		},
 		{
-			"type": "prompt",
 			"alignment": "right",
 			"segments": [
 				{
-					"leading_diamond": "",
-					"trailing_diamond": " ",
 					"background": "p:yellow",
 					"foreground": "p:white",
+					"leading_diamond": "",
 					"style": "diamond",
-					"type": "text",
-					"template": " {{ join \", \" .Segments.Git.Commit.Refs.Tags }} "
+					"trailing_diamond": " ",
+					"template": " {{ join \", \" .Segments.Git.Commit.Refs.Tags }} ",
+					"type": "text"
 				},
 				{
 					"background": "p:blue",
@@ -250,10 +249,10 @@
 					"trailing_diamond": "<transparent,background></>",
 					"type": "status"
 				}
-			]
+			],
+			"type": "prompt"
 		},
 		{
-			"type": "prompt",
 			"alignment": "left",
 			"newline": true,
 			"segments": [
@@ -264,7 +263,8 @@
 					"style": "plain",
 					"type": "text"
 				}
-			]
+			],
+			"type": "prompt"
 		}
 	]
 }

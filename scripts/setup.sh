@@ -59,7 +59,7 @@ if [ -d ~/.cache/oh-my-posh ]; then
 fi
 
 # initialize prompt
-if [ -z "$(command -v oh-my-posh)" ]; then
+if ! [ -z "$(command -v oh-my-posh)" ]; then
 	oh-my-posh init bash --config ~/.prompt.json > /dev/null;
 fi
 

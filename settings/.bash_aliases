@@ -41,7 +41,7 @@ alias gld='git log --decorate --oneline --graph --color --boundary'
 alias gldl='git log --decorate --graph --color --boundary'
 alias gll='git log --decorate --graph --color'
 alias glf="git log --graph --abbrev-commit --format=format:'%C(auto)%>|(26)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)' --all"
-alias gllf="git log --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(cyan)%an <%ae>%C(reset)  %C(magenta)%ad%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)'"
+alias gllf="git log --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(magenta)%ad%C(reset)  %C(cyan)%an <%ae>%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)%n'"
 alias gllpf='git log --decorate --graph --color -p --follow --'
 alias gllp='git log --decorate --graph --color -p'
 alias glpf='git log --decorate --oneline --graph --color -p --follow --'

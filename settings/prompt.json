@@ -132,7 +132,7 @@
 					"foreground": "p:white",
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
-					"template": " {{ if gt .Segments.Git.Working.Untracked 0 }}!{{ end }} ",
+					"template": "{{ if .Segments.Git.Staging.Changed }} ~ {{ end }}",
 					"trailing_diamond": "",
 					"type": "text"
 				},
@@ -141,7 +141,7 @@
 					"foreground": "p:white",
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
-					"template": "{{ if .Segments.Git.Staging.Changed }} ~{{ end }} ",
+					"template": "{{ if gt .Segments.Git.Working.Untracked 0 }} ! {{ end }}",
 					"trailing_diamond": "",
 					"type": "text"
 				},

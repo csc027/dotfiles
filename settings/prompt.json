@@ -152,6 +152,7 @@
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
 					"template": "{{ if .Segments.Git.Merge }} Merge {{ end }}",
+					"trailing_diamond": "",
 					"type": "text"
 				},
 				{
@@ -160,6 +161,7 @@
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
 					"template": "{{ if .Segments.Git.CherryPick }} Cherry Pick {{ end }}",
+					"trailing_diamond": "",
 					"type": "text"
 				},
 				{
@@ -168,6 +170,7 @@
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
 					"template": "{{ if .Segments.Git.Revert }} Revert {{ end }}",
+					"trailing_diamond": "",
 					"type": "text"
 				},
 				{
@@ -176,6 +179,7 @@
 					"leading_diamond": "<transparent,background></>",
 					"style": "diamond",
 					"template": "{{ if .Segments.Git.Rebase }} Rebase onto {{ .Segments.Git.Rebase.Onto }} [{{ .Segments.Git.Rebase.Current }}/{{ .Segments.Git.Rebase.Total }}] {{ end }}",
+					"trailing_diamond": "",
 					"type": "text"
 				}
 			]
@@ -243,6 +247,7 @@
 					},
 					"style": "diamond",
 					"template": "{{ if .Error }} ! {{ else }} ✓ {{ end }}",
+					"trailing_diamond": "<transparent,background></>",
 					"type": "status"
 				}
 			]

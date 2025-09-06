@@ -46,14 +46,6 @@
 					"type": "session"
 				},
 				{
-					"background": "p:orange",
-					"foreground": "p:white",
-					"leading_diamond": "<transparent,background></>",
-					"style": "diamond",
-					"trailing_diamond": "",
-					"type": "shell"
-				},
-				{
 					"background": "p:magenta",
 					"foreground": "p:white",
 					"leading_diamond": "<transparent,background></>",
@@ -209,18 +201,6 @@
 					"template": " {{ .FormattedMs }} ",
 					"trailing_diamond": "<transparent,background></>",
 					"type": "executiontime"
-				},
-				{
-					"background": "p:orange",
-					"foreground": "p:white",
-					"leading_diamond": "",
-					"properties": {
-						"time_format": "01/02/2006"
-					},
-					"style": "diamond",
-					"template": " {{ .CurrentDate | date .Format }} ",
-					"trailing_diamond": "<transparent,background></>",
-					"type": "time"
 				},
 				{
 					"background": "p:magenta",

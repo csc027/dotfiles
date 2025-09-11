@@ -53,10 +53,10 @@
 				"hidden": false,
 				"name": "Command Prompt"
 			}, {
-				"commandline": "\"%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\" -i -l",
+				"commandline": "\"%LOCALAPPDATA%\\Programs\\Git\\git-bash.exe\" -i -l",
 				"guid": "{d15b228a-05d7-50d1-8472-f60aaba86efc}",
 				"hidden": false,
-				"icon": "%SystemDrive%\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+				"icon": "%LOCALAPPDATA%\\Programs\\Git\\mingw64\\share\\git\\git-for-windows.ico",
 				"name": "Git Bash",
 				"startingDirectory": "%USERPROFILE%"
 			}

@@ -39,22 +39,11 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 }
 
 if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
-	$OhMyPoshCacheDirectory = [IO.Path]::Combine($HOME, 'AppData', 'Local', 'oh-my-posh');
-	if (Test-Path -Path $OhMyPoshCacheDirectory -PathType Container) {
-		$LatestCachedPrompt = Get-ChildItem -Path $OhMyPoshCacheDirectory -File -Filter 'init*.ps1' | Sort-Object -Property LastWriteTime -Descending | Select-Object -First 1;
-		if ($LatestCachedPrompt) {
-			& $LatestCachedPrompt > $null;
-			function Set-PoshGitStatus {
-				$global:GitStatus = Get-GitStatus;
-				$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus;
-			}
-			New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force;
-		} else {
-			Write-Host -Object "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
-		}
-	} else {
-		Write-Host -Object "No cached prompt found.  Please initialize oh-my-posh using 'oh-my-posh init pwsh --config ~/.prompt.json'.";
+	function Set-PoshGitStatus {
+		$global:GitStatus = Get-GitStatus;
+		$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus;
 	}
+	New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force;
 } else {
 	if ($env:WT_SESSION) {
 		$script:RightSeparator = ' ❭ ';
@@ -140,5 +129,13 @@ foreach ($DotSourceName in $DotSourceNames) {
 	$DotSourcePath = Join-Path -Path $ProfileDirectory -ChildPath $DotSourceName;
 	if (Test-Path -Path $DotSourcePath) {
 		. $DotSourcePath;
+	}
+}
+
+$Scripts = @('omp.ps1');
+foreach ($Script in $Scripts) {
+	$ScriptPath = Join-Path -Path $ProfileDirectory -ChildPath $Script;
+	if (Test-Path -Path $ScriptPath) {
+		& $ScriptPath;
 	}
 }

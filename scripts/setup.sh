@@ -54,14 +54,10 @@ do
 	fi
 done
 
-# clear old cached prompts if they exist
-if [ -d ~/.cache/oh-my-posh ]; then
-	rm -rf ~/.cache/oh-my-posh/*;
-fi
-
 # initialize prompt
 if ! [ -z "$(command -v oh-my-posh)" ]; then
-	oh-my-posh init bash --config ~/.prompt.json > /dev/null;
+	oh-my-posh cache clear > /dev/null;
+	oh-my-posh init bash --config ~/.prompt.json > ~/.omp.sh;
 fi
 
 if type gh &> /dev/null; then

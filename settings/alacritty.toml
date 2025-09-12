@@ -6,5 +6,7 @@ background = "#000000"
 [keyboard]
 bindings = [
     { key = "Tab", mods = "Control", chars = "\u001b[27;5;9~" },
-    { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" }
+    { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" },
+    { key = "T", mods = "Control|Shift", chars = "\u001b[27;6;116~" },
+    { key = "W", mods = "Control|Shift", chars = "\u001b[27;6;119~" }
 ]

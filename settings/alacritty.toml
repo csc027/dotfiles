@@ -2,11 +2,35 @@ live_config_reload = true
 
 [colors.primary]
 background = "#000000"
+foreground = "#B3B1AD"
+
+[colors.selection]
+background = "#FFFFFF"
+
+[colors.normal]
+black = "#01060E"
+blue = "#53BDFA"
+cyan = "#90E1C6"
+green = "#91B362"
+red = "#EA6C73"
+white = "#C7C7C7"
+yellow = "#F9AF4F"
+
+[colors.bright]
+black = "#686868"
+blue = "#59C2FF"
+cyan = "#95E6CB"
+green = "#C2D94C"
+red = "#F07178"
+white = "#FFFFFF"
+yellow = "#FFB454"
 
 [keyboard]
 bindings = [
     { key = "Tab", mods = "Control", chars = "\u001b[27;5;9~" },
     { key = "Tab", mods = "Control|Shift", chars = "\u001b[27;6;9~" },
     { key = "T", mods = "Control|Shift", chars = "\u001b[27;6;116~" },
-    { key = "W", mods = "Control|Shift", chars = "\u001b[27;6;119~" }
+    { key = "W", mods = "Control|Shift", chars = "\u001b[27;6;119~" },
+    { key = "C", mods = "Control|Shift", action = "Copy" },
+    { key = "V", mods = "Control|Shift", action = "Paste" }
 ]

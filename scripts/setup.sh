@@ -7,6 +7,7 @@ declare -A SYMLINKS=(
 	["settings/.git-completion.bash"]=".git-completion.bash"
 	["settings/.inputrc"]=".inputrc"
 	["settings/.vsvimrc"]=".vsvimrc"
+	["settings/alacritty.toml"]=".alacritty.toml"
 	["settings/omnisharp.json"]=".omnisharp/omnisharp.json"
 	["settings/prompt.json"]=".prompt.json"
 	["settings/tmux.conf"]=".tmux.conf"

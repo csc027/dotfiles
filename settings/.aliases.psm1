@@ -21,8 +21,9 @@ function Invoke-FzfFileSearch {
 		--delimiter ':' `
 		--height=50% `
 		--layout=reverse `
+		--multi `
 		--bind 'start:reload:rg.exe --column --line-number --no-heading --color=always --smart-case .' `
-		--bind 'ctrl-e:become(nvim {1} +{2})' `
+		--bind 'enter:become(nvim {1} +{2})' `
 		$args
 	;
 }
@@ -34,10 +35,11 @@ function Invoke-FzfRegexFileSearch {
 		--disabled `
 		--height=50% `
 		--layout=reverse `
+		--multi `
 		--query "${*:-}" `
 		--bind "start:reload:$RipGrep {q}" `
 		--bind "change:reload:$RipGrep {q} || true" `
-		--bind 'ctrl-e:become(nvim {1} +{2})' `
+		--bind 'enter:become(nvim {1} +{2})' `
 		$args
 	;
 }

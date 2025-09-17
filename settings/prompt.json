@@ -246,5 +246,10 @@
 			],
 			"type": "prompt"
 		}
-	]
+	],
+	"secondary_prompt": {
+		"background": "p:black",
+		"foreground": "p:gray",
+		"template": "└──["
+	}
 }

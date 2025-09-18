@@ -52,6 +52,6 @@ if (vim.fn.executable('pwsh') == 1) then
 	vim.lsp.enable({ 'powershell_es' })
 end
 
-if (vim.fn.executable('omnisharp') == 1) then
-	vim.lsp.enable({ 'omnisharp' })
+if (vim.fn.executable('Microsoft.CodeAnalysis.LanguageServer') == 1) then
+	vim.lsp.enable({ 'roslyn_ls' })
 end

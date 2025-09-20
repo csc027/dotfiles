@@ -3,7 +3,6 @@ require('compare')
 require('complete')
 require('fzf')
 require('general')
-require('netrw')
 require('treesitter')
 require('window')
 

@@ -1,6 +1,24 @@
 if (vim.fn.executable('fzf') == 1) then
 	require('fzf-lua').setup(
 		{
+			fzf_opts = {
+				['--layout'] = 'default'
+			},
+			fzf_colors = {
+				true,
+				['bg']          = { 'bg', 'Normal' },
+				['bg+']         = { 'bg', 'Comment' },
+				['fg']          = { 'fg', 'CursorLine' },
+				['fg+']         = { 'fg', 'Normal' },
+				['gutter']      = -1,
+				['hl']          = { 'fg', 'Comment' },
+				['hl+']         = { 'fg', 'Statement' },
+				['info']        = { 'fg', 'PreProc' },
+				['marker']      = { 'fg', 'Keyword' },
+				['pointer']     = { 'fg', '#9b0f1b', 'bold' },
+				['prompt']      = { 'fg', 'Normal' },
+				['spinner']     = { 'fg', 'Label' }
+			},
 			winopts = {
 				border = 'border-sharp',
 				backdrop = 100,

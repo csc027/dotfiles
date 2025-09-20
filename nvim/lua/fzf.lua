@@ -1,1 +1,1 @@
-require('fzf-lua').setup({ 'fzf-native' })
+require('fzf-lua').setup({ 'fzf-vim' })

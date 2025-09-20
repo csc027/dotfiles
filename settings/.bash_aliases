@@ -64,7 +64,7 @@ alias gu='git pull'
 alias gv='git mv'
 alias gw='git show'
 alias gwu='git for-each-ref --format='\''%(refname:short) <- %(upstream:short)'\'' refs/heads'
-alias rfs="fzf --ansi --delimiter ':' --disabled --height=50% --layout=reverse --query "${*:-}" --bind 'start:reload:rg --column --line-number --no-heading --color=always --smart-case {q}' --bind 'change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true' --bind 'enter:become(nvim {1} +{2})'"
+alias rfs="fzf --ansi --delimiter ':' --disabled --height=50% --layout=reverse --query \"${*:-}\" --bind 'start:reload:rg --column --line-number --no-heading --color=always --smart-case {q}' --bind 'change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true' --bind 'enter:become(nvim {1} +{2})'"
 alias ta="tmux attach-session"
 alias tls="tmux list-sessions"
 alias tn="tmux new-session -s"

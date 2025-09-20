@@ -28,3 +28,6 @@
 [submodule "nvim/pack/colors/start/neovim-ayu"]
 	path = nvim/pack/colors/start/neovim-ayu
 	url = https://github.com/Shatur/neovim-ayu
+[submodule "nvim/pack/plugins/start/fzf-lua"]
+	path = nvim/pack/plugins/start/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua

@@ -68,6 +68,7 @@
 					"foreground": "p:white",
 					"leading_diamond": "<transparent,background></>",
 					"properties": {
+						"display_root": true,
 						"style": "agnoster_full"
 					},
 					"style": "diamond",

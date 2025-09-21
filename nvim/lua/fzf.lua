@@ -1,6 +1,17 @@
 if (vim.fn.executable('fzf') == 1) then
 	require('fzf-lua').setup(
 		{
+			actions = {
+				buffers = {
+					["enter"] = FzfLua.actions.file_edit
+				},
+				files = {
+					["enter"] = FzfLua.actions.file_edit
+				},
+				git_files = {
+					["enter"] = FzfLua.actions.file_edit
+				}
+			},
 			fzf_opts = {
 				['--layout'] = 'default',
 				['--multi'] = true

@@ -50,6 +50,24 @@ if (vim.fn.executable('fzf') == 1) then
 					color_icons   = false
 				},
 			},
+			grep = {
+				prompt            = 'Rip Grep❯ ',
+				input_prompt      = 'Grep For❯ ',
+				multiprocess      = true,
+				git_icons         = false,
+				file_icons        = false,
+				color_icons       = false,
+				grep_opts         = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e",
+				rg_opts           = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
+				hidden            = true,
+				follow            = false,
+				no_ignore         = false,
+				rg_glob           = true,
+				glob_flag         = "--iglob",
+				glob_separator    = "%s%-%-",
+				no_header         = false,
+				no_header_i       = false
+			},
 			fzf_opts = {
 				['--layout'] = 'default',
 				['--multi'] = true

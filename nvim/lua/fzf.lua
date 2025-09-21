@@ -42,7 +42,7 @@ if (vim.fn.executable('fzf') == 1) then
 		}
 	)
 	local opts = { noremap = true }
-	vim.keymap.set('n', '<Leader>b', ':FzfLua buffers<CR>', opts)
-	vim.keymap.set('n', '<Leader>f', ':FzfLua files<CR>', opts)
-	vim.keymap.set('n', '<Leader>g', ':FzfLua git_files<CR>', opts)
+	vim.keymap.set('n', '<Leader>b', FzfLua.buffers, opts)
+	vim.keymap.set('n', '<Leader>f', FzfLua.files, opts)
+	vim.keymap.set('n', '<Leader>g', FzfLua.git_files, opts)
 end

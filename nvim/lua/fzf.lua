@@ -45,4 +45,5 @@ if (vim.fn.executable('fzf') == 1) then
 	vim.keymap.set('n', '<Leader>b', FzfLua.buffers, opts)
 	vim.keymap.set('n', '<Leader>f', FzfLua.files, opts)
 	vim.keymap.set('n', '<Leader>g', FzfLua.git_files, opts)
+	vim.keymap.set('n', '<Leader>rg', FzfLua.live_grep_native, opts)
 end

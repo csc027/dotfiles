@@ -61,6 +61,11 @@ if ! [ -z "$(command -v oh-my-posh)" ]; then
 	oh-my-posh init bash --config ~/.prompt.json > ~/.omp.sh;
 fi
 
+# initialize fzf integration
+if ! [ -z "$(command -v fzf)" ]; then
+	fzf --bash > ~/.fzf.sh;
+fi
+
 # set up github cli aliases
 if type gh &> /dev/null; then
 	if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then

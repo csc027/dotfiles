@@ -124,6 +124,10 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 	}
 }
 
+if ((Get-Command -Name 'fzf' -ErrorAction SilentlyContinue) -and (Get-Command -Name 'fd' -ErrorAction SilentlyContinue)) {
+	$env:FZF_DEFAULT_COMMAND = 'fd.exe --type file --hidden --exclude .git';
+}
+
 $DotSourceNames = @('machine.ps1', 'os.ps1');
 foreach ($DotSourceName in $DotSourceNames) {
 	$DotSourcePath = Join-Path -Path $ProfileDirectory -ChildPath $DotSourceName;

@@ -3,6 +3,7 @@ if (vim.fn.executable('fzf') == 1) then
 		{
 			actions = {
 				buffers = {
+					["ctrl-x"] = { fn = FzfLua.actions.buf_del, reload = true },
 					["enter"] = FzfLua.actions.file_edit
 				},
 				files = {

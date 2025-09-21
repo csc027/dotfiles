@@ -61,12 +61,15 @@ if ! [ -z "$(command -v oh-my-posh)" ]; then
 	oh-my-posh init bash --config ~/.prompt.json > ~/.omp.sh;
 fi
 
+# set up github cli aliases
 if type gh &> /dev/null; then
 	if [ "$1" = "-f" ] || [ "$1" = "--force" ]; then
+		FORCE="--clobber"
 		echo -e "Setting the GitHub CLI aliases.";
-		gh alias delete --all;
+	else
+		FORCE=
 	fi
 	ALIASES="$(dirname "$SCRIPT_DIRECTORY")/settings/ghcli.yml";
 	echo -e "Importing GitHub CLI aliases from $ALIASES.";
-	gh alias import "${ALIASES}";
+	gh alias import "${ALIASES}" "${FORCE}";
 fi

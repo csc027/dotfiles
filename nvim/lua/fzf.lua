@@ -4,14 +4,51 @@ if (vim.fn.executable('fzf') == 1) then
 			actions = {
 				buffers = {
 					["ctrl-x"] = { fn = FzfLua.actions.buf_del, reload = true },
-					["enter"] = FzfLua.actions.file_edit
+					["enter"]  = FzfLua.actions.file_edit
 				},
 				files = {
-					["enter"] = FzfLua.actions.file_edit
+					["enter"]  = FzfLua.actions.file_edit
 				},
 				git_files = {
-					["enter"] = FzfLua.actions.file_edit
+					["enter"]  = FzfLua.actions.file_edit
 				}
+			},
+			buffers = {
+				prompt             = 'Buffers❯ ',
+				file_icons         = false,
+				color_icons        = false,
+				sort_lastused      = false,
+				show_unloaded      = true,
+				cwd_only           = false,
+				cwd                = nil
+			},
+			files = {
+				prompt             = 'Files❯ ',
+				multiprocess       = true,
+				git_icons          = false,
+				file_icons         = false,
+				color_icons        = false,
+				find_opts          = [[-type f \! -path '*/.git/*']],
+				rg_opts            = [[--hidden --files -g "!.git"]],
+				fd_opts            = [[--hidden --type f --type l --exclude .git]],
+				dir_opts           = [[/s/b/a:-d]],
+				cwd_prompt         = false,
+				toggle_ignore_flag = "--no-ignore",
+				toggle_hidden_flag = "--hidden",
+				toggle_follow_flag = "-L",
+				hidden             = true,
+				follow             = false,
+				no_ignore          = false
+			},
+			git = {
+				files = {
+					prompt        = 'Git Files❯ ',
+					cmd           = 'git ls-files --exclude-standard',
+					multiprocess  = true,
+					git_icons     = false,
+					file_icons    = false,
+					color_icons   = false
+				},
 			},
 			fzf_opts = {
 				['--layout'] = 'default',

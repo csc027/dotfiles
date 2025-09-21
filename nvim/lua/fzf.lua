@@ -2,7 +2,8 @@ if (vim.fn.executable('fzf') == 1) then
 	require('fzf-lua').setup(
 		{
 			fzf_opts = {
-				['--layout'] = 'default'
+				['--layout'] = 'default',
+				['--multi'] = true
 			},
 			fzf_colors = {
 				true,

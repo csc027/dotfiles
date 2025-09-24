@@ -11,8 +11,8 @@ end
 local opts = { noremap = true }
 if (vim.fn.executable('fzf') ~= 1) then
 	vim.keymap.set('n', '<Leader>b', ':buffer<Space>', opts)
-	vim.keymap.set('n', '<Leader>l', ':buffers<CR>', opts)
 end
+vim.keymap.set('n', '<Leader>l', ':buffers<CR>', opts)
 vim.keymap.set('n', '<Leader>d', BDelete, opts)
 vim.keymap.set('n', '<Leader>n', ':bnext<CR>', opts)
 vim.keymap.set('n', '<Leader>p', ':bprevious<CR>', opts)

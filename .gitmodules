@@ -10,9 +10,6 @@
 [submodule "submodules/git-bash-prompt"]
 	path = submodules/git-bash-prompt
 	url = https://github.com/csc027/git-bash-prompt.git
-[submodule "submodules/bashrc"]
-	path = submodules/bashrc
-	url = https://github.com/csc027/bashrc.git
 [submodule "nvim/pack/complete/start/lspconfig"]
 	path = nvim/pack/complete/start/lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git

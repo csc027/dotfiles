@@ -72,15 +72,15 @@ function Invoke-GitFetchTags { git fetch --tags $args }
 function Invoke-GitGrep { git grep $args }
 function Invoke-GitInit { git init $args }
 function Invoke-GitListTree { git ls-tree --name-only -r $args }
-function Invoke-GitLog { git log --decorate --oneline --graph --color $args }
-function Invoke-GitLogDiff { git log --decorate --oneline --graph --color --boundary $args }
-function Invoke-GitLogDiffLong { git log --decorate --graph --color --boundary $args }
-function Invoke-GitLogFormat { git log --graph --abbrev-commit --format=format:'%C(auto)%>|(26)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)' --all $args }
-function Invoke-GitLogLongFormat { git log --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(magenta)%ad%C(reset)  %C(cyan)%an <%ae>%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)%n' $args }
-function Invoke-GitLogLong { git log --decorate --graph --color $args }
-function Invoke-GitLogLongPatch { git log --decorate --graph --color -p $args }
+function Invoke-GitLog { git log --all --decorate --oneline --graph --color $args }
+function Invoke-GitLogDiff { git log --all --decorate --oneline --graph --color --boundary $args }
+function Invoke-GitLogDiffLong { git log --all --decorate --graph --color --boundary $args }
+function Invoke-GitLogFormat { git log --all --graph --abbrev-commit --format=format:'%C(auto)%>|(26)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)' $args }
+function Invoke-GitLogLongFormat { git log --all --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(magenta)%ad%C(reset)  %C(cyan)%an <%ae>%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)%n' $args }
+function Invoke-GitLogLong { git log --all --decorate --graph --color $args }
+function Invoke-GitLogLongPatch { git log --all --decorate --graph --color -p $args }
 function Invoke-GitLogLongPatchFollow { git log --decorate --graph --color -p --follow -- $args }
-function Invoke-GitLogPatch { git log --decorate --oneline --graph --color -p $args }
+function Invoke-GitLogPatch { git log --all --decorate --oneline --graph --color -p $args }
 function Invoke-GitLogPatchFollow { git log --decorate --oneline --graph --color -p --follow -- $args }
 function Invoke-GitLogRegularExpression { git log --decorate --color -G $args }
 function Invoke-GitLogSearch { git log --decorate --color -S $args }

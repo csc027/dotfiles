@@ -40,8 +40,8 @@ alias gk='git checkout'
 alias gld='git log --all --decorate --oneline --graph --color --boundary'
 alias gldl='git log --all --decorate --graph --color --boundary'
 alias gll='git log --all --decorate --graph --color'
-alias glf="git log --all --graph --abbrev-commit --format=format:'%C(auto)%>|(26)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)'"
-alias gllf="git log --all --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(26)%h%C(reset)  %C(magenta)%ad%C(reset)  %C(cyan)%an <%ae>%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)%n'"
+alias glf="git log --all --graph --abbrev-commit --format=format:'%C(auto)%>|(30)%h%C(reset) %C(cyan)%an%C(reset)%C(auto)%d%C(reset) %C(white)%s%C(reset) - %C(dim white)%ar%C(reset)'"
+alias gllf="git log --all --graph --abbrev-commit --date=format:'%a %b %d, %Y %I:%M %p' --format=format:'%C(auto)%>|(30)%h%C(reset)  %C(magenta)%ad%C(reset)  %C(cyan)%an <%ae>%C(reset) %C(auto)%d%C(reset)%n %C(dim white)%>|(28)%C(reset)- %C(white)%s%C(reset)%n'"
 alias gllpf='git log --decorate --graph --color -p --follow --'
 alias gllp='git log --all --decorate --graph --color -p'
 alias glpf='git log --decorate --oneline --graph --color -p --follow --'

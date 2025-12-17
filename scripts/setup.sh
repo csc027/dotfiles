@@ -11,6 +11,7 @@ declare -A SYMLINKS=(
 	["settings/.profile"]=".profile"
 	["settings/.vsvimrc"]=".vsvimrc"
 	["settings/alacritty.toml"]=".alacritty.toml"
+	["settings/cosmic.ron"]=".config/cosmic/com.system76.CosmicSettings.Shortcuts/v1/custom"
 	["settings/omnisharp.json"]=".omnisharp/omnisharp.json"
 	["settings/prompt.json"]=".prompt.json"
 	["settings/tmux.conf"]=".tmux.conf"

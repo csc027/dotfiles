@@ -44,14 +44,36 @@ vim.diagnostic.config({
 	}
 })
 
-vim.lsp.config['*'] = {
-	on_attach = on_attach
-}
-
-if (vim.fn.executable('pwsh') == 1) then
+local powershell_es_bundle_path = ''
+local psscriptanalyzer_settings_path = ''
+if (
+	powershell_es_bundle_path ~= nil and powershell_es_bundle_path ~= '' and
+	psscriptanalyzer_settings_path ~= nil and psscriptanalyzer_settings_path ~= ''
+) then
+	vim.lsp.config(
+		'powershell_es', {
+			bundle_path = powershell_es_bundle_path,
+			init_options = { enableProfileLoading = false },
+			settings = { powershell = { scriptAnalysis = { settingsPath = psscriptanalyzer_settings_path } } },
+			on_attach = on_attach
+		}
+	)
 	vim.lsp.enable({ 'powershell_es' })
 end
 
-if (vim.fn.executable('Microsoft.CodeAnalysis.LanguageServer') == 1) then
+local roslyn_language_server_dll_path = ''
+if (roslyn_language_server_dll_path ~= nul and roslyn_language_server_dll_path ~= '') then
+	vim.lsp.config(
+		'roslyn_ls', {
+			cmd = {
+				'dotnet',
+				roslyn_language_server_dll_path,
+				'--logLevel', 'Information',
+				'--extensionLogDirectory', vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
+				'--stdio'
+			},
+			on_attach = on_attach
+		}
+	)
 	vim.lsp.enable({ 'roslyn_ls' })
 end

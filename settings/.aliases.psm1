@@ -17,6 +17,9 @@ function Invoke-FzfFileNameSearch {
 	;
 }
 function Invoke-FzfRegexFileSearch {
+	# Clear the contents of the temp files
+	Get-Item -Path "$env:TEMP/rg-fzf-*" | Set-Content -Value '';
+
 	$InitialQuery = "${*:-}";
 	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
 	fzf.exe `

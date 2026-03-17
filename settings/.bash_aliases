@@ -83,7 +83,9 @@ function fns {
 		--style full
 }
 function rfs {
+	# Clear the contents of the temp files
 	rm -f /tmp/rg-fzf-*
+
 	INITIAL_QUERY="${*:-}";
 	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case ";
 	fzf \

@@ -1,5 +1,3 @@
-alias fns="fzf --multi --preview 'cat {}' --bind 'ctrl-e:become(nvim {+})' --height=50% --layout=reverse --style full --list-label ' Search ' --input-label ' Input ' --preview-label ' Preview ' --color 'preview-border:#d2a6ff,preview-label:#d2a6ff' --color 'list-border:#91b362,list-label:#91b362' --color 'input-border:#ea6c73,input-label:#ea6c73'"
-alias fs="fzf --ansi --delimiter ':' --height=50% --layout=reverse --bind 'start:reload:rg --column --line-number --no-heading --color=always --smart-case .' --bind 'enter:become(nvim {1} +{2})'"
 alias ga='git add'
 alias gap='git add -p'
 alias gba='git branch -a'
@@ -67,6 +65,23 @@ alias gwu='git for-each-ref --format='\''%(refname:short) <- %(upstream:short)'\
 alias ta="tmux attach-session"
 alias tls="tmux list-sessions"
 alias tn="tmux new-session -s"
+function fns {
+	INITIAL_QUERY="${*:-}";
+	fzf \
+		--bind 'ctrl-e:become(nvim {+})' \
+		--color 'input-border:#ea6c73,input-label:#ea6c73' \
+		--color 'list-border:#91b362,list-label:#91b362' \
+		--color 'preview-border:#d2a6ff,preview-label:#d2a6ff' \
+		--height=70% \
+		--input-label ' Input ' \
+		--layout=reverse \
+		--list-label ' Search ' \
+		--multi \
+		--preview 'cat {}' \
+		--preview-label ' Preview ' \
+		--query "$INITIAL_QUERY" \
+		--style full
+}
 function rfs {
 	rm -f /tmp/rg-fzf-*
 	INITIAL_QUERY="${*:-}";

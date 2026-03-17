@@ -1,30 +1,19 @@
 function Invoke-FzfFileNameSearch {
+	$InitialQuery = "${*:-}";
 	fzf.exe `
-		--multi `
-		--preview 'type {}' `
-		--height=50% `
-		--layout=reverse `
-		--style full `
-		--list-label ' Search ' `
-		--input-label ' Input ' `
-		--preview-label ' Preview ' `
-		--color 'preview-border:#d2a6ff,preview-label:#d2a6ff' `
-		--color 'list-border:#91b362,list-label:#91b362' `
-		--color 'input-border:#ea6c73,input-label:#ea6c73' `
 		--bind 'ctrl-e:become(nvim {+})' `
-		$args
-	;
-}
-function Invoke-FzfFileSearch {
-	fzf.exe `
-		--ansi `
-		--delimiter ':' `
-		--height=50% `
+		--color 'input-border:#ea6c73,input-label:#ea6c73' `
+		--color 'list-border:#91b362,list-label:#91b362' `
+		--color 'preview-border:#d2a6ff,preview-label:#d2a6ff' `
+		--height=70% `
+		--input-label ' Input ' `
 		--layout=reverse `
+		--list-label ' Search ' `
 		--multi `
-		--bind 'start:reload:rg.exe --column --line-number --no-heading --color=always --smart-case .' `
-		--bind 'enter:become(nvim {1} +{2})' `
-		$args
+		--preview-label ' Preview ' `
+		--preview 'type {}' `
+		--query "$InitialQuery" `
+		--style full
 	;
 }
 function Invoke-FzfRegexFileSearch {
@@ -37,9 +26,8 @@ function Invoke-FzfRegexFileSearch {
 		--bind "start:reload:$RipGrep {q}" `
 		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
 		--bind 'ctrl-g:transform:if not "%FZF_PROMPT%" == "Rip Grep❯ " (echo ^rebind^(change^)^+^change-prompt^(Rip Grep❯ ^)^+^disable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf❯ ^)^+^enable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
-		--prompt 'Rip Grep❯ ' `
-		--preview-label 'Preview' `
 		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
+		--prompt 'Rip Grep❯ ' `
 		--preview 'type {1}' `
 		--preview-window 'up,60%,border-bottom,+{2}+3' `
 		--query "$InitialQuery"
@@ -183,7 +171,6 @@ function Invoke-Neovim {
 
 $Aliases = @{
 	'fns' = 'Invoke-FzfFileNameSearch';
-	'fs' = 'Invoke-FzfFileSearch';
 	'ga' = 'Invoke-GitAdd';
 	'gap' = 'Invoke-GitAddChunk';
 	'gba' = 'Invoke-GitBranchAll';

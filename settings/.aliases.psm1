@@ -18,7 +18,7 @@ function Invoke-FzfFileNameSearch {
 }
 function Invoke-FzfRegexFileSearch {
 	# Clear the contents of the temp files
-	Get-Item -Path "$env:TEMP/rg-fzf-*" | Set-Content -Value '';
+	Get-Item -Path "$env:TEMP/rg-fzf-*" | Remove-Item -Force;
 
 	$InitialQuery = "${*:-}";
 	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
@@ -28,7 +28,7 @@ function Invoke-FzfRegexFileSearch {
 		--disabled `
 		--bind "start:reload:$RipGrep {q}" `
 		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
-		--bind 'ctrl-g:transform:if not "%FZF_PROMPT%" == "Rip Grep❯ " (echo ^rebind^(change^)^+^change-prompt^(Rip Grep❯ ^)^+^disable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf❯ ^)^+^enable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
+		--bind 'ctrl-g:transform:if not "%FZF_PROMPT%" == "Rip Grep❯ " (echo ^rebind^(change^)^+^change-prompt^(Rip Grep❯ ^)^+^disable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf❯ ^)^+^enable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
 		--bind 'enter:become(nvim {1} +{2})' `
 		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
 		--prompt 'Rip Grep❯ ' `

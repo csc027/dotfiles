@@ -64,10 +64,27 @@ alias gu='git pull'
 alias gv='git mv'
 alias gw='git show'
 alias gwu='git for-each-ref --format='\''%(refname:short) <- %(upstream:short)'\'' refs/heads'
-alias rfs="fzf --ansi --delimiter ':' --disabled --height=50% --layout=reverse --query \"${*:-}\" --bind 'start:reload:rg --column --line-number --no-heading --color=always --smart-case {q}' --bind 'change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true' --bind 'enter:become(nvim {1} +{2})'"
 alias ta="tmux attach-session"
 alias tls="tmux list-sessions"
 alias tn="tmux new-session -s"
+function rfs {
+	rm -f /tmp/rg-fzf-*
+	INITIAL_QUERY="${*:-}";
+	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case ";
+	fzf \
+		--ansi \
+		--bind "start:reload:$RG_PREFIX {q}" \
+		--bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
+		--bind 'ctrl-g:transform:[[ ! $FZF_PROMPT =~ "Rip Grep" ]] && echo "rebind(change)+change-prompt(Rip Grep❯ )+disable-search+transform-query:echo \{q} > /tmp/rg-fzf-f; cat /tmp/rg-fzf-r" || echo "unbind(change)+change-prompt(Fzf❯ )+enable-search+transform-query:echo \{q} > /tmp/rg-fzf-r; cat /tmp/rg-fzf-f"' \
+		--bind 'enter:become(nvim {1} +{2})' \
+		--delimiter ':' \
+		--disabled \
+		--header 'Ctrl-G: Switch between RipGrep and Fzf' \
+		--preview 'cat {1} '\
+		--preview-window 'up,60%,border-bottom,+{2},~3' \
+		--prompt 'Rip Grep❯ ' \
+		--query "$INITIAL_QUERY"
+}
 
 __git_complete ga _git_add
 __git_complete gap _git_add

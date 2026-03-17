@@ -28,7 +28,7 @@ function Invoke-FzfRegexFileSearch {
 		--disabled `
 		--bind "start:reload:$RipGrep {q} || rem" `
 		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
-		--bind 'ctrl-g:transform:if not "%FZF_PROMPT:~0,8%" == "Rip Grep" (echo ^rebind^(change^)^+^change-prompt^(Rip Grep> ^)^+^disable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf^> ^)^+^enable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
+		--bind 'ctrl-g:transform:if not "%FZF_PROMPT:~0,8%" == "Rip Grep" (echo ^rebind^(change^)^+^change-prompt^(Rip Grep^> ^)^+^disable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf^> ^)^+^enable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
 		--bind 'enter:become(nvim {1} +{2})' `
 		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
 		--prompt 'Rip Grep> ' `

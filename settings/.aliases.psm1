@@ -29,6 +29,7 @@ function Invoke-FzfRegexFileSearch {
 		--bind "start:reload:$RipGrep {q}" `
 		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
 		--bind 'ctrl-g:transform:if not "%FZF_PROMPT%" == "Rip Grep❯ " (echo ^rebind^(change^)^+^change-prompt^(Rip Grep❯ ^)^+^disable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf❯ ^)^+^enable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
+		--bind 'enter:become(nvim {1} +{2})' `
 		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
 		--prompt 'Rip Grep❯ ' `
 		--preview 'type {1}' `

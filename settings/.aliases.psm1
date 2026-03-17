@@ -28,19 +28,21 @@ function Invoke-FzfFileSearch {
 	;
 }
 function Invoke-FzfRegexFileSearch {
+	$InitialQuery = "${*:-}";
 	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
 	fzf.exe `
 		--ansi `
 		--delimiter ':' `
 		--disabled `
-		--height=50% `
-		--layout=reverse `
-		--multi `
-		--query "${*:-}" `
 		--bind "start:reload:$RipGrep {q}" `
-		--bind "change:reload:$RipGrep {q} || true" `
-		--bind 'enter:become(nvim {1} +{2})' `
-		$args
+		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
+		--bind 'ctrl-g:transform:if not "%FZF_PROMPT%" == "Rip Grep❯ " (echo ^rebind^(change^)^+^change-prompt^(Rip Grep❯ ^)^+^disable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf❯ ^)^+^enable-search^+^transform-query:echo ^{q^} ^> %TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
+		--prompt 'Rip Grep❯ ' `
+		--preview-label 'Preview' `
+		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
+		--preview 'type {1}' `
+		--preview-window 'up,60%,border-bottom,+{2}+3' `
+		--query "$InitialQuery"
 	;
 }
 function Invoke-GitAdd { git add $args }

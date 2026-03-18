@@ -1,5 +1,5 @@
 function Invoke-FzfFileNameSearch {
-	$InitialQuery = "${*:-}";
+	$InitialQuery = if ($args) { $args -join ' ' } else { '' };
 	fzf.exe `
 		--bind 'ctrl-e:become(nvim {+})' `
 		--color 'input-border:#ea6c73,input-label:#ea6c73' `
@@ -20,7 +20,7 @@ function Invoke-FzfRegexFileSearch {
 	# Clear the contents of the temp files
 	Get-Item -Path "$env:TEMP/rg-fzf-*" | Remove-Item -Force;
 
-	$InitialQuery = "${*:-}";
+	$InitialQuery = if ($args) { $args -join ' ' } else { '' };
 	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
 	fzf.exe `
 		--ansi `

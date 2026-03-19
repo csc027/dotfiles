@@ -87,7 +87,7 @@ function rfs {
 	rm -f /tmp/rg-fzf-*
 
 	INITIAL_QUERY="${*:-}";
-	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case ";
+	RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case --hidden -e";
 	fzf \
 		--ansi \
 		--bind "start:reload:$RG_PREFIX {q}" \

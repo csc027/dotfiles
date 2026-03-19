@@ -21,7 +21,7 @@ function Invoke-FzfRegexFileSearch {
 	Get-Item -Path "$env:TEMP/rg-fzf-*" | Remove-Item -Force;
 
 	$InitialQuery = if ($args) { $args -join ' ' } else { '' };
-	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --smart-case ';
+	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --hidden --smart-case -e';
 	fzf.exe `
 		--ansi `
 		--delimiter ':' `

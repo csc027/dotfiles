@@ -1,0 +1,13 @@
+# Useless paths
+.cache/
+.git/
+
+# Sensitive paths
+.gnupg/
+.pki/
+.smbcredentials
+.ssh/
+
+# History paths
+.bash_history
+.history

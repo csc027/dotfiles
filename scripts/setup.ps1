@@ -49,28 +49,16 @@ if (-not (Test-Path -Path $ProfileDirectory)) {
 # List files to be symbolically linked to other locations
 $Items = @(
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.aliases.psm1';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
-	},
-	@{
-		'Source' = [IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark');
-		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
-	},
-	@{
-		'Source' = Join-Path -Path 'scripts' -ChildPath 'profile.ps1';
-		'Destination' = $PROFILE;
-	},
-	@{
 		'Source' = 'nvim';
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.rgignore';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.rgignore';
+		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
+		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
 	},
 	@{
-		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
-		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.aliases.psm1';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
 	},
 	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath 'omnisharp.json';
@@ -81,8 +69,20 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.prompt.json';
 	},
 	@{
-		'Source' = $(if ($IsWindows) { Join-Path -Path 'scripts' -ChildPath 'windows.ps1' } else { Join-Path -Path 'scripts' -ChildPath 'unix.ps1' });
-		'Destination' = Join-Path -Path $ProfileDirectory -ChildPath 'os.ps1';
+		'Source' = Join-Path -Path 'settings' -ChildPath '.rgignore';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.rgignore';
+	},
+	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
+	},
+	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath 'profile.ps1';
+		'Destination' = $PROFILE;
+	},
+	@{
+		'Source' = [IO.Path]::Combine('submodules', 'dircolors-solarized', 'dircolors.256dark');
+		'Destination' = Join-Path -Path $HOME -ChildPath '.dircolors';
 	}
 ) | ForEach-Object { New-Object -TypeName PSObject -Property $_ };
 

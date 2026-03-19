@@ -9,6 +9,7 @@ declare -A SYMLINKS=(
 	["settings/.git-completion.bash"]=".git-completion.bash"
 	["settings/.inputrc"]=".inputrc"
 	["settings/.profile"]=".profile"
+	["settings/.rgignore"]=".rgignore"
 	["settings/.vsvimrc"]=".vsvimrc"
 	["settings/alacritty.toml"]=".alacritty.toml"
 	["settings/cosmic.ron"]=".config/cosmic/com.system76.CosmicSettings.Shortcuts/v1/custom"

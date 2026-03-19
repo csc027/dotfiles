@@ -65,6 +65,10 @@ $Items = @(
 		'Destination' = $(if ($IsWindows) { [IO.Path]::Combine($HOME, 'AppData', 'Local', 'nvim') } else { [IO.Path]::Combine($HOME, '.config', 'nvim') });
 	},
 	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath '.rgignore';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.rgignore';
+	},
+	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath '.vsvimrc';
 		'Destination' = Join-Path -Path $HOME -ChildPath '.vsvimrc';
 	},

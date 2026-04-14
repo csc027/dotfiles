@@ -93,12 +93,13 @@ function rfs {
 		--bind "start:reload:$RG_PREFIX {q}" \
 		--bind "change:reload:sleep 0.1; $RG_PREFIX {q} || true" \
 		--bind 'ctrl-g:transform:[[ ! $FZF_PROMPT =~ "Rip Grep" ]] && echo "rebind(change)+change-prompt(Rip Grep❯ )+disable-search+transform-query:echo \{q} > /tmp/rg-fzf-f; cat /tmp/rg-fzf-r" || echo "unbind(change)+change-prompt(Fzf❯ )+enable-search+transform-query:echo \{q} > /tmp/rg-fzf-r; cat /tmp/rg-fzf-f"' \
-		--bind 'enter:become(nvim {1} +{2})' \
+		--bind 'enter:become(nvim {+1} +{2})' \
 		--delimiter ':' \
 		--disabled \
 		--header 'Ctrl-G: Switch between RipGrep and Fzf' \
+		--multi \
 		--preview 'cat {1} '\
-		--preview-window 'up,60%,border-bottom,+{2},~3' \
+		--preview-window 'up,60%,border-bottom,+{2}' \
 		--prompt 'Rip Grep❯ ' \
 		--query "$INITIAL_QUERY"
 }

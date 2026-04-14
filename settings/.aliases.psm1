@@ -24,16 +24,17 @@ function Invoke-FzfRegexFileSearch {
 	$RipGrep = 'rg.exe --column --line-number --no-heading --color=always --hidden --smart-case -e';
 	fzf.exe `
 		--ansi `
-		--delimiter ':' `
-		--disabled `
 		--bind "start:reload:$RipGrep {q} || rem" `
 		--bind "change:reload:sleep 0.1 & $RipGrep {q} || rem" `
 		--bind 'ctrl-g:transform:if not "%FZF_PROMPT:~0,8%" == "Rip Grep" (echo ^rebind^(change^)^+^change-prompt^(Rip Grep^> ^)^+^disable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-f ^& type %TEMP%\rg-fzf-r) else (echo ^unbind^(change^)^+^change-prompt^(Fzf^> ^)^+^enable-search^+^transform-query:echo^|set /p ^=^{q^}^>%TEMP%\rg-fzf-r ^& type %TEMP%\rg-fzf-f)' `
-		--bind 'enter:become(nvim {1} +{2})' `
+		--bind 'enter:become(nvim {+1} +{2})' `
+		--delimiter ':' `
+		--disabled `
 		--header 'Ctrl-G: Switch between RipGrep/Fzf' `
+		--multi `
 		--prompt 'Rip Grep> ' `
 		--preview 'type {1}' `
-		--preview-window 'up,60%,border-bottom,+{2}+3' `
+		--preview-window 'up,60%,border-bottom,+{2}' `
 		--query "$InitialQuery"
 	;
 }

@@ -3,6 +3,7 @@ require('compare')
 require('complete')
 require('fzf')
 require('general')
+require('razor')
 require('treesitter')
 require('window')
 

@@ -62,7 +62,7 @@ if (
 end
 
 local roslyn_language_server_dll_path = ''
-if (roslyn_language_server_dll_path ~= nul and roslyn_language_server_dll_path ~= '') then
+if (roslyn_language_server_dll_path ~= nil and roslyn_language_server_dll_path ~= '') then
 	vim.lsp.config(
 		'roslyn_ls', {
 			cmd = {

@@ -6,6 +6,7 @@
 		"blue": "#3b78ff",
 		"cyan": "#41b6b6",
 		"darkblack": "#000000",
+		"darkgray": "#333333",
 		"gray": "#cccccc",
 		"green": "#13a10e",
 		"magenta": "#b4009e",
@@ -188,6 +189,21 @@
 					"trailing_diamond": " ",
 					"template": " {{ join \", \" .Segments.Git.Commit.Refs.Tags }} ",
 					"type": "text"
+				},
+				{
+					"background": "p:darkgray",
+					"foreground": "p:white",
+					"leading_diamond": "",
+					"options": {
+						"charged_icon": "🔋",
+						"charging_icon": "🔋⚡",
+						"discharging_icon": "🪫",
+						"not_charging_icon": "🔋"
+					},
+					"style": "diamond",
+					"template": "{{ if not .Error }} {{ .Icon }}{{ .Percentage }}% {{ end }}",
+					"trailing_diamond": "<transparent,background></>",
+					"type": "battery"
 				},
 				{
 					"background": "p:blue",

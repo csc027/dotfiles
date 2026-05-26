@@ -4,8 +4,29 @@
 
 	"actions": [
 		{
-			"command": "tabSearch",
-			"id": "Terminal.TabSearch"
+			"command": {
+				"action": "moveFocus",
+				"direction": "down"
+			},
+			"id": "Terminal.MoveFocusDown"
+		}, {
+			"command": {
+				"action": "moveFocus",
+				"direction": "left"
+			},
+			"id": "Terminal.MoveFocusLeft"
+		}, {
+			"command": {
+				"action": "moveFocus",
+				"direction": "right"
+			},
+			"id": "Terminal.MoveFocusRight"
+		}, {
+			"command": {
+				"action": "moveFocus",
+				"direction": "up"
+			},
+			"id": "Terminal.MoveFocusUp"
 		}, {
 			"command": {
 				"action": "splitPane",
@@ -20,6 +41,9 @@
 				"split": "down"
 			},
 			"id": "Terminal.SplitPaneDown"
+		}, {
+			"command": "tabSearch",
+			"id": "Terminal.TabSearch"
 		}
 	],
 	"copyFormatting": "none",
@@ -36,17 +60,29 @@
 			"id": "Terminal.FindText",
 			"keys": "ctrl+shift+f"
 		}, {
+			"id": "Terminal.MoveFocusDown",
+			"keys": "alt+j"
+		}, {
+			"id": "Terminal.MoveFocusLeft",
+			"keys": "alt+h"
+		}, {
+			"id": "Terminal.MoveFocusRight",
+			"keys": "alt+l"
+		}, {
+			"id": "Terminal.MoveFocusUp",
+			"keys": "alt+k"
+		}, {
 			"id": "Terminal.PasteFromClipboard",
 			"keys": "ctrl+shift+v"
-		}, {
-			"id": "Terminal.TabSearch",
-			"keys": "alt+b"
 		}, {
 			"id": "Terminal.SplitPaneDown",
 			"keys": "alt+s"
 		}, {
 			"id": "Terminal.SplitPaneLeft",
 			"keys": "alt+v"
+		}, {
+			"id": "Terminal.TabSearch",
+			"keys": "alt+b"
 		}
 	],
 	"newTabMenu": [

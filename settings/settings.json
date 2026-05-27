@@ -33,11 +33,23 @@
 				"size": 0.7,
 				"split": "left"
 			},
-			"id": "Terminal.SplitPaneLeft"
+			"id": "Terminal.QuickPaneLeft"
 		}, {
 			"command": {
 				"action": "splitPane",
 				"size": 0.3,
+				"split": "down"
+			},
+			"id": "Terminal.QuickPaneDown"
+		}, {
+			"command": {
+				"action": "splitPane",
+				"split": "left"
+			},
+			"id": "Terminal.SplitPaneLeft"
+		}, {
+			"command": {
+				"action": "splitPane",
 				"split": "down"
 			},
 			"id": "Terminal.SplitPaneDown"
@@ -74,6 +86,9 @@
 		}, {
 			"id": "Terminal.PasteFromClipboard",
 			"keys": "ctrl+shift+v"
+		}, {
+			"id": "Terminal.QuickPaneDown",
+			"keys": "alt+w"
 		}, {
 			"id": "Terminal.SplitPaneDown",
 			"keys": "alt+s"

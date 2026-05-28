@@ -16,9 +16,6 @@
 [submodule "nvim/pack/treesitter/start/treesitter"]
 	path = nvim/pack/treesitter/start/treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/pack/complete/start/omnisharp_extended"]
-	path = nvim/pack/complete/start/omnisharp_extended
-	url = https://github.com/Hoffs/omnisharp-extended-lsp.nvim
 [submodule "nvim/pack/plugins/start/lualine.nvim"]
 	path = nvim/pack/plugins/start/lualine.nvim
 	url = https://github.com/nvim-lualine/lualine.nvim.git

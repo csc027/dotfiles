@@ -16,3 +16,6 @@
 	keepBackup = false
 [mergetool "nvimdiff"]
 	layout = "LOCAL,BASE,REMOTE / MERGED"
+[include]
+	path = ~/.git.alias.config
+	path = ~/.git.machine.config

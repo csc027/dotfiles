@@ -61,6 +61,14 @@ $Items = @(
 		'Destination' = Join-Path -Path $HOME -ChildPath '.aliases.psm1';
 	},
 	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath '.git.alias.config';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.git.alias.config';
+	},
+	@{
+		'Source' = Join-Path -Path 'settings' -ChildPath '.gitconfig';
+		'Destination' = Join-Path -Path $HOME -ChildPath '.gitconfig';
+	},
+	@{
 		'Source' = Join-Path -Path 'settings' -ChildPath 'omnisharp.json';
 		'Destination' = [IO.Path]::Combine($HOME, '.omnisharp', 'omnisharp.json');
 	},

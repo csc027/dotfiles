@@ -65,13 +65,8 @@ local roslyn_language_server_dll_path = ''
 if (roslyn_language_server_dll_path ~= nil and roslyn_language_server_dll_path ~= '') then
 	vim.lsp.config(
 		'roslyn_ls', {
-			cmd = {
-				'dotnet',
-				roslyn_language_server_dll_path,
-				'--logLevel', 'Information',
-				'--extensionLogDirectory', vim.fs.joinpath(vim.uv.os_tmpdir(), 'roslyn_ls/logs'),
-				'--stdio'
-			},
+			cmd = { 'dotnet', roslyn_language_server_dll_path, '--stdio' },
+			filetypes = { 'cs', 'razor' },
 			on_attach = on_attach
 		}
 	)

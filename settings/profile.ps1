@@ -103,9 +103,9 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 		}
 
 		if ($WT_SESSION) {
-			Write-Host -Object "`n└─▶" -NoNewline;
+			Write-Host -Object "`n└─[" -NoNewline;
 		} else {
-			Write-Host -Object "`n+->" -NoNewline;
+			Write-Host -Object "`n+-[" -NoNewline;
 		}
 		return ' ';
 	}

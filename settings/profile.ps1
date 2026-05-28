@@ -38,12 +38,16 @@ if (Get-Command -Name 'Update-DirColors' -ErrorAction SilentlyContinue) {
 	Update-DirColors -Path (Join-Path -Path $HOME -ChildPath '.dircolors');
 }
 
-if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
+if ((Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) -and ($env:WT_SESSION)) {
 	function Set-PoshGitStatus {
 		$global:GitStatus = Get-GitStatus;
 		$env:POSH_GIT_STRING = Write-GitStatus -Status $global:GitStatus;
 	}
 	New-Alias -Name 'Set-PoshContext' -Value 'Set-PoshGitStatus' -Scope Global -Force;
+	$ScriptPath = Join-Path -Path $ProfileDirectory -ChildPath 'omp.ps1';
+	if (Test-Path -Path $ScriptPath) {
+		& $ScriptPath;
+	}
 } else {
 	if ($env:WT_SESSION) {
 		$script:RightSeparator = ' ❭ ';
@@ -141,13 +145,5 @@ foreach ($DotSourceName in $DotSourceNames) {
 	$DotSourcePath = Join-Path -Path $ProfileDirectory -ChildPath $DotSourceName;
 	if (Test-Path -Path $DotSourcePath) {
 		. $DotSourcePath;
-	}
-}
-
-$Scripts = @('omp.ps1');
-foreach ($Script in $Scripts) {
-	$ScriptPath = Join-Path -Path $ProfileDirectory -ChildPath $Script;
-	if (Test-Path -Path $ScriptPath) {
-		& $ScriptPath;
 	}
 }

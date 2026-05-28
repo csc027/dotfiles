@@ -56,7 +56,11 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 	function prompt {
 		$LastCommandState = $global:?;
 
-		Write-Host -Object '┌ ' -ForegroundColor 'Gray' -NoNewline;
+		if ($env:WT_SESSION) {
+			Write-Host -Object '┌ ' -ForegroundColor 'Gray' -NoNewline;
+		} else {
+			Write-Host -Object '+- ' -ForegroundColor 'Gray' -NoNewline;
+		}
 		if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
 			Write-Host -Object "Admin$script:RightSeparator" -ForegroundColor 'Red' -NoNewline;
 		} elseif ($PSDebugContext) {
@@ -98,7 +102,11 @@ if (Get-Command -Name 'oh-my-posh' -ErrorAction SilentlyContinue) {
 			Write-Host -Object "$script:LeftSeparator$(Get-Date -Date $Date -Format 'ss.ff')" -ForegroundColor 'Gray' -NoNewline;
 		}
 
-		Write-Host -Object "`n└─▶" -NoNewline;
+		if ($WT_SESSION) {
+			Write-Host -Object "`n└─▶" -NoNewline;
+		} else {
+			Write-Host -Object "`n+->" -NoNewline;
+		}
 		return ' ';
 	}
 

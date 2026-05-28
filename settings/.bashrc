@@ -85,11 +85,6 @@ elif command -v pkg-config --variable=completionsdir bash-completion &> /dev/nul
 	source "$(pkg-config --variable=completionsdir bash-completion)"/git
 fi
 
-# Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -99,6 +94,11 @@ if ! shopt -oq posix; then
 	elif [ -f /etc/bash_completion ]; then
 		source /etc/bash_completion
 	fi
+fi
+
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+	source ~/.bash_aliases
 fi
 
 # Enable fzf shell integration; this must come after bash completion to work

@@ -1,2 +1,6 @@
 # Set command line completion to ignore case
 set completion-ignore-case on
+
+$if BASH
+	TAB: menu-complete
+$endif

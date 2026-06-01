@@ -5,6 +5,11 @@
 	"actions": [
 		{
 			"command": {
+				"action": "closePane"
+			},
+			"id": "Terminal.ClosePane"
+		}, {
+			"command": {
 				"action": "markMode"
 			},
 			"id": "Terminal.CopyMode"
@@ -123,9 +128,11 @@
 		}, {
 			"keys": "alt+v", "id": "Terminal.SplitPaneLeft"
 		}, {
-			"keys": "alt+y", "id": "Terminal.CopyMode"
-		}, {
 			"keys": "alt+w", "id": "Terminal.QuickPaneDown"
+		}, {
+			"keys": "alt+x", "id": "Terminal.ClosePane"
+		}, {
+			"keys": "alt+y", "id": "Terminal.CopyMode"
 		}, {
 			"keys": "ctrl+shift+c", "id": "Terminal.CopyToClipboard"
 		}, {

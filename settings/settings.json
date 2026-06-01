@@ -5,6 +5,11 @@
 	"actions": [
 		{
 			"command": {
+				"action": "markMode"
+			},
+			"id": "Terminal.CopyMode"
+		}, {
+			"command": {
 				"action": "moveFocus",
 				"direction": "down"
 			},

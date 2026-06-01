@@ -29,6 +29,22 @@
 			"id": "Terminal.MoveFocusUp"
 		}, {
 			"command": {
+				"action": "moveFocus",
+				"direction": "nextInOrder"
+			},
+			"id": "Terminal.MoveFocusNextInOrder"
+		}, {
+			"command": {
+				"action": "nextTab"
+			},
+			"id": "Terminal.MoveNextTab"
+		}, {
+			"command": {
+				"action": "prevTab"
+			},
+			"id": "Terminal.MovePreviousTab"
+		}, {
+			"command": {
 				"action": "splitPane",
 				"size": 0.7,
 				"split": "left"
@@ -54,6 +70,18 @@
 			},
 			"id": "Terminal.SplitPaneDown"
 		}, {
+			"command": {
+				"action": "splitPane",
+				"split": "right"
+			},
+			"id": "Terminal.SplitPaneRight"
+		}, {
+			"command": {
+				"action": "splitPane",
+				"split": "up"
+			},
+			"id": "Terminal.SplitPaneUp"
+		}, {
 			"command": "tabSearch",
 			"id": "Terminal.TabSearch"
 		}
@@ -66,38 +94,39 @@
 	],
 	"keybindings": [
 		{
-			"id": "Terminal.CopyToClipboard",
-			"keys": "ctrl+shift+c"
+			"keys": "alt+b", "id": "Terminal.TabSearch"
 		}, {
-			"id": "Terminal.FindText",
-			"keys": "ctrl+shift+f"
+			"keys": "alt+h", "id": "Terminal.MoveFocusLeft"
 		}, {
-			"id": "Terminal.MoveFocusDown",
-			"keys": "alt+j"
+			"keys": "alt+\\", "id": "Terminal.MoveFocusNextInOrder"
 		}, {
-			"id": "Terminal.MoveFocusLeft",
-			"keys": "alt+h"
+			"keys": "alt+j", "id": "Terminal.MoveFocusDown"
 		}, {
-			"id": "Terminal.MoveFocusRight",
-			"keys": "alt+l"
+			"keys": "alt+k", "id": "Terminal.MoveFocusUp"
 		}, {
-			"id": "Terminal.MoveFocusUp",
-			"keys": "alt+k"
+			"keys": "alt+l", "id": "Terminal.MoveFocusRight"
 		}, {
-			"id": "Terminal.PasteFromClipboard",
-			"keys": "ctrl+shift+v"
+			"keys": "alt+n", "id": "Terminal.MoveNextTab"
 		}, {
-			"id": "Terminal.QuickPaneDown",
-			"keys": "alt+w"
+			"keys": "alt+p", "id": "Terminal.MovePreviousTab"
 		}, {
-			"id": "Terminal.SplitPaneDown",
-			"keys": "alt+s"
+			"keys": "alt+shift+s", "id": "Terminal.SplitPaneUp"
 		}, {
-			"id": "Terminal.SplitPaneLeft",
-			"keys": "alt+v"
+			"keys": "alt+shift+v", "id": "Terminal.SplitPaneRight"
 		}, {
-			"id": "Terminal.TabSearch",
-			"keys": "alt+b"
+			"keys": "alt+s", "id": "Terminal.SplitPaneDown"
+		}, {
+			"keys": "alt+v", "id": "Terminal.SplitPaneLeft"
+		}, {
+			"keys": "alt+y", "id": "Terminal.CopyMode"
+		}, {
+			"keys": "alt+w", "id": "Terminal.QuickPaneDown"
+		}, {
+			"keys": "ctrl+shift+c", "id": "Terminal.CopyToClipboard"
+		}, {
+			"keys": "ctrl+shift+f", "id": "Terminal.FindText"
+		}, {
+			"keys": "ctrl+shift+v", "id": "Terminal.PasteFromClipboard"
 		}
 	],
 	"newTabMenu": [

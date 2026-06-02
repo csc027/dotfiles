@@ -77,7 +77,7 @@
 		}, {
 			"keys": "alt+-", "id": "Terminal.ResizePaneDown"
 		}, {
-			"keys": "alt++", "id": "Terminal.ResizePaneUp"
+			"keys": "alt+shift+=", "id": "Terminal.ResizePaneUp"
 		}, {
 			"keys": "alt+<", "id": "Terminal.ResizePaneLeft"
 		}, {

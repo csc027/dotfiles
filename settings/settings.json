@@ -4,95 +4,52 @@
 
 	"actions": [
 		{
-			"command": {
-				"action": "closePane"
-			},
+			"command": { "action": "closePane" },
 			"id": "Terminal.ClosePane"
 		}, {
-			"command": {
-				"action": "markMode"
-			},
+			"command": { "action": "markMode" },
 			"id": "Terminal.CopyMode"
 		}, {
-			"command": {
-				"action": "moveFocus",
-				"direction": "down"
-			},
+			"command": { "action": "moveFocus", "direction": "down" },
 			"id": "Terminal.MoveFocusDown"
 		}, {
-			"command": {
-				"action": "moveFocus",
-				"direction": "left"
-			},
+			"command": { "action": "moveFocus", "direction": "left" },
 			"id": "Terminal.MoveFocusLeft"
 		}, {
-			"command": {
-				"action": "moveFocus",
-				"direction": "right"
-			},
+			"command": { "action": "moveFocus", "direction": "right" },
 			"id": "Terminal.MoveFocusRight"
 		}, {
-			"command": {
-				"action": "moveFocus",
-				"direction": "up"
-			},
+			"command": { "action": "moveFocus", "direction": "up" },
 			"id": "Terminal.MoveFocusUp"
 		}, {
-			"command": {
-				"action": "moveFocus",
-				"direction": "nextInOrder"
-			},
+			"command": { "action": "moveFocus", "direction": "nextInOrder" },
 			"id": "Terminal.MoveFocusNextInOrder"
 		}, {
-			"command": {
-				"action": "nextTab"
-			},
+			"command": { "action": "nextTab" },
 			"id": "Terminal.MoveNextTab"
 		}, {
-			"command": {
-				"action": "prevTab"
-			},
+			"command": { "action": "prevTab" },
 			"id": "Terminal.MovePreviousTab"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"size": 0.7,
-				"split": "left"
-			},
+			"command": { "action": "splitPane", "size": 0.7, "split": "left" },
 			"id": "Terminal.QuickPaneLeft"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"size": 0.3,
-				"split": "down"
-			},
+			"command": { "action": "splitPane", "size": 0.3, "split": "down" },
 			"id": "Terminal.QuickPaneDown"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"split": "left"
-			},
+			"command": { "action": "splitPane", "split": "left" },
 			"id": "Terminal.SplitPaneLeft"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"split": "down"
-			},
+			"command": { "action": "splitPane", "split": "down" },
 			"id": "Terminal.SplitPaneDown"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"split": "right"
-			},
+			"command": { "action": "splitPane", "split": "right" },
 			"id": "Terminal.SplitPaneRight"
 		}, {
-			"command": {
-				"action": "splitPane",
-				"split": "up"
-			},
+			"command": { "action": "splitPane", "split": "up" },
 			"id": "Terminal.SplitPaneUp"
 		}, {
-			"command": "tabSearch",
+			"command": { "action": "tabSearch" },
 			"id": "Terminal.TabSearch"
 		}
 	],

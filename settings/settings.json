@@ -118,6 +118,7 @@
 			"keys": "ctrl+shift+v", "id": "Terminal.PasteFromClipboard"
 		}
 	],
+	"launchMode": "focus",
 	"newTabMenu": [
 		{
 			"type": "remainingProfiles"

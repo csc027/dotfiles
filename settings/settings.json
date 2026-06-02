@@ -105,7 +105,7 @@
 	],
 	"profiles": {
 		"defaults": {
-			"colorScheme": "Darker Vintage",
+			"colorScheme": "Darker Campbell",
 			"cursorShape": "vintage",
 			"font": {
 				"face": "Cascadia Mono",
@@ -163,6 +163,28 @@
 			"yellow": "#F9AF4F"
 		}, {
 			"background": "#000000",
+			"black" : "#000000",
+			"blue" : "#0037DA",
+			"brightBlack" : "#767676",
+			"brightBlue" : "#3B78FF",
+			"brightCyan" : "#61D6D6",
+			"brightGreen" : "#16C60C",
+			"brightPurple" : "#B4009E",
+			"brightRed" : "#E74856",
+			"brightWhite" : "#F2F2F2",
+			"brightYellow" : "#F9F1A5"
+			"cursorColor": "#FFFFFF",
+			"cyan" : "#3A96DD",
+			"foreground": "#CCCCCC",
+			"green" : "#13A10E",
+			"name": "Darker Campbell",
+			"purple" : "#881798",
+			"red" : "#C50F1F",
+			"selectionBackground": "#FFFFFF",
+			"white" : "#CCCCCC",
+			"yellow" : "#C19C00",
+		}, {
+			"background": "#000000",
 			"black": "#000000",
 			"blue": "#000080",
 			"brightBlack": "#808080",
@@ -173,6 +195,7 @@
 			"brightRed": "#FF0000",
 			"brightWhite": "#FFFFFF",
 			"brightYellow": "#FFFF00",
+			"cursorColor": "#FFFFFF",
 			"cyan": "#008080",
 			"foreground": "#C0C0C0",
 			"green": "#008000",

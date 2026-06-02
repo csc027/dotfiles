@@ -77,8 +77,6 @@
 		}, {
 			"keys": "alt+-", "id": "Terminal.ResizePaneDown"
 		}, {
-			"keys": "alt+shift+=", "id": "Terminal.ResizePaneUp"
-		}, {
 			"keys": "alt+<", "id": "Terminal.ResizePaneLeft"
 		}, {
 			"keys": "alt+>", "id": "Terminal.ResizePaneRight"
@@ -96,6 +94,10 @@
 			"keys": "alt+n", "id": "Terminal.MoveNextTab"
 		}, {
 			"keys": "alt+p", "id": "Terminal.MovePreviousTab"
+		}, {
+			"keys": "alt+q", "id": "Terminal.QuickPaneLeft"
+		}, {
+			"keys": "alt+shift+=", "id": "Terminal.ResizePaneUp"
 		}, {
 			"keys": "alt+shift+s", "id": "Terminal.SplitPaneUp"
 		}, {

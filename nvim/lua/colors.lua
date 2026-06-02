@@ -4,7 +4,8 @@ require('ayu').setup(
 		terminal = true,
 		overrides = {
 			Comment = { italic = false },
-			LineNr = { fg = '#8F8D86' }
+			LineNr = { fg = '#8F8D86' },
+			Normal = { bg = '#000000' }
 		}
 	}
 )

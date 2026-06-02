@@ -38,5 +38,8 @@ bindings = [
 [shell]
 program = "tmux"
 
+[window]
+decorations = "None"
+
 [terminal]
 osc52 = "CopyPaste"

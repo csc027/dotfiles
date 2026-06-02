@@ -105,6 +105,7 @@
 	],
 	"profiles": {
 		"defaults": {
+			"colorScheme": "Darker Vintage",
 			"cursorShape": "vintage",
 			"font": {
 				"face": "Cascadia Mono",

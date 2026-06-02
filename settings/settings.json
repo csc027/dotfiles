@@ -31,17 +31,29 @@
 			"command": { "action": "prevTab" },
 			"id": "Terminal.MovePreviousTab"
 		}, {
-			"command": { "action": "splitPane", "size": 0.7, "split": "left" },
-			"id": "Terminal.QuickPaneLeft"
-		}, {
 			"command": { "action": "splitPane", "size": 0.3, "split": "down" },
 			"id": "Terminal.QuickPaneDown"
 		}, {
-			"command": { "action": "splitPane", "split": "left" },
-			"id": "Terminal.SplitPaneLeft"
+			"command": { "action": "splitPane", "size": 0.7, "split": "left" },
+			"id": "Terminal.QuickPaneLeft"
+		}, {
+			"command": { "action": "resizePane", "direction": "down" },
+			"id": "Terminal.ResizePaneDown"
+		}, {
+			"command": { "action": "resizePane", "direction": "left" },
+			"id": "Terminal.ResizePaneLeft"
+		}, {
+			"command": { "action": "resizePane", "direction": "right" },
+			"id": "Terminal.ResizePaneRight"
+		}, {
+			"command": { "action": "resizePane", "direction": "up" },
+			"id": "Terminal.ResizePaneUp"
 		}, {
 			"command": { "action": "splitPane", "split": "down" },
 			"id": "Terminal.SplitPaneDown"
+		}, {
+			"command": { "action": "splitPane", "split": "left" },
+			"id": "Terminal.SplitPaneLeft"
 		}, {
 			"command": { "action": "splitPane", "split": "right" },
 			"id": "Terminal.SplitPaneRight"
@@ -61,11 +73,19 @@
 	],
 	"keybindings": [
 		{
+			"keys": "alt+\\", "id": "Terminal.MoveFocusNextInOrder"
+		}, {
+			"keys": "alt+-", "id": "Terminal.ResizePaneDown"
+		}, {
+			"keys": "alt++", "id": "Terminal.ResizePaneUp"
+		}, {
+			"keys": "alt+<", "id": "Terminal.ResizePaneLeft"
+		}, {
+			"keys": "alt+>", "id": "Terminal.ResizePaneRight"
+		}, {
 			"keys": "alt+b", "id": "Terminal.TabSearch"
 		}, {
 			"keys": "alt+h", "id": "Terminal.MoveFocusLeft"
-		}, {
-			"keys": "alt+\\", "id": "Terminal.MoveFocusNextInOrder"
 		}, {
 			"keys": "alt+j", "id": "Terminal.MoveFocusDown"
 		}, {

@@ -7,6 +7,9 @@
 			"command": { "action": "closePane" },
 			"id": "Terminal.ClosePane"
 		}, {
+			"command": { "action": "closeTab" },
+			"id": "Terminal.CloseTab"
+		}, {
 			"command": { "action": "markMode" },
 			"id": "Terminal.CopyMode"
 		}, {
@@ -27,6 +30,9 @@
 		}, {
 			"command": { "action": "nextTab" },
 			"id": "Terminal.MoveNextTab"
+		}, {
+			"command": { "action": "newTab" },
+			"id": "Terminal.NewTab"
 		}, {
 			"command": { "action": "prevTab" },
 			"id": "Terminal.MovePreviousTab"
@@ -105,6 +111,10 @@
 		}, {
 			"keys": "alt+s", "id": "Terminal.SplitPaneDown"
 		}, {
+			"keys": "alt+t", "id": "Terminal.NewTab"
+		}, {
+			"keys": "alt+u", "id": "Terminal.CloseTab"
+		}, {
 			"keys": "alt+v", "id": "Terminal.SplitPaneLeft"
 		}, {
 			"keys": "alt+w", "id": "Terminal.QuickPaneDown"
@@ -113,11 +123,23 @@
 		}, {
 			"keys": "alt+y", "id": "Terminal.CopyMode"
 		}, {
+			"keys": "ctrl+tab", "id": "unbound"
+		}, {
+			"keys": "ctrl+v", "id": "unbound"
+		}, {
 			"keys": "ctrl+shift+c", "id": "Terminal.CopyToClipboard"
 		}, {
 			"keys": "ctrl+shift+f", "id": "Terminal.FindText"
 		}, {
+			"keys": "ctrl+shift+t", "id": "unbound"
+		}, {
+			"keys": "ctrl+shift+tab", "id": "unbound"
+		}, {
+			"keys": "ctrl+shift+u", "id": "unbound"
+		}, {
 			"keys": "ctrl+shift+v", "id": "Terminal.PasteFromClipboard"
+		}, {
+			"keys": "ctrl+shift+w", "id": "unbound"
 		}
 	],
 	"launchMode": "focus",

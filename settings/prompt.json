@@ -201,7 +201,7 @@
 						"not_charging_icon": "🔋"
 					},
 					"style": "diamond",
-					"template": "{{ if not .Error }} {{ if (gt .Percentage 95)󰁹{{ elseif (gt .Percentage 80) }}󰂁{{ elseif (gt .Percentage 65) }}󰁿{{ elseif (gt .Percentage 50) }}󰁾{{ elseif (gt .Percentage 35) }}󰁽{{ elseif (gt .Percentage 20) }}󰁼{{ elseif (gt .Percentage 5) }}󰁻{{ else }}󰁺{{ end }}{{ .Percentage }}% {{ end }}",
+					"template": "{{ if not .Error }} {{ if (gt .Percentage 95) }}󰁹{{ elseif (gt .Percentage 80) }}󰂁{{ elseif (gt .Percentage 65) }}󰁿{{ elseif (gt .Percentage 50) }}󰁾{{ elseif (gt .Percentage 35) }}󰁽{{ elseif (gt .Percentage 20) }}󰁼{{ elseif (gt .Percentage 5) }}󰁻{{ else }}󰁺{{ end }}{{ .Percentage }}% {{ end }}",
 					"trailing_diamond": "<transparent,background></>",
 					"type": "battery"
 				},

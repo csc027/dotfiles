@@ -87,7 +87,7 @@
 		}, {
 			"keys": "alt+>", "id": "Terminal.ResizePaneRight"
 		}, {
-			"keys": "alt+b", "id": "Terminal.TabSearch"
+			"keys": "alt+f", "id": "Terminal.TabSearch"
 		}, {
 			"keys": "alt+h", "id": "Terminal.MoveFocusLeft"
 		}, {

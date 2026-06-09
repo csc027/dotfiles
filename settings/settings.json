@@ -197,6 +197,7 @@
 			"brightRed": "#F07178",
 			"brightWhite": "#FFFFFF",
 			"brightYellow": "#FFB454",
+			"cursorColor": "#FFFFFF",
 			"cyan": "#90E1C6",
 			"foreground": "#B3B1AD",
 			"green": "#91B362",

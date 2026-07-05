@@ -196,15 +196,6 @@
 					"type": "text"
 				},
 				{
-					"background": "p:darkgray",
-					"foreground": "p:white",
-					"leading_diamond": "",
-					"style": "diamond",
-					"template": "{{ if not .Error }} {{ if (gt .Percentage 95) }}󰁹{{ else if (gt .Percentage 80) }}󰂁{{ else if (gt .Percentage 65) }}󰁿{{ else if (gt .Percentage 50) }}󰁾{{ else if (gt .Percentage 35) }}󰁽{{ else if (gt .Percentage 20) }}󰁼{{ else if (gt .Percentage 5) }}󰁻{{ else }}󰁺{{ end }} {{ .Percentage }}% {{ end }}",
-					"trailing_diamond": "<transparent,background></>",
-					"type": "battery"
-				},
-				{
 					"background": "p:blue",
 					"foreground": "p:white",
 					"leading_diamond": "",

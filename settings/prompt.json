@@ -17,6 +17,7 @@
 		"white": "#ffffff",
 		"yellow": "#ebae35"
 	},
+	"pwd": "osc99",
 	"upgrade": {
 		"auto": false,
 		"notice": false

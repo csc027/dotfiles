@@ -37,10 +37,10 @@
 			"command": { "action": "prevTab" },
 			"id": "Terminal.MovePreviousTab"
 		}, {
-			"command": { "action": "splitPane", "size": 0.3, "split": "down" },
+			"command": { "action": "splitPane", "size": 0.3, "split": "down", "splitMode": "duplicate" },
 			"id": "Terminal.QuickPaneDown"
 		}, {
-			"command": { "action": "splitPane", "size": 0.7, "split": "left" },
+			"command": { "action": "splitPane", "size": 0.7, "split": "left", "splitMode": "duplicate" },
 			"id": "Terminal.QuickPaneLeft"
 		}, {
 			"command": { "action": "resizePane", "direction": "down" },

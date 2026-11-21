@@ -3,4 +3,5 @@ set completion-ignore-case on
 
 $if BASH
 	TAB: menu-complete
+	"\e[Z": menu-complete-backward
 $endif
